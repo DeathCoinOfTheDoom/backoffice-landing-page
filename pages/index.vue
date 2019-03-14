@@ -4,37 +4,44 @@
       <label>Filtrer par nom d'utilisateur :</label>
       <input class="form-control" v-model="filters.name.value">
     </div>
-    <v-table :data="users" :filters="filters">
-      <thead slot="head">
-        <th>ID</th>
-        <th>Photo</th>
-        <th>Nom d'utilisateur</th>
-        <th>Rejoint le</th>
-        <th>Téléphone</th>
-        <th>Email</th>
-        <th colspan="2">Edition</th>
-      </thead>
-      <tbody slot="body" slot-scope="{displayData}">
-        <tr v-for="user in displayData" :key="user.id">
-          <td>{{ user.id }}</td>
-          <td class="avatar">
-            <img src="~assets/images/pikachu-avatar.png">
-          </td>
-          <td>{{ user.name}}</td>
-          <td>{{ user.date}}</td>
-          <td>{{ user.number}}</td>
-          <td>{{ user.mail}}</td>
-          <td class="modifier">
-            <nuxt-link to="/editUser" class="button__modifier">Modifier</nuxt-link>
-            <!-- <div class="button__modifier"></div> -->
-          </td>
-          <td class="supprimer">
-            <div class="button__supprimer">Supprimer</div>
-          </td>
-        </tr>
-      </tbody>
-    </v-table>
-    <ConfirmDeleteUser v-show="deleteUser"/>
+    <no-ssr>
+      <v-table :data="users" :filters="filters">
+        <thead slot="head">
+          <th>ID</th>
+          <th>Photo</th>
+          <th>Nom d'utilisateur</th>
+          <th>Rejoint le</th>
+          <th>Téléphone</th>
+          <th>Email</th>
+          <th colspan="2">Edition</th>
+        </thead>
+        <tbody slot="body" slot-scope="{displayData}">
+          <tr v-for="user in displayData" :key="user.id">
+            <td>{{ user.id }}</td>
+            <td class="avatar">
+              <img src="~assets/images/pikachu-avatar.png">
+            </td>
+            <td>{{ user.name}}</td>
+            <td>{{ user.date}}</td>
+            <td>{{ user.number}}</td>
+            <td>{{ user.mail}}</td>
+            <td class="modifier">
+              <nuxt-link to="/editUser" class="button__modifier">Modifier</nuxt-link>
+            </td>
+            <td class="supprimer">
+              <div class="button__supprimer" @click="showModal = user.id">Supprimer</div>
+              <!-- <div class="button__supprimer" @click="openPopupDeleteUser">Supprimer</div> -->
+            </td>
+          </tr>
+        </tbody>
+      </v-table>
+    </no-ssr>
+    <ConfirmDeleteUser
+      v-if="showModal"
+      @close="showModal = false"
+      v-on:cancelDeleteUser="showModal = false"
+      v-bind:user-id="showModal"
+    />
   </section>
 </template>
 
@@ -43,7 +50,7 @@ import ConfirmDeleteUser from "~/components/ConfirmDeleteUser.vue";
 
 export default {
   components: {
-    //ConfirmDeleteUser
+    ConfirmDeleteUser
   },
   data() {
     return {
@@ -73,8 +80,14 @@ export default {
       filters: {
         name: { value: "", keys: ["name"] }
       },
-      deleteUser: false
+      deleteUser: false,
+      showModal: false
     };
+  },
+  methods: {
+    openPopupDeleteUser: function() {
+      this.deleteUser = true;
+    }
   }
 };
 </script>

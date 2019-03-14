@@ -1,27 +1,49 @@
 <template>
-  <div class="container-confirm_delete">
-    <p>Êtes-vous sûr de vouloir supprimer Bertrand ? Une fois supprimer vous ne pourrez plus récupérer les données de Bertrand</p>
-    <button>Valider</button>
-    <button class="cancel">Annuler</button>
+  <div class="background_confirm-delete">
+    <div class="container-confirm_delete">
+      <p>Êtes-vous sûr de vouloir supprimer Bertrand ? Une fois supprimer vous ne pourrez plus récupérer les données de Bertrand</p>
+      <button @click="deletee">Valider</button>
+      <button class="cancel" @click="cancelDeleteUser">Annuler</button>
+    </div>
   </div>
 </template>
 
+<script>
+export default {
+  name: "ConfirmDeleteUser",
+  props: ["userId"],
+  data() {
+    return {
+      deleteUser: true
+    };
+  },
+  methods: {
+    cancelDeleteUser: function() {
+      this.$emit("cancelDeleteUser");
+    },
+    deletee: function() {
+      alert(this.userId);
+    }
+  }
+};
+</script>
+
 <style>
-body {
+.background_confirm-delete {
   background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 
 .container-confirm_delete {
   background: white;
   padding: 40px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 button {
