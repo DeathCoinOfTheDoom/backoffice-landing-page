@@ -4,19 +4,35 @@
     <form action method id class="container-form_connexion">
       <div class="label">
         <label for="email">Adresse mail</label>
-        <input type="email" id="email" name="email">
+        <input type="email" id="email" name="email" value>
       </div>
       <div class="label">
         <label for="password">Mot de passe</label>
-        <input type="password" id="password" name="password">
+        <input type="password" id="password" name="password" value>
       </div>
     </form>
-    <button type="submit" form value>Connexion</button>
+    <button type="submit" form value @click="login">Connexion</button>
   </section>
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+
+export default {
+  methods: {
+    login: function() {
+      axios
+        .post("http://104.248.229.222/api/signin", {
+          email: email.value,
+          password: password.value
+        })
+        .then(response => {
+          sessionStorage.setItem("token", response.data.token);
+          this.$nuxt.$router.push({ path: "/" });
+        });
+    }
+  }
+};
 </script>
 
 <style>
