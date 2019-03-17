@@ -1,7 +1,7 @@
 <template>
   <div class="background_confirm-delete">
     <div class="container-confirm_delete">
-      <p>Êtes-vous sûr de vouloir supprimer Bertrand ? Une fois supprimer vous ne pourrez plus récupérer les données de Bertrand</p>
+      <p>Êtes-vous sûr de vouloir supprimer Bertrand ? Une fois supprimer vous ne pourrez plus récupérer les données de {{this.userName}}</p>
       <button @click="deletee">Valider</button>
       <button class="cancel" @click="cancelDeleteUser">Annuler</button>
     </div>
@@ -11,7 +11,7 @@
 <script>
 export default {
   name: "ConfirmDeleteUser",
-  props: ["userId"],
+  props: ["userId", "userName"],
   data() {
     return {
       deleteUser: true
@@ -22,7 +22,7 @@ export default {
       this.$emit("cancelDeleteUser");
     },
     deletee: function() {
-      alert(this.userId);
+      this.$emit("confirmDelete", this.userId);
     }
   }
 };

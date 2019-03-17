@@ -29,8 +29,10 @@
               <nuxt-link to="/editUser" class="button__modifier">Modifier</nuxt-link>
             </td>
             <td class="supprimer">
-              <div class="button__supprimer" @click="showModal = user.id">Supprimer</div>
-              <!-- <div class="button__supprimer" @click="openPopupDeleteUser">Supprimer</div> -->
+              <div
+                class="button__supprimer"
+                @click="showModal = user.id, namee = user.name"
+              >Supprimer</div>
             </td>
           </tr>
         </tbody>
@@ -38,9 +40,10 @@
     </no-ssr>
     <ConfirmDeleteUser
       v-if="showModal"
-      @close="showModal = false"
-      v-on:cancelDeleteUser="showModal = false"
-      v-bind:user-id="showModal"
+      @confirmDelete="deleteUser($event)"
+      @cancelDeleteUser="closeModal"
+      :userId="showModal"
+      :userName="namee"
     />
   </section>
 </template>
@@ -80,13 +83,20 @@ export default {
       filters: {
         name: { value: "", keys: ["name"] }
       },
-      deleteUser: false,
       showModal: false
     };
   },
   methods: {
-    openPopupDeleteUser: function() {
-      this.deleteUser = true;
+    deleteUser(userId) {
+      const userIndex = this.users.findIndex(user => user.id === userId);
+
+      this.users.splice(userIndex, 1);
+
+      // ensuite ferme la modal
+      this.closeModal();
+    },
+    closeModal() {
+      this.showModal = false;
     }
   }
 };
