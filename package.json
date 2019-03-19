@@ -13,6 +13,8 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "@nuxtjs/auth": "^4.5.3",
+    "@nuxtjs/axios": "^5.4.1",
     "axios": "^0.18.0",
     "nuxt": "^2.0.0",
     "vuejs-smart-table": "0.0.3"

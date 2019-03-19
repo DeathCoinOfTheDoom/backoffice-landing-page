@@ -37,5 +37,13 @@ module.exports = {
   /*
    ** Plugins
    */
-  plugins: [{ src: "~/plugins/smart-table", ssr: false }]
+  plugins: [{ src: "~/plugins/smart-table", ssr: false }],
+  /*
+   ** Modules
+   */
+  modules: ["@nuxtjs/axios", "@nuxtjs/auth"],
+
+  auth: {
+    // Options
+  }
 };
