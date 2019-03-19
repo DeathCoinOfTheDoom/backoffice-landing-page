@@ -1,7 +1,7 @@
 <template>
   <section class="container">
-    <!-- <div>page de connexion à venir</div> -->
-    <form action method id class="container-form_connexion">
+    <!-- <div>page de login à venir</div> -->
+    <form action method id class="container-form_login">
       <div class="label">
         <label for="email">Adresse mail</label>
         <input type="email" id="email" name="email" value>
@@ -11,7 +11,7 @@
         <input type="password" id="password" name="password" value>
       </div>
     </form>
-    <button type="submit" form value @click="login">Connexion</button>
+    <button type="submit" form value @click="login">login</button>
   </section>
 </template>
 
@@ -21,15 +21,21 @@ import axios from "axios";
 export default {
   methods: {
     login: function() {
-      axios
-        .post("http://104.248.229.222/api/signin", {
+      // axios
+      //   .post("http://104.248.229.222/api/signin", {
+      //     email: email.value,
+      //     password: password.value
+      //   })
+      //   .then(response => {
+      //     sessionStorage.setItem("token", response.data.token);
+      //     this.$nuxt.$router.push({ path: "/" });
+      //   });
+      this.$auth.loginWith("local", {
+        data: {
           email: email.value,
           password: password.value
-        })
-        .then(response => {
-          sessionStorage.setItem("token", response.data.token);
-          this.$nuxt.$router.push({ path: "/" });
-        });
+        }
+      });
     }
   }
 };
@@ -45,11 +51,11 @@ export default {
   flex-direction: column;
 }
 
-.container-form_connexion {
+.container-form_login {
   width: 400px;
 }
 
-.container-form_connexion .label label {
+.container-form_login .label label {
   width: 50%;
   text-align: left;
 }

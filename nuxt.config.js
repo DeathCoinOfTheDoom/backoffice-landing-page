@@ -45,5 +45,33 @@ module.exports = {
 
   auth: {
     // Options
+    redirect: {
+      logout: "/login"
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: "/api/signin", method: "post", propertyName: "token" }
+          //user: { url: '/api/auth/user', method: 'get', propertyName: 'user' }
+        }
+        // tokenRequired: true,
+        // tokenType: 'bearer',
+      }
+    },
+    resetOnError: true
+  },
+
+  /*
+   ** Router
+   */
+  router: {
+    middleware: ["auth"]
+  },
+
+  /*
+   ** Router
+   */
+  axios: {
+    baseURL: "http://104.248.229.222"
   }
 };
