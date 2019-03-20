@@ -1,5 +1,6 @@
 <template>
   <section class="container">
+    <div class="logout" @click="logout">Déconnexion</div>
     <div class="filter-name">
       <label>Filtrer par nom d'utilisateur :</label>
       <input class="form-control" v-model="filters.name.value">
@@ -97,6 +98,9 @@ export default {
     },
     closeModal() {
       this.showModal = false;
+    },
+    logout: function() {
+      this.$auth.logout();
     }
   }
 };
@@ -106,6 +110,16 @@ export default {
 *  {
   padding: 0;
   margin: 0;
+}
+
+.logout {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 5px 10px;
+  border: 1px solid grey;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .filter-name {

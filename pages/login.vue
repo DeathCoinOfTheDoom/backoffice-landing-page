@@ -11,7 +11,7 @@
         <input type="password" id="password" name="password" value>
       </div>
     </form>
-    <button type="submit" form value @click="login">login</button>
+    <button type="submit" form value @click="login">Se connecter</button>
   </section>
 </template>
 
