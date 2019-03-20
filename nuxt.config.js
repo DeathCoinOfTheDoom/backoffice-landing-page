@@ -51,8 +51,17 @@ module.exports = {
     strategies: {
       local: {
         endpoints: {
-          login: { url: "/api/signin", method: "post", propertyName: "token" }
-          //user: { url: '/api/auth/user', method: 'get', propertyName: 'user' }
+          login: {
+            url: "/api/auth/signin",
+            method: "post",
+            propertyName: "token"
+          },
+          logout: { url: "/api/auth/logout", method: "get" },
+          user: {
+            url: "/api/auth/user",
+            method: "get",
+            propertyName: "data.attributes"
+          }
         }
         // tokenRequired: true,
         // tokenType: 'bearer',
