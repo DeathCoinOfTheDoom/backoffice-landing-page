@@ -1,12 +1,12 @@
 <template>
   <section class="container">
     <aside>
-      <nuxt-link to="/" class="tab active">
+      <nuxt-link to="/" class="tab">
         <span>
           <img src="~assets/images/user.png" alt>
         </span>Utilisateurs
       </nuxt-link>
-      <nuxt-link to="/categoriesTable" class="tab">
+      <nuxt-link to="/categoriesTable" class="tab active">
         <span>
           <img src="~assets/images/format-list-bulleted-type.png" alt>
         </span>
@@ -15,39 +15,21 @@
     </aside>
     <div class="logout" @click="logout">Déconnexion</div>
     <div class="table-user">
-      <div class="filter-name">
-        <label>Filtrer par nom d'utilisateur :</label>
-        <input class="form-control" v-model="filters.name.value">
-      </div>
       <no-ssr>
-        <v-table :data="users" :filters="filters">
+        <v-table :data="categories">
           <thead slot="head">
-            <th>ID</th>
-            <th>Photo</th>
-            <th>Nom d'utilisateur</th>
-            <th>Rejoint le</th>
-            <th>Téléphone</th>
-            <th>Email</th>
-            <th colspan="2">Edition</th>
+            <th>Catégories</th>
+            <th>Information</th>
+            <th>Edition</th>
           </thead>
           <tbody slot="body" slot-scope="{displayData}">
-            <tr v-for="user in displayData" :key="user.id">
-              <td>{{ user.id }}</td>
-              <td class="avatar">
-                <img src="~assets/images/pikachu-avatar.png">
+            <tr v-for="category in displayData" :key="category.id">
+              <td>{{ category.category}}</td>
+              <td class="modifier">
+                <nuxt-link to class="button__modifier">Voir la fiche</nuxt-link>
               </td>
-              <td>{{ user.name}}</td>
-              <td>{{ user.date}}</td>
-              <td>{{ user.number}}</td>
-              <td>{{ user.mail}}</td>
               <td class="modifier">
                 <nuxt-link to="/editUser" class="button__modifier">Modifier</nuxt-link>
-              </td>
-              <td class="supprimer">
-                <div
-                  class="button__supprimer"
-                  @click="showModal = user.id, namee = user.name"
-                >Supprimer</div>
               </td>
             </tr>
           </tbody>
@@ -73,32 +55,36 @@ export default {
   },
   data() {
     return {
-      users: [
+      categories: [
         {
           id: 1,
-          name: "Juliette Dupont",
+          category: "Identité",
           date: "01/01/19",
           number: "0678586978",
           mail: "hello@juliette.fr"
         },
         {
           id: 2,
-          name: "Jules Dupont",
+          category: "Garant",
           date: "02/02/19",
           number: "0677667766",
           mail: "hello@jules.fr"
         },
         {
           id: 3,
-          name: "John Dark",
+          category: "Domicile",
+          date: "02/03/19",
+          number: "0677667777",
+          mail: "hello@john.fr"
+        },
+        {
+          id: 4,
+          category: "Emploi",
           date: "02/03/19",
           number: "0677667777",
           mail: "hello@john.fr"
         }
       ],
-      filters: {
-        name: { value: "", keys: ["name"] }
-      },
       showModal: false
     };
   },
@@ -149,8 +135,6 @@ aside .tab {
   display: flex;
   align-items: center;
   cursor: pointer;
-  text-decoration: none;
-  color: black;
 }
 
 aside .tab img {
