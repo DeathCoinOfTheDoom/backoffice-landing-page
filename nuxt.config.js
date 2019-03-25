@@ -46,7 +46,9 @@ module.exports = {
   auth: {
     // Options
     redirect: {
-      logout: "/login"
+      login: "/admin/login",
+      logout: "/admin/login",
+      home: "/admin/"
     },
     strategies: {
       local: {

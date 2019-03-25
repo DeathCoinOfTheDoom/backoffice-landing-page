@@ -1,12 +1,12 @@
 <template>
   <section class="container">
     <aside>
-      <nuxt-link to="/" class="tab">
+      <nuxt-link to="/admin/" class="tab">
         <span>
           <img src="~assets/images/user.png" alt>
         </span>Utilisateurs
       </nuxt-link>
-      <nuxt-link to="/categoriesTable" class="tab active">
+      <nuxt-link to="/admin/categoriesTable" class="tab active">
         <span>
           <img src="~assets/images/format-list-bulleted-type.png" alt>
         </span>
