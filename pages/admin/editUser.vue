@@ -2,10 +2,6 @@
   <section class="container">
     <form action method id class="container-form_edit">
       <div class="label">
-        <label for="avatar">Photo de Bertrand</label>
-        <input type="file" id="avatar" name="Photo">
-      </div>
-      <div class="label">
         <label for="utilisateur">Nom de l'utilisateur</label>
         <input type="text" id="utilisateur" name="Nom">
       </div>
@@ -16,6 +12,10 @@
       <div class="label">
         <label for="email">Email</label>
         <input type="email" id="email" name="email">
+      </div>
+      <div class="label">
+        <label for="birthdate">Date de naissance</label>
+        <input type="birthdate" id="birthdate" name="birthdate">
       </div>
     </form>
     <button type="submit" form value>Valider</button>

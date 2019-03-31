@@ -29,7 +29,7 @@
                 <nuxt-link to class="button__modifier">Voir la fiche</nuxt-link>
               </td>
               <td class="modifier">
-                <nuxt-link to="/editUser" class="button__modifier">Modifier</nuxt-link>
+                <nuxt-link to="/admin/editUser" class="button__modifier">Modifier</nuxt-link>
               </td>
             </tr>
           </tbody>
