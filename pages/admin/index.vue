@@ -13,11 +13,14 @@
         <p>Catégories</p>
       </nuxt-link>
     </aside>
-    <div class="logout" @click="logout">Déconnexion</div>
+    <div class="logout btn" @click="logout">Déconnexion</div>
     <div class="table-user">
-      <div class="filter-name">
-        <label>Filtrer par nom d'utilisateur :</label>
-        <input class="form-control" v-model="filters.name.value">
+      <div class="tab-user">
+        <div class="filter-name">
+          <label>Filtrer par nom d'utilisateur :</label>
+          <input class="form-control" v-model="filters.name.value">
+        </div>
+        <nuxt-link to="/admin/newUser" class="btn">Créer un nouvel utilisateur</nuxt-link>
       </div>
       <no-ssr>
         <v-table :data="users" :filters="filters">
@@ -28,6 +31,7 @@
             <th>Rejoint le</th>
             <th>Téléphone</th>
             <th>Email</th>
+            <th>Date de naissance</th>
             <th colspan="2">Edition</th>
           </thead>
           <tbody slot="body" slot-scope="{displayData}">
@@ -36,12 +40,13 @@
               <td class="avatar">
                 <img src="~assets/images/pikachu-avatar.png">
               </td>
-              <td>{{ user.name}}</td>
-              <td>{{ user.date}}</td>
-              <td>{{ user.number}}</td>
-              <td>{{ user.mail}}</td>
+              <td>{{ user.attributes.firstName}} {{ user.attributes.lastName}}</td>
+              <td>{{ user.attributes.created_at}}</td>
+              <td>{{ user.attributes.phone_number}}</td>
+              <td>{{ user.attributes.email}}</td>
+              <td>{{ user.attributes.birthdate}}</td>
               <td class="modifier">
-                <nuxt-link to="/editUser" class="button__modifier">Modifier</nuxt-link>
+                <nuxt-link to="/admin/editUser" class="button__modifier" @click="editTest">Modifier</nuxt-link>
               </td>
               <td class="supprimer">
                 <div
@@ -74,33 +79,124 @@ export default {
   data() {
     return {
       users: [
-        {
-          id: 1,
-          name: "Juliette Dupont",
-          date: "01/01/19",
-          number: "0678586978",
-          mail: "hello@juliette.fr"
-        },
-        {
-          id: 2,
-          name: "Jules Dupont",
-          date: "02/02/19",
-          number: "0677667766",
-          mail: "hello@jules.fr"
-        },
-        {
-          id: 3,
-          name: "John Dark",
-          date: "02/03/19",
-          number: "0677667777",
-          mail: "hello@john.fr"
-        }
+        // {
+        //   type: "user",
+        //   id: "1",
+        //   attributes: {
+        //     phone_number: "+33651520836",
+        //     email: "axel.rayer@gmail.com",
+        //     firstName: "Axel",
+        //     lastName: "Rayer",
+        //     birthdate: "1997-05-30",
+        //     admin: "1",
+        //     created_at: "2019-03-15 09:16:20",
+        //     updated_at: "2019-03-15 09:21:10"
+        //   },
+        //   relationships: {
+        //     folders: {
+        //       links: {
+        //         self: "http://104.248.229.222/api/user/1/relationships/folder",
+        //         related: "http://104.248.229.222/api/user/1/folder"
+        //       },
+        //       data: []
+        //     },
+        //     files: {
+        //       links: {
+        //         self: "http://104.248.229.222/api/user/1/relationships/file",
+        //         related: "http://104.248.229.222/api/user/1/file"
+        //       },
+        //       data: []
+        //     }
+        //   },
+        //   links: {
+        //     self: "http://104.248.229.222/api/user/1"
+        //   }
+        // },
+        // {
+        //   type: "user",
+        //   id: "2",
+        //   attributes: {
+        //     phone_number: "+33663149859",
+        //     email: "gerome.lacaux@hetic.net",
+        //     firstName: "Gérome",
+        //     lastName: "Lacaux",
+        //     birthdate: "0000-00-00",
+        //     admin: "1",
+        //     created_at: "2019-03-15 09:16:20",
+        //     updated_at: "2019-03-15 09:21:10"
+        //   },
+        //   relationships: {
+        //     folders: {
+        //       links: {
+        //         self: "http://104.248.229.222/api/user/2/relationships/folder",
+        //         related: "http://104.248.229.222/api/user/2/folder"
+        //       },
+        //       data: [
+        //         {
+        //           type: "folder",
+        //           id: "1"
+        //         }
+        //       ]
+        //     },
+        //     files: {
+        //       links: {
+        //         self: "http://104.248.229.222/api/user/2/relationships/file",
+        //         related: "http://104.248.229.222/api/user/2/file"
+        //       },
+        //       data: []
+        //     }
+        //   },
+        //   links: {
+        //     self: "http://104.248.229.222/api/user/2"
+        //   }
+        // },
+        // {
+        //   type: "user",
+        //   id: "3",
+        //   attributes: {
+        //     phone_number: "Numéro Exemple",
+        //     email: "jessica.thielemans@hetic.net",
+        //     firstName: "Jessica",
+        //     lastName: "Thielemans",
+        //     birthdate: "0000-00-00",
+        //     admin: "1",
+        //     created_at: "2019-03-15 09:16:20",
+        //     updated_at: "2019-03-15 09:21:10"
+        //   },
+        //   relationships: {
+        //     folders: {
+        //       links: {
+        //         self: "http://104.248.229.222/api/user/3/relationships/folder",
+        //         related: "http://104.248.229.222/api/user/3/folder"
+        //       },
+        //       data: []
+        //     },
+        //     files: {
+        //       links: {
+        //         self: "http://104.248.229.222/api/user/3/relationships/file",
+        //         related: "http://104.248.229.222/api/user/3/file"
+        //       },
+        //       data: []
+        //     }
+        //   },
+        //   links: {
+        //     self: "http://104.248.229.222/api/user/3"
+        //   }
+        // }
       ],
       filters: {
-        name: { value: "", keys: ["name"] }
+        name: { value: "", custom: this.nameFilter }
       },
       showModal: false
     };
+  },
+  mounted() {
+    const axios = require("axios");
+    this.$axios.$get("http://104.248.229.222/api/user").then(response => {
+      // handle success
+      this.users = response.data;
+      console.log(users);
+    });
   },
   methods: {
     deleteUser(userId) {
@@ -116,6 +212,20 @@ export default {
     },
     logout: function() {
       this.$auth.logout();
+    },
+    editTest: function() {},
+    nameFilter: function(filterValue, row) {
+      var fullName =
+        row.attributes.firstName.toLowerCase() +
+        " " +
+        row.attributes.lastName.toLowerCase();
+      var fullNameReverse =
+        row.attributes.lastName.toLowerCase() +
+        " " +
+        row.attributes.firstName.toLowerCase();
+      return (
+        fullName.includes(filterValue) || fullNameReverse.includes(filterValue)
+      );
     }
   }
 };
@@ -135,6 +245,14 @@ export default {
   border: 1px solid grey;
   border-radius: 8px;
   cursor: pointer;
+}
+
+.btn {
+  padding: 5px 10px;
+  border: 1px solid grey;
+  border-radius: 8px;
+  text-decoration: none;
+  color: black;
 }
 
 aside {
@@ -167,6 +285,15 @@ aside .active {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.tab-user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1300px;
+  width: 80%;
+  padding-bottom: 10px;
 }
 
 .filter-name {
