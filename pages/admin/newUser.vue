@@ -1,24 +1,56 @@
 <template>
   <section class="container">
+    <p>Création d'un utilisateur</p>
     <form action method id class="container-form_edit">
       <div class="label">
-        <label for="utilisateur">Nom de l'utilisateur</label>
-        <input type="text" id="utilisateur" name="Nom">
+        <label for="telephone">
+          Numéro de téléphone
+          <sup>*</sup>
+        </label>
+        <input
+          type="text"
+          id="telephone"
+          name="phone_number"
+          v-model="newUser.phone_number"
+          required
+        >
       </div>
       <div class="label">
-        <label for="telephone">Numéro de téléphone</label>
-        <input type="text" id="telephone" name="Telephone">
+        <label for="lastName">Nom</label>
+        <input type="text" id="lastName" name="lastName" v-model="newUser.lastName">
+      </div>
+      <div class="label">
+        <label for="firstName">Prénom</label>
+        <input type="text" id="firstName" name="firstName" v-model="newUser.firstName">
       </div>
       <div class="label">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email">
+        <input type="email" id="email" name="email" v-model="newUser.email">
       </div>
       <div class="label">
         <label for="birthdate">Date de naissance</label>
-        <input type="birthdate" id="birthdate" name="birthdate">
+        <input type="date" id="birthdate" name="birthdate" v-model="newUser.birthdate">
+      </div>
+      <div class="label">
+        <input type="checkbox" id="adminAccount" name="adminAccount" v-model="newUser.admin">
+        <label for="adminAccount">Voulez-vous créer un compte administrateur ?</label>
+      </div>
+      <div class="label" v-if="newUser.admin">
+        <label for="password">Si oui, définissez un mot de passe</label>
+        <input type="password" id="password" name="password" v-model="newUser.password" required>
+      </div>
+      <div class="label" v-if="newUser.admin">
+        <label for="passwordChecked">Confirmez votre mot de passe</label>
+        <input
+          type="passwordChecked"
+          id="passwordChecked"
+          name="passwordChecked"
+          v-model="newUser.password"
+          required
+        >
       </div>
     </form>
-    <button type="submit" form value>Valider</button>
+    <button type="submit" form @click="newTest">Valider</button>
   </section>
 </template>
 
@@ -28,6 +60,30 @@ import AppLogo from "~/components/AppLogo.vue";
 export default {
   components: {
     AppLogo
+  },
+  data() {
+    return {
+      newUser: {
+        phone_number: "",
+        lastName: "",
+        firstName: "",
+        email: "",
+        birthdate: "",
+        admin: false,
+        password: null
+      }
+    };
+  },
+  methods: {
+    newTest: function() {
+      const axios = require("axios");
+      this.$axios
+        .$post("http://104.248.229.222/api/user", this.newUser)
+        .then(response => {
+          // handle success
+          window.location.replace("/admin");
+        });
+    }
   }
 };
 </script>
@@ -48,7 +104,8 @@ export default {
 
 .label {
   display: flex;
-  align-items: flex-start;
+  /* align-items: flex-start; */
+  align-items: center;
   margin: 5px 0px;
 }
 
@@ -59,6 +116,14 @@ export default {
 
 .label input {
   width: 40%;
+}
+
+input[type="checkbox"] {
+  width: auto;
+}
+
+#adminAccount {
+  margin-right: 7px;
 }
 
 button {

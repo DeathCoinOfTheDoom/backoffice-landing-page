@@ -83,6 +83,10 @@ module.exports = {
    ** Router
    */
   axios: {
-    baseURL: "http://104.248.229.222"
+    baseURL: "http://104.248.229.222",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    }
   }
 };

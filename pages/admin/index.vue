@@ -40,11 +40,11 @@
               <td class="avatar">
                 <img src="~assets/images/pikachu-avatar.png">
               </td>
-              <td>{{ user.attributes.firstName}} {{ user.attributes.lastName}}</td>
-              <td>{{ user.attributes.created_at}}</td>
+              <td>{{ user.attributes.firstName ? user.attributes.firstName : "/"}} {{ user.attributes.lastName ? user.attributes.lastName : "/"}}</td>
+              <td>{{ user.attributes.created_at ? user.attributes.created_at : "/" }}</td>
               <td>{{ user.attributes.phone_number}}</td>
-              <td>{{ user.attributes.email}}</td>
-              <td>{{ user.attributes.birthdate}}</td>
+              <td>{{ user.attributes.email ? user.attributes.email : "/" }}</td>
+              <td>{{ user.attributes.birthdate ? user.attributes.birthdate : "/"}}</td>
               <td class="modifier">
                 <nuxt-link to="/admin/editUser" class="button__modifier" @click="editTest">Modifier</nuxt-link>
               </td>
