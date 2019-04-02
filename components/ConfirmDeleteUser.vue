@@ -21,10 +21,6 @@ export default {
     cancelButton: function() {
       this.$emit("closed");
     },
-    confirmDeleteUser: function() {},
-    // deleteValidate: function() {
-    //   this.$emit("confirmDelete", this.userId);
-    // }
     deleteUser(userId) {
       const axios = require("axios");
       this.$axios
@@ -45,7 +41,7 @@ export default {
 </script>
 
 <style>
-/* .background_confirm-delete {
+.background_confirm-delete {
   background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
@@ -81,6 +77,6 @@ button {
 
 .cancel:hover {
   border-bottom: 1px solid red;
-} */
+}
 </style>
 

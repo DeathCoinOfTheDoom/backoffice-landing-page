@@ -49,26 +49,13 @@
                 <nuxt-link to="/admin/editUser" class="button__modifier" @click="editTest">Modifier</nuxt-link>
               </td>
               <td class="supprimer">
-                <!-- <div class="button__supprimer" @click="deleteUser(user.id)">Supprimer</div> -->
                 <div class="button__supprimer" @click="showPopup = true, userId = user.id">Supprimer</div>
               </td>
             </tr>
           </tbody>
         </v-table>
       </no-ssr>
-      <!-- <div class="background_confirm-delete" v-if="showPopup">
-        <div class="container-confirm_delete">
-          <p>Êtes-vous sûr de vouloir supprimer ? Une fois supprimer vous ne pourrez plus récupérer les données de</p>
-          <button @click="deleteUser">Valider</button>
-          <button class="cancel" @click="closePopup">Annuler</button>
-        </div>
-      </div>-->
       <ConfirmDeleteUser v-if="showPopup" v-on:closed="closePopup" v-bind:userId="userId"/>
-      <!-- <ConfirmDeleteUser
-        v-show="showPopup"
-        @confirmDelete="deleteUser($event)"
-        @cancelDeleteUser="closeModal"
-      />-->
     </div>
   </section>
 </template>
@@ -131,20 +118,6 @@ export default {
     });
   },
   methods: {
-    // deleteUser(userId) {
-    //   const axios = require("axios");
-    //   this.$axios
-    //     .$delete("http://104.248.229.222/api/user/" + userId)
-    //     .then(response => {
-    //       // handle success
-    //     })
-    //     .catch(error => {
-    //       console.log(error);
-    //     });
-
-    //   // ensuite ferme la modal
-    //   this.closePopup();
-    // },
     logout: function() {
       this.$auth.logout();
     },
@@ -164,9 +137,6 @@ export default {
           fullNameReverse.includes(filterValue)
         );
       }
-    },
-    openPopup: function() {
-      this.showPopup = true;
     },
     closePopup: function() {
       this.showPopup = false;
