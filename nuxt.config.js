@@ -37,7 +37,10 @@ module.exports = {
   /*
    ** Plugins
    */
-  plugins: [{ src: "~/plugins/smart-table", ssr: false }],
+  plugins: [
+    { src: "~/plugins/smart-table", ssr: false },
+    { src: "~plugins/vee-validate", ssr: true }
+  ],
   /*
    ** Modules
    */

@@ -8,12 +8,13 @@
           <sup>*</sup>
         </label>
         <input
+          v-validate="'required'"
           type="text"
           id="telephone"
           name="phone_number"
           v-model="newUser.phone_number"
-          required
         >
+        <span>{{ errors.first('phone_number') }}</span>
       </div>
       <div class="label">
         <label for="lastName">Nom</label>
@@ -50,12 +51,14 @@
         >
       </div>
     </form>
-    <button type="submit" form @click="newTest">Valider</button>
+    <!-- <button @click="newTest">Valider</button> -->
+    <button v-bind:disabled="!submitable">Valider</button>
   </section>
 </template>
 
 <script>
 import AppLogo from "~/components/AppLogo.vue";
+import VeeValidate from "vee-validate";
 
 export default {
   components: {
@@ -74,14 +77,16 @@ export default {
       }
     };
   },
+  computed: {
+    hasError() {
+      return this.errors.all().length > 0;
+    },
+    submitable() {
+      return this.newUser.phone_number != "" && !this.hasError;
+    }
+  },
   methods: {
     newTest: function() {
-      // if (this.newUser.phone_number.value != "") {
-      //   console.log("he");
-      // } else {
-      //   console.log("nope");
-      // }
-
       const axios = require("axios");
       this.$axios
         .$post("http://104.248.229.222/api/user", this.newUser)
