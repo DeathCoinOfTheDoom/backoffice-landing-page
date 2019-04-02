@@ -1,9 +1,9 @@
 <template>
   <div class="background_confirm-delete">
     <div class="container-confirm_delete">
-      <p>Êtes-vous sûr de vouloir supprimer Bertrand ? Une fois supprimer vous ne pourrez plus récupérer les données de {{this.userName}}</p>
-      <button @click="deletee">Valider</button>
-      <button class="cancel" @click="cancelDeleteUser">Annuler</button>
+      <p>Êtes-vous sûr de vouloir supprimer ? Une fois supprimer vous ne pourrez plus récupérer les données de</p>
+      <button @click="deleteUser">Valider</button>
+      <button class="cancel" @click.prevent="cancelButton">Annuler</button>
     </div>
   </div>
 </template>
@@ -11,25 +11,41 @@
 <script>
 export default {
   name: "ConfirmDeleteUser",
-  props: ["userId", "userName"],
+  props: ["userId"],
   data() {
     return {
-      deleteUser: true
+      showPopup: true
     };
   },
   methods: {
-    cancelDeleteUser: function() {
-      this.$emit("cancelDeleteUser");
+    cancelButton: function() {
+      this.$emit("closed");
     },
-    deletee: function() {
-      this.$emit("confirmDelete", this.userId);
+    confirmDeleteUser: function() {},
+    // deleteValidate: function() {
+    //   this.$emit("confirmDelete", this.userId);
+    // }
+    deleteUser(userId) {
+      const axios = require("axios");
+      this.$axios
+        .$delete("http://104.248.229.222/api/user/" + this.userId)
+        .then(response => {
+          // handle success
+          window.location.reload(true);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+
+      // ensuite ferme la popup
+      this.$emit("closed");
     }
   }
 };
 </script>
 
 <style>
-.background_confirm-delete {
+/* .background_confirm-delete {
   background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
@@ -65,6 +81,6 @@ button {
 
 .cancel:hover {
   border-bottom: 1px solid red;
-}
+} */
 </style>
 

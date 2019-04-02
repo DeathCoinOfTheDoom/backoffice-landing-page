@@ -76,6 +76,12 @@ export default {
   },
   methods: {
     newTest: function() {
+      // if (this.newUser.phone_number.value != "") {
+      //   console.log("he");
+      // } else {
+      //   console.log("nope");
+      // }
+
       const axios = require("axios");
       this.$axios
         .$post("http://104.248.229.222/api/user", this.newUser)

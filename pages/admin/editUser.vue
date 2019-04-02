@@ -7,7 +7,7 @@
       </div>
       <div class="label">
         <label for="telephone">Numéro de téléphone</label>
-        <input type="text" id="telephone" name="Telephone">
+        <input type="text" id="telephone" name="Telephone" placeholder="+33...">
       </div>
       <div class="label">
         <label for="email">Email</label>

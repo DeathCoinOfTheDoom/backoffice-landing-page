@@ -49,22 +49,26 @@
                 <nuxt-link to="/admin/editUser" class="button__modifier" @click="editTest">Modifier</nuxt-link>
               </td>
               <td class="supprimer">
-                <div
-                  class="button__supprimer"
-                  @click="showModal = user.id, namee = user.name"
-                >Supprimer</div>
+                <!-- <div class="button__supprimer" @click="deleteUser(user.id)">Supprimer</div> -->
+                <div class="button__supprimer" @click="showPopup = true, userId = user.id">Supprimer</div>
               </td>
             </tr>
           </tbody>
         </v-table>
       </no-ssr>
-      <ConfirmDeleteUser
-        v-if="showModal"
+      <!-- <div class="background_confirm-delete" v-if="showPopup">
+        <div class="container-confirm_delete">
+          <p>Êtes-vous sûr de vouloir supprimer ? Une fois supprimer vous ne pourrez plus récupérer les données de</p>
+          <button @click="deleteUser">Valider</button>
+          <button class="cancel" @click="closePopup">Annuler</button>
+        </div>
+      </div>-->
+      <ConfirmDeleteUser v-if="showPopup" v-on:closed="closePopup" v-bind:userId="userId"/>
+      <!-- <ConfirmDeleteUser
+        v-show="showPopup"
         @confirmDelete="deleteUser($event)"
         @cancelDeleteUser="closeModal"
-        :userId="showModal"
-        :userName="namee"
-      />
+      />-->
     </div>
   </section>
 </template>
@@ -111,83 +115,12 @@ export default {
         //   links: {
         //     self: "http://104.248.229.222/api/user/1"
         //   }
-        // },
-        // {
-        //   type: "user",
-        //   id: "2",
-        //   attributes: {
-        //     phone_number: "+33663149859",
-        //     email: "gerome.lacaux@hetic.net",
-        //     firstName: "Gérome",
-        //     lastName: "Lacaux",
-        //     birthdate: "0000-00-00",
-        //     admin: "1",
-        //     created_at: "2019-03-15 09:16:20",
-        //     updated_at: "2019-03-15 09:21:10"
-        //   },
-        //   relationships: {
-        //     folders: {
-        //       links: {
-        //         self: "http://104.248.229.222/api/user/2/relationships/folder",
-        //         related: "http://104.248.229.222/api/user/2/folder"
-        //       },
-        //       data: [
-        //         {
-        //           type: "folder",
-        //           id: "1"
-        //         }
-        //       ]
-        //     },
-        //     files: {
-        //       links: {
-        //         self: "http://104.248.229.222/api/user/2/relationships/file",
-        //         related: "http://104.248.229.222/api/user/2/file"
-        //       },
-        //       data: []
-        //     }
-        //   },
-        //   links: {
-        //     self: "http://104.248.229.222/api/user/2"
-        //   }
-        // },
-        // {
-        //   type: "user",
-        //   id: "3",
-        //   attributes: {
-        //     phone_number: "Numéro Exemple",
-        //     email: "jessica.thielemans@hetic.net",
-        //     firstName: "Jessica",
-        //     lastName: "Thielemans",
-        //     birthdate: "0000-00-00",
-        //     admin: "1",
-        //     created_at: "2019-03-15 09:16:20",
-        //     updated_at: "2019-03-15 09:21:10"
-        //   },
-        //   relationships: {
-        //     folders: {
-        //       links: {
-        //         self: "http://104.248.229.222/api/user/3/relationships/folder",
-        //         related: "http://104.248.229.222/api/user/3/folder"
-        //       },
-        //       data: []
-        //     },
-        //     files: {
-        //       links: {
-        //         self: "http://104.248.229.222/api/user/3/relationships/file",
-        //         related: "http://104.248.229.222/api/user/3/file"
-        //       },
-        //       data: []
-        //     }
-        //   },
-        //   links: {
-        //     self: "http://104.248.229.222/api/user/3"
-        //   }
         // }
       ],
       filters: {
         name: { value: "", custom: this.nameFilter }
       },
-      showModal: false
+      showPopup: false
     };
   },
   mounted() {
@@ -195,37 +128,48 @@ export default {
     this.$axios.$get("http://104.248.229.222/api/user").then(response => {
       // handle success
       this.users = response.data;
-      console.log(users);
     });
   },
   methods: {
-    deleteUser(userId) {
-      const userIndex = this.users.findIndex(user => user.id === userId);
+    // deleteUser(userId) {
+    //   const axios = require("axios");
+    //   this.$axios
+    //     .$delete("http://104.248.229.222/api/user/" + userId)
+    //     .then(response => {
+    //       // handle success
+    //     })
+    //     .catch(error => {
+    //       console.log(error);
+    //     });
 
-      this.users.splice(userIndex, 1);
-
-      // ensuite ferme la modal
-      this.closeModal();
-    },
-    closeModal() {
-      this.showModal = false;
-    },
+    //   // ensuite ferme la modal
+    //   this.closePopup();
+    // },
     logout: function() {
       this.$auth.logout();
     },
     editTest: function() {},
     nameFilter: function(filterValue, row) {
-      var fullName =
-        row.attributes.firstName.toLowerCase() +
-        " " +
-        row.attributes.lastName.toLowerCase();
-      var fullNameReverse =
-        row.attributes.lastName.toLowerCase() +
-        " " +
-        row.attributes.firstName.toLowerCase();
-      return (
-        fullName.includes(filterValue) || fullNameReverse.includes(filterValue)
-      );
+      if (row.attributes.firstName || row.attributes.lastName) {
+        var fullName =
+          row.attributes.firstName.toLowerCase() +
+          " " +
+          row.attributes.lastName.toLowerCase();
+        var fullNameReverse =
+          row.attributes.lastName.toLowerCase() +
+          " " +
+          row.attributes.firstName.toLowerCase();
+        return (
+          fullName.includes(filterValue) ||
+          fullNameReverse.includes(filterValue)
+        );
+      }
+    },
+    openPopup: function() {
+      this.showPopup = true;
+    },
+    closePopup: function() {
+      this.showPopup = false;
     }
   }
 };
@@ -350,6 +294,46 @@ thead {
   color: #772c07;
   text-decoration: none;
 }
+
+/*---POP-UP---*/
+.background_confirm-delete {
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.container-confirm_delete {
+  background: white;
+  padding: 40px;
+}
+
+button {
+  margin-top: 40px;
+  cursor: pointer;
+  outline: none;
+}
+
+.cancel {
+  border: none;
+  color: red;
+  opacity: 0.8;
+  font-weight: bold;
+  padding: 0 1px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid white;
+  transition: 0.5s ease-in-out;
+}
+
+.cancel:hover {
+  border-bottom: 1px solid red;
+}
+/*__fin popup__*/
 
 .container {
   min-height: 100vh;
