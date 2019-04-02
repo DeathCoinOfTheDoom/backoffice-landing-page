@@ -1,7 +1,7 @@
 <template>
   <div class="background_confirm-delete">
     <div class="container-confirm_delete">
-      <p>Êtes-vous sûr de vouloir supprimer ? Une fois supprimer vous ne pourrez plus récupérer les données de</p>
+      <p>Êtes-vous sûr de vouloir supprimer {{this.userFirstName}} {{this.userLastName}} ? Une fois supprimer vous ne pourrez plus récupérer ses données</p>
       <button @click="deleteUser">Valider</button>
       <button class="cancel" @click.prevent="cancelButton">Annuler</button>
     </div>
@@ -11,7 +11,7 @@
 <script>
 export default {
   name: "ConfirmDeleteUser",
-  props: ["userId"],
+  props: ["userId", "userFirstName", "userLastName"],
   data() {
     return {
       showPopup: true

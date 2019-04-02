@@ -49,13 +49,22 @@
                 <nuxt-link to="/admin/editUser" class="button__modifier" @click="editTest">Modifier</nuxt-link>
               </td>
               <td class="supprimer">
-                <div class="button__supprimer" @click="showPopup = true, userId = user.id">Supprimer</div>
+                <div
+                  class="button__supprimer"
+                  @click="showPopup = true, userId = user.id, userFirstName = user.attributes.firstName, userLastName = user.attributes.lastName"
+                >Supprimer</div>
               </td>
             </tr>
           </tbody>
         </v-table>
       </no-ssr>
-      <ConfirmDeleteUser v-if="showPopup" v-on:closed="closePopup" v-bind:userId="userId"/>
+      <ConfirmDeleteUser
+        v-if="showPopup"
+        v-on:closed="closePopup"
+        v-bind:userId="userId"
+        v-bind:userFirstName="userFirstName"
+        v-bind:userLastName="userLastName"
+      />
     </div>
   </section>
 </template>
