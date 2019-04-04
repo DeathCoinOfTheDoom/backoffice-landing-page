@@ -94,16 +94,16 @@ export default {
         email: "",
         birthdate: "",
         admin: false,
-        password: "",
-        password_confirmation: ""
+        password: undefined,
+        password_confirmation: undefined
       }
     };
   },
   watch: {
     admin(newValue, oldValue) {
       if (this.admin == false) {
-        this.newUser.password = "";
-        this.newUser.password_confirmation = "";
+        this.newUser.password = undefined;
+        this.newUser.password_confirmation = undefined;
       }
     }
   },
@@ -115,8 +115,8 @@ export default {
       console.log();
       if (this.newUser.admin && !this.errors.first("password_confirmation")) {
         return (
-          this.newUser.password != "" &&
-          this.newUser.password_confirmation != "" &&
+          this.newUser.password != undefined &&
+          this.newUser.password_confirmation != undefined &&
           !this.hasError
         );
       }

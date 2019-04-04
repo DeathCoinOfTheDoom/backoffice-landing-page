@@ -35,24 +35,12 @@
           </tbody>
         </v-table>
       </no-ssr>
-      <ConfirmDeleteUser
-        v-if="showModal"
-        @confirmDelete="deleteUser($event)"
-        @cancelDeleteUser="closeModal"
-        :userId="showModal"
-        :userName="namee"
-      />
     </div>
   </section>
 </template>
 
 <script>
-import ConfirmDeleteUser from "~/components/ConfirmDeleteUser.vue";
-
 export default {
-  components: {
-    ConfirmDeleteUser
-  },
   data() {
     return {
       categories: [

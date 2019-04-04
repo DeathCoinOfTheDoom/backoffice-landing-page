@@ -2,8 +2,12 @@
   <section class="container">
     <form action method id class="container-form_edit">
       <div class="label">
-        <label for="utilisateur">Nom de l'utilisateur {{this.userFirstNamee}}</label>
-        <input type="text" id="utilisateur" name="Nom" :value="this.userEditFirstName">
+        <label for="prenom">Prénom de l'utilisateur</label>
+        <input type="text" id="prenom" name="prenom" :value="this.userEditFirstName">
+      </div>
+      <div class="label">
+        <label for="nom">Nom de l'utilisateur</label>
+        <input type="text" id="nom" name="nom" :value="this.userEditLastName">
       </div>
       <div class="label">
         <label for="telephone">Numéro de téléphone</label>
@@ -24,7 +28,7 @@
 
 <script>
 export default {
-  props: ["userEditFirstName"],
+  props: ["userEditFirstName", "userEditLastName"],
   data() {
     return {};
   },

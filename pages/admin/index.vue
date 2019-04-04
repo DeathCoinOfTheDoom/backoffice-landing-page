@@ -51,7 +51,7 @@
                 <div
                   to="/admin/editUser"
                   class="button__modifier"
-                  @click="showEdit = true, userEditFirstName = user.attributes.firstName"
+                  @click="showEdit = true, userEditFirstName = user.attributes.firstName, userEditLastName = user.attributes.lastName"
                 >Modifier</div>
               </td>
               <td class="supprimer">
@@ -64,25 +64,29 @@
           </tbody>
         </v-table>
       </no-ssr>
-      <ConfirmDeleteUser
+      <PopupDeleteUser
         v-if="showPopup"
         v-on:closed="closePopup"
         v-bind:userId="userId"
         v-bind:userFirstName="userFirstName"
         v-bind:userLastName="userLastName"
       />
-      <UpdateUser v-if="showEdit" v-bind:userEditFirstName="userEditFirstName"/>
+      <UpdateUser
+        v-if="showEdit"
+        v-bind:userEditFirstName="userEditFirstName"
+        v-bind:userEditLastName="userEditLastName"
+      />
     </div>
   </section>
 </template>
 
 <script>
-import ConfirmDeleteUser from "~/components/ConfirmDeleteUser.vue";
+import PopupDeleteUser from "~/components/PopupDeleteUser.vue";
 import UpdateUser from "~/components/UpdateUser.vue";
 
 export default {
   components: {
-    ConfirmDeleteUser,
+    PopupDeleteUser,
     UpdateUser
   },
   data() {
