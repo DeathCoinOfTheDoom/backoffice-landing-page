@@ -34,19 +34,25 @@
             <th>Date de naissance</th>
             <th colspan="2">Edition</th>
           </thead>
-          <tbody slot="body" slot-scope="{displayData}">
-            <tr v-for="user in displayData" :key="user.id">
+          <tbody slot="body">
+            <tr v-for="user in users" :key="user.id">
               <td>{{ user.id }}</td>
               <td class="avatar">
                 <img src="~assets/images/pikachu-avatar.png">
               </td>
-              <td>{{ user.attributes.firstName ? user.attributes.firstName : "/"}} {{ user.attributes.lastName ? user.attributes.lastName : "/"}}</td>
+              <td
+                ref="testo"
+              >{{ user.attributes.firstName ? user.attributes.firstName : "/"}} {{ user.attributes.lastName ? user.attributes.lastName : "/"}}</td>
               <td>{{ user.attributes.created_at ? user.attributes.created_at : "/" }}</td>
               <td>{{ user.attributes.phone_number}}</td>
               <td>{{ user.attributes.email ? user.attributes.email : "/" }}</td>
               <td>{{ user.attributes.birthdate ? user.attributes.birthdate : "/"}}</td>
               <td class="modifier">
-                <nuxt-link to="/admin/editUser" class="button__modifier" @click="editTest">Modifier</nuxt-link>
+                <div
+                  to="/admin/editUser"
+                  class="button__modifier"
+                  @click="showEdit = true, userEditFirstName = user.attributes.firstName"
+                >Modifier</div>
               </td>
               <td class="supprimer">
                 <div
@@ -65,16 +71,19 @@
         v-bind:userFirstName="userFirstName"
         v-bind:userLastName="userLastName"
       />
+      <UpdateUser v-if="showEdit" v-bind:userEditFirstName="userEditFirstName"/>
     </div>
   </section>
 </template>
 
 <script>
 import ConfirmDeleteUser from "~/components/ConfirmDeleteUser.vue";
+import UpdateUser from "~/components/UpdateUser.vue";
 
 export default {
   components: {
-    ConfirmDeleteUser
+    ConfirmDeleteUser,
+    UpdateUser
   },
   data() {
     return {
@@ -116,7 +125,8 @@ export default {
       filters: {
         name: { value: "", custom: this.nameFilter }
       },
-      showPopup: false
+      showPopup: false,
+      showEdit: false
     };
   },
   mounted() {
@@ -130,7 +140,6 @@ export default {
     logout: function() {
       this.$auth.logout();
     },
-    editTest: function() {},
     nameFilter: function(filterValue, row) {
       if (row.attributes.firstName || row.attributes.lastName) {
         var fullName =

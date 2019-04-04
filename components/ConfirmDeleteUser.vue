@@ -30,7 +30,7 @@ export default {
           window.location.reload(true);
         })
         .catch(error => {
-          console.log(error);
+          //console.log(error);
         });
 
       // ensuite ferme la popup

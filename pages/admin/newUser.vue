@@ -12,12 +12,13 @@
           type="text"
           id="telephone"
           name="phone_number"
+          placeholder="+33..."
           v-model="newUser.phone_number"
         >
-        <span>{{ errors.first('phone_number') }}</span>
       </div>
+      <span>{{ errors.first('phone_number') }}</span>
       <div class="label">
-        <label for="lastName">Nom</label>
+        <label for="lastName">Nom {{ this.userFirstNamee }}</label>
         <input type="text" id="lastName" name="lastName" v-model="newUser.lastName">
       </div>
       <div class="label">
@@ -33,37 +34,57 @@
         <input type="date" id="birthdate" name="birthdate" v-model="newUser.birthdate">
       </div>
       <div class="label">
-        <input type="checkbox" id="adminAccount" name="adminAccount" v-model="newUser.admin">
+        <input
+          v-validate
+          ref="adminAccount"
+          type="checkbox"
+          id="adminAccount"
+          name="adminAccount"
+          v-model="newUser.admin"
+        >
         <label for="adminAccount">Voulez-vous créer un compte administrateur ?</label>
       </div>
       <div class="label" v-if="newUser.admin">
         <label for="password">Si oui, définissez un mot de passe</label>
-        <input type="password" id="password" name="password" v-model="newUser.password" required>
+        <input
+          v-validate="'required'"
+          name="password"
+          type="password"
+          placeholder="Password"
+          ref="password"
+          v-model="newUser.password"
+        >
       </div>
       <div class="label" v-if="newUser.admin">
         <label for="passwordChecked">Confirmez votre mot de passe</label>
         <input
-          type="passwordChecked"
-          id="passwordChecked"
-          name="passwordChecked"
-          v-model="newUser.password"
-          required
+          v-validate="'required|confirmed:password'"
+          name="password_confirmation"
+          type="password"
+          placeholder="Password, Again"
+          data-vv-as="password"
+          v-model="newUser.password_confirmation"
         >
+      </div>
+      <div class="alert alert-danger" v-show="errors.any()">
+        <div v-if="errors.has('password')">{{ errors.first('password') }}</div>
+        <div v-if="errors.has('password_confirmation')">{{ errors.first('password_confirmation') }}</div>
       </div>
     </form>
     <!-- <button @click="newTest">Valider</button> -->
-    <button v-bind:disabled="!submitable">Valider</button>
+    <button v-bind:disabled="!submitable" @click="createUser">Valider</button>
   </section>
 </template>
 
 <script>
 import AppLogo from "~/components/AppLogo.vue";
-import VeeValidate from "vee-validate";
+import { VeeValidate } from "vee-validate";
 
 export default {
   components: {
     AppLogo
   },
+  props: ["userFirstNamee"],
   data() {
     return {
       newUser: {
@@ -73,20 +94,40 @@ export default {
         email: "",
         birthdate: "",
         admin: false,
-        password: null
+        password: "",
+        password_confirmation: ""
       }
     };
+  },
+  watch: {
+    admin(newValue, oldValue) {
+      if (this.admin == false) {
+        this.newUser.password = "";
+        this.newUser.password_confirmation = "";
+      }
+    }
   },
   computed: {
     hasError() {
       return this.errors.all().length > 0;
     },
     submitable() {
+      console.log();
+      if (this.newUser.admin && !this.errors.first("password_confirmation")) {
+        return (
+          this.newUser.password != "" &&
+          this.newUser.password_confirmation != "" &&
+          !this.hasError
+        );
+      }
       return this.newUser.phone_number != "" && !this.hasError;
+    },
+    admin() {
+      return this.newUser.admin;
     }
   },
   methods: {
-    newTest: function() {
+    createUser: function() {
       const axios = require("axios");
       this.$axios
         .$post("http://104.248.229.222/api/user", this.newUser)
