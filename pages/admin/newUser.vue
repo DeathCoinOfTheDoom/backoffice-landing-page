@@ -71,7 +71,6 @@
         <div v-if="errors.has('password_confirmation')">{{ errors.first('password_confirmation') }}</div>
       </div>
     </form>
-    <!-- <button @click="newTest">Valider</button> -->
     <button v-bind:disabled="!submitable" @click="createUser">Valider</button>
   </section>
 </template>

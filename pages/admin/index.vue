@@ -40,18 +40,15 @@
               <td class="avatar">
                 <img src="~assets/images/pikachu-avatar.png">
               </td>
-              <td
-                ref="testo"
-              >{{ user.attributes.firstName ? user.attributes.firstName : "/"}} {{ user.attributes.lastName ? user.attributes.lastName : "/"}}</td>
+              <td>{{ user.attributes.firstName ? user.attributes.firstName : "/"}} {{ user.attributes.lastName ? user.attributes.lastName : "/"}}</td>
               <td>{{ user.attributes.created_at ? user.attributes.created_at : "/" }}</td>
               <td>{{ user.attributes.phone_number}}</td>
               <td>{{ user.attributes.email ? user.attributes.email : "/" }}</td>
               <td>{{ user.attributes.birthdate ? user.attributes.birthdate : "/"}}</td>
               <td class="modifier">
                 <div
-                  to="/admin/editUser"
                   class="button__modifier"
-                  @click="showEdit = true, userEditFirstName = user.attributes.firstName, userEditLastName = user.attributes.lastName"
+                  @click="showEdit = true, userEditId = user.id, userEditFirstName = user.attributes.firstName, userEditLastName = user.attributes.lastName, userEditPhone = user.attributes.phone_number, userEditEmail = user.attributes.email, userEditBirthdate = user.attributes.birthdate, userEditAdmin = user.attributes.admin"
                 >Modifier</div>
               </td>
               <td class="supprimer">
@@ -73,8 +70,14 @@
       />
       <UpdateUser
         v-if="showEdit"
+        v-on:closedEdit="closeEdit"
+        v-bind:userEditAdmin="userEditAdmin"
+        v-bind:userEditId="userEditId"
         v-bind:userEditFirstName="userEditFirstName"
         v-bind:userEditLastName="userEditLastName"
+        v-bind:userEditPhone="userEditPhone"
+        v-bind:userEditEmail="userEditEmail"
+        v-bind:userEditBirthdate="userEditBirthdate"
       />
     </div>
   </section>
@@ -145,23 +148,28 @@ export default {
       this.$auth.logout();
     },
     nameFilter: function(filterValue, row) {
-      if (row.attributes.firstName || row.attributes.lastName) {
-        var fullName =
-          row.attributes.firstName.toLowerCase() +
-          " " +
-          row.attributes.lastName.toLowerCase();
-        var fullNameReverse =
-          row.attributes.lastName.toLowerCase() +
-          " " +
-          row.attributes.firstName.toLowerCase();
-        return (
-          fullName.includes(filterValue) ||
-          fullNameReverse.includes(filterValue)
-        );
+      if (this.filters.name.value != "") {
+        if (row.attributes.firstName || row.attributes.lastName) {
+          var fullName =
+            row.attributes.firstName.toLowerCase() +
+            " " +
+            row.attributes.lastName.toLowerCase();
+          var fullNameReverse =
+            row.attributes.lastName.toLowerCase() +
+            " " +
+            row.attributes.firstName.toLowerCase();
+          return (
+            fullName.includes(filterValue) ||
+            fullNameReverse.includes(filterValue)
+          );
+        }
       }
     },
     closePopup: function() {
       this.showPopup = false;
+    },
+    closeEdit: function() {
+      this.showEdit = false;
     }
   }
 };
