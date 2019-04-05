@@ -26,7 +26,7 @@
         </div>
         <div class="label">
           <label for="birthdate">Date de naissance</label>
-          <input type="birthdate" id="birthdate" name="birthdate" v-model="editUser.birthdate">
+          <input type="date" id="birthdate" name="birthdate" v-model="editUser.birthdate">
         </div>
         <div class="label">
           <label for="adminAccount">Administrateur</label>
@@ -45,22 +45,6 @@
       </form>
       <button type="submit" form value @click="changedUser">Valider</button>
       <button @click="cancelUpdate">Annuler</button>
-      <!-- <div class="line"></div>
-      <form>
-        <div v-if="editUser.attributes.admin">
-          <p>compte admin</p>
-          <div class="label">
-            <label for="password">Modifier le mot de passe</label>
-            <input type="password" v-model="editPassword.password">
-          </div>
-          <div class="label">
-            <label for="password_confirmation">Reconfirmer le mot de passe</label>
-            <input type="password" v-model="editPassword.password_confirmation">
-          </div>
-        </div>
-      </form>
-      <button type="submit" @click="changedPassword">Valider</button>
-      <button @click="cancelUpdate">Annuler</button>-->
     </div>
   </div>
 </template>
@@ -82,7 +66,6 @@ export default {
       }
     };
   },
-  computed: {},
   methods: {
     changedUser() {
       const axios = require("axios");

@@ -33,7 +33,7 @@
             <th>Email</th>
             <th>Date de naissance</th>
             <th>Administrateur</th>
-            <th colspan="2">Action</th>
+            <th colspan="3">Action</th>
           </thead>
           <tbody slot="body" slot-scope="{displayData}">
             <tr v-for="user in displayData" :key="user.id">
@@ -47,6 +47,9 @@
               <td>{{ user.attributes.email ? user.attributes.email : "/" }}</td>
               <td>{{ user.attributes.birthdate ? user.attributes.birthdate : "/"}}</td>
               <td>{{ user.attributes.admin ? user.attributes.admin : "/"}}</td>
+              <td class="voir">
+                <div class="button__voir" @click="showInfo = true, selectedUser = user">voir</div>
+              </td>
               <td class="modifier">
                 <div class="button__modifier" @click="showEdit = true, selectedUser = user">Modifier</div>
               </td>
@@ -68,6 +71,7 @@
         v-bind:userLastName="userLastName"
       />
       <UpdateUser v-if="showEdit" v-on:closedEdit="closeEdit" v-bind:user="selectedUser"/>
+      <ReadUser v-if="showInfo" v-on:closedInfo="closeInfo" v-bind:user="selectedUser"/>
     </div>
   </section>
 </template>
@@ -75,11 +79,13 @@
 <script>
 import PopupDeleteUser from "~/components/PopupDeleteUser.vue";
 import UpdateUser from "~/components/UpdateUser.vue";
+import ReadUser from "~/components/ReadUser.vue";
 
 export default {
   components: {
     PopupDeleteUser,
-    UpdateUser
+    UpdateUser,
+    ReadUser
   },
   data() {
     return {
@@ -122,7 +128,8 @@ export default {
         name: { value: "", custom: this.nameFilter }
       },
       showPopup: false,
-      showEdit: false
+      showEdit: false,
+      showInfo: false
     };
   },
   mounted() {
@@ -163,6 +170,9 @@ export default {
     },
     closeEdit: function() {
       this.showEdit = false;
+    },
+    closeInfo: function() {
+      this.showInfo = false;
     }
   }
 };
@@ -286,6 +296,18 @@ thead {
   border: 1px solid #d95514;
   color: #772c07;
   text-decoration: none;
+}
+
+.button__voir {
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #24b015;
+  border: 1px solid rgb(23, 133, 11);
+  color: rgb(5, 32, 2);
+  text-decoration: none;
+  padding: 0 5px;
 }
 
 /*---POP-UP---*/
