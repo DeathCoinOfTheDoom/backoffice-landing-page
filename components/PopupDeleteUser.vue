@@ -1,7 +1,7 @@
 <template>
   <div class="background_confirm-delete">
     <div class="container-confirm_delete">
-      <p>Êtes-vous sûr de vouloir supprimer {{this.userFirstName}} {{this.userLastName}} ? Une fois supprimer vous ne pourrez plus récupérer ses données</p>
+      <p>Êtes-vous sûr de vouloir supprimer {{this.userFirstName}} {{this.userLastName}} ? Cette action sera definitive</p>
       <button @click="deleteUser">Valider</button>
       <button class="cancel" @click.prevent="cancelButton">Annuler</button>
     </div>

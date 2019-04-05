@@ -32,10 +32,11 @@
             <th>Téléphone</th>
             <th>Email</th>
             <th>Date de naissance</th>
-            <th colspan="2">Edition</th>
+            <th>Administrateur</th>
+            <th colspan="2">Action</th>
           </thead>
-          <tbody slot="body">
-            <tr v-for="user in users" :key="user.id">
+          <tbody slot="body" slot-scope="{displayData}">
+            <tr v-for="user in displayData" :key="user.id">
               <td>{{ user.id }}</td>
               <td class="avatar">
                 <img src="~assets/images/pikachu-avatar.png">
@@ -45,11 +46,9 @@
               <td>{{ user.attributes.phone_number}}</td>
               <td>{{ user.attributes.email ? user.attributes.email : "/" }}</td>
               <td>{{ user.attributes.birthdate ? user.attributes.birthdate : "/"}}</td>
+              <td>{{ user.attributes.admin ? user.attributes.admin : "/"}}</td>
               <td class="modifier">
-                <div
-                  class="button__modifier"
-                  @click="showEdit = true, userEditId = user.id, userEditFirstName = user.attributes.firstName, userEditLastName = user.attributes.lastName, userEditPhone = user.attributes.phone_number, userEditEmail = user.attributes.email, userEditBirthdate = user.attributes.birthdate, userEditAdmin = user.attributes.admin"
-                >Modifier</div>
+                <div class="button__modifier" @click="showEdit = true, selectedUser = user">Modifier</div>
               </td>
               <td class="supprimer">
                 <div
@@ -68,17 +67,7 @@
         v-bind:userFirstName="userFirstName"
         v-bind:userLastName="userLastName"
       />
-      <UpdateUser
-        v-if="showEdit"
-        v-on:closedEdit="closeEdit"
-        v-bind:userEditAdmin="userEditAdmin"
-        v-bind:userEditId="userEditId"
-        v-bind:userEditFirstName="userEditFirstName"
-        v-bind:userEditLastName="userEditLastName"
-        v-bind:userEditPhone="userEditPhone"
-        v-bind:userEditEmail="userEditEmail"
-        v-bind:userEditBirthdate="userEditBirthdate"
-      />
+      <UpdateUser v-if="showEdit" v-on:closedEdit="closeEdit" v-bind:user="selectedUser"/>
     </div>
   </section>
 </template>
@@ -148,21 +137,25 @@ export default {
       this.$auth.logout();
     },
     nameFilter: function(filterValue, row) {
-      if (this.filters.name.value != "") {
-        if (row.attributes.firstName || row.attributes.lastName) {
-          var fullName =
-            row.attributes.firstName.toLowerCase() +
-            " " +
-            row.attributes.lastName.toLowerCase();
-          var fullNameReverse =
-            row.attributes.lastName.toLowerCase() +
-            " " +
-            row.attributes.firstName.toLowerCase();
-          return (
-            fullName.includes(filterValue) ||
-            fullNameReverse.includes(filterValue)
-          );
-        }
+      if (row.attributes.firstName && row.attributes.lastName) {
+        var fullName =
+          row.attributes.firstName.toLowerCase() +
+          " " +
+          row.attributes.lastName.toLowerCase();
+        var fullNameReverse =
+          row.attributes.lastName.toLowerCase() +
+          " " +
+          row.attributes.firstName.toLowerCase();
+        return (
+          fullName.includes(filterValue) ||
+          fullNameReverse.includes(filterValue)
+        );
+      }
+      if (row.attributes.firstName) {
+        return row.attributes.firstName.toLowerCase().includes(filterValue);
+      }
+      if (row.attributes.lastName) {
+        return row.attributes.lastName.toLowerCase().includes(filterValue);
       }
     },
     closePopup: function() {

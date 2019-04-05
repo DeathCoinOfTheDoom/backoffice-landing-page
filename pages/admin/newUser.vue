@@ -34,6 +34,7 @@
         <input type="date" id="birthdate" name="birthdate" v-model="newUser.birthdate">
       </div>
       <div class="label">
+        <label for="adminAccount">Administrateur</label>
         <input
           v-validate
           ref="adminAccount"
@@ -42,7 +43,6 @@
           name="adminAccount"
           v-model="newUser.admin"
         >
-        <label for="adminAccount">Voulez-vous créer un compte administrateur ?</label>
       </div>
       <div class="label" v-if="newUser.admin">
         <label for="password">Si oui, définissez un mot de passe</label>
