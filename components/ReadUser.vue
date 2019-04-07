@@ -52,8 +52,14 @@
       <p>Membre depuis : {{this.user.attributes.created_at}}</p>
       <div class="line"></div>
       <p>Nombre de fichier(s) :{{this.user.relationships.files.data.length}}</p>
-      <p>{{this.user.relationships.files.data.map(file => file.id).join()}}</p>
+      <ul>
+        <li v-for="file in files" :key="file.id">{{file}}</li>
+      </ul>
+      <div class="line"></div>
       <p>Nombre de dossier(s) :{{this.user.relationships.folders.data.length}}</p>
+      <ul>
+        <li v-for="folder in folders" :key="folder.id">{{folder}}</li>
+      </ul>
       <button @click="hideInfo">Fermer</button>
     </div>
   </div>
@@ -64,42 +70,34 @@ export default {
   props: ["user"],
   data() {
     return {
-      // editUser: {
-      //   phone_number: this.user.attributes.phone_number,
-      //   lastName: this.user.attributes.lastName,
-      //   firstName: this.user.attributes.firstName,
-      //   email: this.user.attributes.email,
-      //   birthdate: this.user.attributes.birthdate,
-      //   admin: this.user.attributes.admin,
-      //   password: undefined,
-      //   password_confirmation: undefined
-      // }
-      files: this.user.relationships.files.data,
+      files: [],
       folders: []
     };
   },
+  mounted() {
+    this.user.relationships.files.data
+      .map(file => file.id)
+      .map((id, index) => {
+        this.$axios
+          .$get("http://104.248.229.222/api/type/" + id)
+          .then(response => this.files.push(response.data.attributes.title))
+          .catch(error => {
+            console.log(error);
+          });
+      });
+
+    this.user.relationships.folders.data
+      .map(folder => folder.id)
+      .map((id, index) => {
+        this.$axios
+          .$get("http://104.248.229.222/api/folder/" + id)
+          .then(response => this.folders.push(response.data.attributes.title))
+          .catch(error => {
+            console.log(error);
+          });
+      });
+  },
   methods: {
-    // changedUser() {
-    //   const axios = require("axios");
-
-    //   const headers = {
-    //     "Content-Type": "application/x-www-form-urlencoded"
-    //   };
-
-    //   this.$axios
-    //     .$put(
-    //       "http://104.248.229.222/api/user/" + this.user.id,
-    //       this.editUser,
-    //       headers
-    //     )
-    //     .then(response => {
-    //       // handle success
-    //       window.location.replace("/admin");
-    //     })
-    //     .catch(error => {
-    //       console.log(error);
-    //     });
-    // },
     hideInfo() {
       this.$emit("closedInfo");
     }
