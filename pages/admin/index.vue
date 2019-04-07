@@ -134,10 +134,15 @@ export default {
   },
   mounted() {
     const axios = require("axios");
-    this.$axios.$get("http://104.248.229.222/api/user").then(response => {
-      // handle success
-      this.users = response.data;
-    });
+    this.$axios
+      .$get("http://104.248.229.222/api/user")
+      .then(response => {
+        // handle success
+        this.users = response.data;
+      })
+      .catch(error => {
+        //console.log(error);
+      });
   },
   methods: {
     logout: function() {
