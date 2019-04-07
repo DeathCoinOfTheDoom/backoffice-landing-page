@@ -1,48 +1,6 @@
 <template>
   <div class="background_read-user">
     <div class="container-_read-user">
-      <!-- <form>
-        <div class="label">
-          <label for="prenom">Prénom</label>
-          <input type="text" id="prenom" name="prenom" v-model="editUser.firstName">
-        </div>
-        <div class="label">
-          <label for="nom">Nom</label>
-          <input type="text" id="nom" name="nom" v-model="editUser.lastName">
-        </div>
-        <div class="label">
-          <label for="telephone">Numéro de téléphone</label>
-          <input
-            type="text"
-            id="telephone"
-            name="Telephone"
-            placeholder="+33..."
-            v-model="editUser.phone_number"
-          >
-        </div>
-        <div class="label">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" v-model="editUser.email">
-        </div>
-        <div class="label">
-          <label for="birthdate">Date de naissance</label>
-          <input type="date" id="birthdate" name="birthdate" v-model="editUser.birthdate">
-        </div>
-        <div class="label">
-          <label for="adminAccount">Administrateur</label>
-          <input type="checkbox" id="adminAccount" name="adminAccount" v-model="editUser.admin">
-        </div>
-        <div v-if="editUser.admin">
-          <div class="label">
-            <label for="password">Modifier le mot de passe</label>
-            <input type="password" v-model="editUser.password">
-          </div>
-          <div class="label">
-            <label for="password_confirmation">Confirmer le mot de passe</label>
-            <input type="password" v-model="editUser.password_confirmation">
-          </div>
-        </div>
-      </form>-->
       <p>Nom : {{this.user.attributes.firstName}}</p>
       <p>Prénom : {{this.user.attributes.lastName}}</p>
       <p>N° de téléphone : {{this.user.attributes.phone_number}}</p>
