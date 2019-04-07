@@ -52,7 +52,7 @@
       <p>Membre depuis : {{this.user.attributes.created_at}}</p>
       <div class="line"></div>
       <p>Nombre de fichier(s) :{{this.user.relationships.files.data.length}}</p>
-      <p>{{this.user.relationships.files.data}}</p>
+      <p>{{this.user.relationships.files.data.map(file => file.id).join()}}</p>
       <p>Nombre de dossier(s) :{{this.user.relationships.folders.data.length}}</p>
       <button @click="hideInfo">Fermer</button>
     </div>
