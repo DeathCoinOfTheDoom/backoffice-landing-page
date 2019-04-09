@@ -15,9 +15,22 @@
       </ul>
       <div class="line"></div>
       <p>Nombre de dossier(s) :{{this.user.relationships.folders.data.length}}</p>
-      <ul>
-        <li v-for="folder in folders" :key="folder.id">{{folder}}</li>
-      </ul>
+      <div v-if="folders != ''">
+        <table>
+          <thead>
+            <tr>
+              <th>Nom du dossier</th>
+              <th>Nombre de fichiers dans le dossier</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="folder in folders" :key="folder.id">
+              <td>{{folder.title}}</td>
+              <td>{{folder.numberFile}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <button @click="hideInfo">Fermer</button>
     </div>
   </div>
@@ -35,7 +48,7 @@ export default {
   mounted() {
     this.user.relationships.files.data
       .map(file => file.id)
-      .map((id, index) => {
+      .map(id => {
         this.$axios
           .$get("http://104.248.229.222/api/type/" + id)
           .then(response => this.files.push(response.data.attributes.title))
@@ -46,10 +59,15 @@ export default {
 
     this.user.relationships.folders.data
       .map(folder => folder.id)
-      .map((id, index) => {
+      .map(id => {
         this.$axios
           .$get("http://104.248.229.222/api/folder/" + id)
-          .then(response => this.folders.push(response.data.attributes.title))
+          .then(response => {
+            this.folders.push({
+              title: response.data.attributes.title,
+              numberFile: response.data.relationships.files.data.length
+            });
+          })
           .catch(error => {
             console.log(error);
           });
@@ -62,7 +80,7 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 .background_read-user {
   background: rgba(0, 0, 0, 0.7);
   display: flex;
@@ -84,5 +102,9 @@ export default {
   background: #bebebe;
   height: 2px;
   margin: 5px;
+}
+
+table {
+  width: 100%;
 }
 </style>

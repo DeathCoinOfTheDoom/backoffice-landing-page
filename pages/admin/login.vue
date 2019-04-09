@@ -1,6 +1,5 @@
 <template>
   <section class="container">
-    <!-- <div>page de login à venir</div> -->
     <form action method id class="container-form_login">
       <div class="label">
         <label for="email">Adresse mail</label>
@@ -10,6 +9,7 @@
         <label for="password">Mot de passe</label>
         <input type="password" id="password" name="password" value>
       </div>
+      <div>{{this.errorMessage}}</div>
     </form>
     <button type="submit" form value @click="login">Se connecter</button>
   </section>
@@ -19,23 +19,23 @@
 import axios from "axios";
 
 export default {
+  data() {
+    return {
+      errorMessage: ""
+    };
+  },
   methods: {
     login: function() {
-      // axios
-      //   .post("http://104.248.229.222/api/signin", {
-      //     email: email.value,
-      //     password: password.value
-      //   })
-      //   .then(response => {
-      //     sessionStorage.setItem("token", response.data.token);
-      //     this.$nuxt.$router.push({ path: "/" });
-      //   });
-      this.$auth.loginWith("local", {
-        data: {
-          email: email.value,
-          password: password.value
-        }
-      });
+      this.$auth
+        .loginWith("local", {
+          data: {
+            email: email.value,
+            password: password.value
+          }
+        })
+        .catch(error => {
+          this.errorMessage = error.response.data.error.title;
+        });
     }
   }
 };
