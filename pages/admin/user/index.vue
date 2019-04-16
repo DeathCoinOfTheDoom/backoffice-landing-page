@@ -1,12 +1,12 @@
 <template>
   <section class="container">
     <aside>
-      <nuxt-link to="/admin/" class="tab active">
+      <nuxt-link to="/admin/user/" class="tab active">
         <span>
           <img src="~assets/images/user.png" alt>
         </span>Utilisateurs
       </nuxt-link>
-      <nuxt-link to="/admin/categoriesTable" class="tab">
+      <nuxt-link to="/admin/category/" class="tab">
         <span>
           <img src="~assets/images/format-list-bulleted-type.png" alt>
         </span>
@@ -20,7 +20,7 @@
           <label>Filtrer par nom d'utilisateur :</label>
           <input class="form-control" v-model="filters.name.value">
         </div>
-        <nuxt-link to="/admin/newUser" class="btn">Créer un nouvel utilisateur</nuxt-link>
+        <nuxt-link to="/admin/category/newUser" class="btn">Créer un nouvel utilisateur</nuxt-link>
       </div>
       <no-ssr>
         <v-table :data="users" :filters="filters">
@@ -77,9 +77,9 @@
 </template>
 
 <script>
-import PopupDeleteUser from "~/components/PopupDeleteUser.vue";
-import UpdateUser from "~/components/UpdateUser.vue";
-import ReadUser from "~/components/ReadUser.vue";
+import PopupDeleteUser from "~/components/user/PopupDeleteUser.vue";
+import UpdateUser from "~/components/user/UpdateUser.vue";
+import ReadUser from "~/components/user/ReadUser.vue";
 
 export default {
   components: {
