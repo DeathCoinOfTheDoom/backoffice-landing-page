@@ -8,7 +8,6 @@
       <ul>
         <li v-for="type in types" :key="type.id">{{type}}</li>
       </ul>
-      <button>Modifier un type</button>
       <button @click="hideInfo">Fermer</button>
     </div>
   </div>

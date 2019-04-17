@@ -1,17 +1,19 @@
 <template>
   <div class="background_update-type">
     <div class="container-_update-type">
-      <div>
-        <input type="text" v-for="type in types" :key="type.id" :value="type">
-      </div>
-      <button @click="hideType">Fermer</button>
+      <UpdateTypeForm v-for="type in types" :key="type.id" v-bind:type="type"/>
     </div>
   </div>
 </template>
 
 <script>
+import UpdateTypeForm from "~/components/category/UpdateTypeForm.vue";
+
 export default {
   props: ["category"],
+  components: {
+    UpdateTypeForm
+  },
   data() {
     return {
       types: []
@@ -23,7 +25,7 @@ export default {
       .map(id => {
         this.$axios
           .$get("http://104.248.229.222/api/type/" + id)
-          .then(response => this.types.push(response.data.attributes.title))
+          .then(response => this.types.push(response.data))
           .catch(error => {
             console.log(error);
           });
@@ -46,8 +48,17 @@ export default {
     //   });
   },
   methods: {
-    hideType() {
-      this.$emit("closedType");
+    // hideType() {
+    //   this.$emit("closedType");
+    // },
+    updateType(id) {
+      alert(id);
+      // this.$axios
+      //   .$put("http://104.248.229.222/api/type/" + this.typeId)
+      //   .then(response => alert("koko"))
+      //   .catch(error => {
+      //     console.log(error);
+      //   });
     }
   }
 };
