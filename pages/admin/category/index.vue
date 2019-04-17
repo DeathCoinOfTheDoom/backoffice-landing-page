@@ -20,19 +20,25 @@
         <v-table :data="categorys">
           <thead slot="head">
             <th>Catégories</th>
-            <th colspan="2">Action</th>
+            <th colspan="3">Action</th>
           </thead>
           <tbody slot="body" slot-scope="{displayData}">
             <tr v-for="category in displayData" :key="category.id">
               <td>{{ category.attributes.title}}</td>
-              <!-- <td class="voir">
-                <div class="button__voir" @click="showInfo = true, selectedUser = user">Voir</div>
-              </td>-->
+              <td class="Voir sa fiche">
+                <div class="button__voir" @click="showInfo = true, selectedCategory = category">Voir</div>
+              </td>
               <td class="modifier">
                 <div
                   class="button__modifier"
                   @click="showEdit = true, selectedCategory = category"
-                >Modifier</div>
+                >Modifier la catégorie</div>
+              </td>
+              <td class="modifier">
+                <div
+                  class="button__modifier"
+                  @click="showType = true, selectedCategory = category"
+                >Modifier un type</div>
               </td>
             </tr>
           </tbody>
@@ -43,23 +49,29 @@
         v-on:closedEdit="closeEdit"
         v-bind:category="selectedCategory"
       />
+      <ReadCategory v-if="showInfo" v-on:closedInfo="closeInfo" v-bind:category="selectedCategory"/>
+      <UpdateType v-if="showType" v-on:closedType="closeType" v-bind:category="selectedCategory"/>
     </div>
   </section>
 </template>
 
 <script>
 import UpdateCategory from "~/components/category/UpdateCategory.vue";
+import ReadCategory from "~/components/category/ReadCategory.vue";
+import UpdateType from "~/components/category/UpdateType.vue";
 
 export default {
   components: {
-    UpdateCategory
+    UpdateCategory,
+    ReadCategory,
+    UpdateType
   },
   data() {
     return {
       categorys: [],
-      categoryNames: [],
       showEdit: false,
-      showInfo: false
+      showInfo: false,
+      showType: false
     };
   },
   mounted() {
@@ -82,10 +94,13 @@ export default {
     closeEdit: function() {
       console.log("kok");
       this.showEdit = false;
+    },
+    closeInfo: function() {
+      this.showInfo = false;
+    },
+    closeType: function() {
+      this.showType = false;
     }
-    // closeInfo: function() {
-    //   this.showInfo = false;
-    // }
   }
 };
 </script>
