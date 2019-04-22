@@ -20,16 +20,14 @@ export default {
     };
   },
   mounted() {
-    this.category.relationships.type.data
-      .map(type => type.id)
-      .map(id => {
-        this.$axios
-          .$get("http://104.248.229.222/api/type/" + id)
-          .then(response => this.types.push(response.data))
-          .catch(error => {
-            console.log(error);
-          });
-      });
+    this.category.relationships.type.data.map(type => {
+      this.$axios
+        .$get("http://104.248.229.222/api/type/" + type.id)
+        .then(response => this.types.push(response.data))
+        .catch(error => {
+          console.log(error);
+        });
+    });
 
     // this.user.relationships.folders.data
     //   .map(folder => folder.id)

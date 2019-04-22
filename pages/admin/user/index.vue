@@ -39,7 +39,7 @@
             <tr v-for="user in displayData" :key="user.id">
               <td>{{ user.id }}</td>
               <td class="avatar">
-                <img src="~assets/images/pikachu-avatar.png">
+                <img src="~assets/images/dogo-profil.png">
               </td>
               <td>{{ user.attributes.firstName ? user.attributes.firstName : "/"}} {{ user.attributes.lastName ? user.attributes.lastName : "/"}}</td>
               <td>{{ user.attributes.created_at ? user.attributes.created_at : "/" }}</td>

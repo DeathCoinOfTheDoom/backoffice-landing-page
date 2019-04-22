@@ -19,26 +19,26 @@
       <no-ssr>
         <v-table :data="categorys">
           <thead slot="head">
+            <th>ID</th>
+            <th>Photo</th>
             <th>Catégories</th>
             <th colspan="3">Action</th>
           </thead>
           <tbody slot="body" slot-scope="{displayData}">
             <tr v-for="category in displayData" :key="category.id">
+              <td>{{ category.id }}</td>
+              <td class="avatar">
+                <img src="~assets/images/dogo-profil.png">
+              </td>
               <td>{{ category.attributes.title}}</td>
               <td class="Voir sa fiche">
-                <div class="button__voir" @click="showInfo = true, selectedCategory = category">Voir</div>
+                <nuxt-link v-bind:to="`/admin/category/${category.id}`" class="button__voir">Voir</nuxt-link>
               </td>
               <td class="modifier">
                 <div
                   class="button__modifier"
                   @click="showEdit = true, selectedCategory = category"
                 >Modifier la catégorie</div>
-              </td>
-              <td class="modifier">
-                <div
-                  class="button__modifier"
-                  @click="showType = true, selectedCategory = category"
-                >Modifier un type</div>
               </td>
             </tr>
           </tbody>
@@ -92,7 +92,6 @@ export default {
       this.$auth.logout();
     },
     closeEdit: function() {
-      console.log("kok");
       this.showEdit = false;
     },
     closeInfo: function() {
