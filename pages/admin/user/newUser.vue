@@ -18,7 +18,7 @@
       </div>
       <span>{{ errors.first('phone_number') }}</span>
       <div class="label">
-        <label for="lastName">Nom {{ this.userFirstNamee }}</label>
+        <label for="lastName">Nom</label>
         <input type="text" id="lastName" name="lastName" v-model="newUser.lastName">
       </div>
       <div class="label">
@@ -79,7 +79,6 @@
 import { VeeValidate } from "vee-validate";
 
 export default {
-  props: ["userFirstNamee"],
   data() {
     return {
       newUser: {
@@ -107,7 +106,6 @@ export default {
       return this.errors.all().length > 0;
     },
     submitable() {
-      console.log();
       if (this.newUser.admin && !this.errors.first("password_confirmation")) {
         return (
           this.newUser.password != undefined &&
@@ -127,7 +125,7 @@ export default {
         .$post("http://104.248.229.222/api/user", this.newUser)
         .then(response => {
           // handle success
-          window.location.replace("/admin");
+          window.location.replace("/admin/user");
         });
     }
   }
@@ -150,7 +148,6 @@ export default {
 
 .label {
   display: flex;
-  /* align-items: flex-start; */
   align-items: center;
   margin: 5px 0px;
 }

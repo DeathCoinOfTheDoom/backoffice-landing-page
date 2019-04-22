@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "PopupDeleteUser",
+  name: "DeleteUser",
   props: ["userId", "userFirstName", "userLastName"],
   data() {
     return {

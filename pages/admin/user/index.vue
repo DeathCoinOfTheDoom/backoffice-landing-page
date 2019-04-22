@@ -63,7 +63,7 @@
           </tbody>
         </v-table>
       </no-ssr>
-      <PopupDeleteUser
+      <DeleteUser
         v-if="showPopup"
         v-on:closed="closePopup"
         v-bind:userId="userId"
@@ -77,13 +77,13 @@
 </template>
 
 <script>
-import PopupDeleteUser from "~/components/user/PopupDeleteUser.vue";
+import DeleteUser from "~/components/user/DeleteUser.vue";
 import UpdateUser from "~/components/user/UpdateUser.vue";
 import ReadUser from "~/components/user/ReadUser.vue";
 
 export default {
   components: {
-    PopupDeleteUser,
+    DeleteUser,
     UpdateUser,
     ReadUser
   },
