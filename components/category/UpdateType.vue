@@ -1,68 +1,47 @@
 <template>
-  <div class="background_update-type">
-    <div class="container-_update-type">
-      <UpdateTypeForm v-for="type in types" :key="type.id" v-bind:type="type"/>
+  <div class="background_read-category">
+    <div class="container-_read-category">
+      <input type="text" v-model="typeForm.title">
+      <button @click="cancelUpdate">Annuler</button>
+      <button @click="updateType">Valider</button>
     </div>
   </div>
 </template>
 
 <script>
-import UpdateTypeForm from "~/components/category/UpdateTypeForm.vue";
+import UpdateType from "~/components/category/UpdateType.vue";
 
 export default {
-  props: ["category"],
-  components: {
-    UpdateTypeForm
-  },
+  props: ["type"],
   data() {
     return {
-      types: []
+      typeForm: {
+        title: this.type.attributes.title,
+        category: this.type.relationships.category.data.id
+      }
     };
   },
-  mounted() {
-    this.category.relationships.type.data.map(type => {
+  methods: {
+    updateType() {
       this.$axios
-        .$get("http://104.248.229.222/api/type/" + type.id)
-        .then(response => this.types.push(response.data))
+        .$put("http://104.248.229.222/api/type/" + this.type.id, this.typeForm)
+        .then(response => {
+          // handle success
+          window.location.replace("/admin/category");
+        })
         .catch(error => {
           console.log(error);
         });
-    });
-
-    // this.user.relationships.folders.data
-    //   .map(folder => folder.id)
-    //   .map(id => {
-    //     this.$axios
-    //       .$get("http://104.248.229.222/api/folder/" + id)
-    //       .then(response => {
-    //         this.folders.push({
-    //           title: response.data.attributes.title,
-    //           numberFile: response.data.relationships.files.data.length
-    //         });
-    //       })
-    //       .catch(error => {
-    //         console.log(error);
-    //       });
-    //   });
-  },
-  methods: {
-    // hideType() {
-    //   this.$emit("closedType");
-    // },
-    updateType(id) {
-      alert(id);
-      // this.$axios
-      //   .$put("http://104.248.229.222/api/type/" + this.typeId)
-      //   .then(response => alert("koko"))
-      //   .catch(error => {
-      //     console.log(error);
-      //   });
+    },
+    cancelUpdate() {
+      this.$emit("closedEdit");
     }
   }
 };
 </script>
-<style scoped>
-.background_update-type {
+
+<style>
+.background_read-category {
   background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
@@ -74,12 +53,20 @@ export default {
   right: 0;
 }
 
-.container-_update-type {
-  background: white;
-  padding: 40px;
+p {
+  text-align: left;
 }
 
-table {
-  width: 100%;
+img {
+  width: 150px;
+}
+
+.text {
+  padding: 20px 0px 10px;
+}
+
+.container-_read-category {
+  background: white;
+  padding: 40px;
 }
 </style>

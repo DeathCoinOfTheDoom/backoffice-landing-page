@@ -76,13 +76,9 @@
 </template>
 
 <script>
-import AppLogo from "~/components/AppLogo.vue";
 import { VeeValidate } from "vee-validate";
 
 export default {
-  components: {
-    AppLogo
-  },
   props: ["userFirstNamee"],
   data() {
     return {
@@ -127,7 +123,6 @@ export default {
   },
   methods: {
     createUser: function() {
-      const axios = require("axios");
       this.$axios
         .$post("http://104.248.229.222/api/user", this.newUser)
         .then(response => {

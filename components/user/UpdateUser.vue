@@ -68,8 +68,6 @@ export default {
   },
   methods: {
     changedUser() {
-      const axios = require("axios");
-
       const headers = {
         "Content-Type": "application/x-www-form-urlencoded"
       };

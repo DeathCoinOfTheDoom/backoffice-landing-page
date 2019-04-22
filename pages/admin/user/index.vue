@@ -20,7 +20,7 @@
           <label>Filtrer par nom d'utilisateur :</label>
           <input class="form-control" v-model="filters.name.value">
         </div>
-        <nuxt-link to="/admin/category/newUser" class="btn">Créer un nouvel utilisateur</nuxt-link>
+        <nuxt-link to="/admin/user/newUser" class="btn">Créer un nouvel utilisateur</nuxt-link>
       </div>
       <no-ssr>
         <v-table :data="users" :filters="filters">
@@ -89,41 +89,7 @@ export default {
   },
   data() {
     return {
-      users: [
-        // {
-        //   type: "user",
-        //   id: "1",
-        //   attributes: {
-        //     phone_number: "+33651520836",
-        //     email: "axel.rayer@gmail.com",
-        //     firstName: "Axel",
-        //     lastName: "Rayer",
-        //     birthdate: "1997-05-30",
-        //     admin: "1",
-        //     created_at: "2019-03-15 09:16:20",
-        //     updated_at: "2019-03-15 09:21:10"
-        //   },
-        //   relationships: {
-        //     folders: {
-        //       links: {
-        //         self: "http://104.248.229.222/api/user/1/relationships/folder",
-        //         related: "http://104.248.229.222/api/user/1/folder"
-        //       },
-        //       data: []
-        //     },
-        //     files: {
-        //       links: {
-        //         self: "http://104.248.229.222/api/user/1/relationships/file",
-        //         related: "http://104.248.229.222/api/user/1/file"
-        //       },
-        //       data: []
-        //     }
-        //   },
-        //   links: {
-        //     self: "http://104.248.229.222/api/user/1"
-        //   }
-        // }
-      ],
+      users: [],
       filters: {
         name: { value: "", custom: this.nameFilter }
       },
@@ -133,7 +99,6 @@ export default {
     };
   },
   mounted() {
-    const axios = require("axios");
     this.$axios
       .$get("http://104.248.229.222/api/user")
       .then(response => {

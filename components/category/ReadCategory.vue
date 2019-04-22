@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import UpdateTypeForm from "~/components/category/UpdateTypeForm.vue";
+import UpdateType from "~/components/category/UpdateType.vue";
 
 export default {
   props: ["category"],

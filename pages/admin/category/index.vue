@@ -50,7 +50,6 @@
         v-bind:category="selectedCategory"
       />
       <ReadCategory v-if="showInfo" v-on:closedInfo="closeInfo" v-bind:category="selectedCategory"/>
-      <UpdateType v-if="showType" v-on:closedType="closeType" v-bind:category="selectedCategory"/>
     </div>
   </section>
 </template>
@@ -58,24 +57,20 @@
 <script>
 import UpdateCategory from "~/components/category/UpdateCategory.vue";
 import ReadCategory from "~/components/category/ReadCategory.vue";
-import UpdateType from "~/components/category/UpdateType.vue";
 
 export default {
   components: {
     UpdateCategory,
-    ReadCategory,
-    UpdateType
+    ReadCategory
   },
   data() {
     return {
       categorys: [],
       showEdit: false,
-      showInfo: false,
-      showType: false
+      showInfo: false
     };
   },
   mounted() {
-    const axios = require("axios");
     this.$axios
       .$get("http://104.248.229.222/api/category")
       .then(response => {

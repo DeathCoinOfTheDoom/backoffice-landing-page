@@ -25,8 +25,6 @@ export default {
   },
   methods: {
     changedCategory() {
-      const axios = require("axios");
-
       this.$axios
         .$put(
           "http://104.248.229.222/api/category/" + this.category.id,

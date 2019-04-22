@@ -22,7 +22,6 @@ export default {
       this.$emit("closed");
     },
     deleteUser(userId) {
-      const axios = require("axios");
       this.$axios
         .$delete("http://104.248.229.222/api/user/" + this.userId)
         .then(response => {

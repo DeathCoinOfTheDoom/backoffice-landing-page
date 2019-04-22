@@ -27,7 +27,7 @@
         </no-ssr>
         <nuxt-link to="/admin/category">Retour</nuxt-link>
       </div>
-      <UpdateTypeForm v-if="editType" v-on:closedEdit="closeEdit" v-bind:type="selectedType"/>
+      <UpdateType v-if="editType" v-on:closedEdit="closeEdit" v-bind:type="selectedType"/>
     </div>
 
     <div v-else>Loading...</div>
@@ -35,11 +35,11 @@
 </template>
 
 <script>
-import UpdateTypeForm from "~/components/category/UpdateTypeForm.vue";
+import UpdateType from "~/components/category/UpdateType.vue";
 
 export default {
   components: {
-    UpdateTypeForm
+    UpdateType
   },
   data() {
     return {
