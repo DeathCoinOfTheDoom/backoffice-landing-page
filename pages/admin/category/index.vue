@@ -28,7 +28,7 @@
             <tr v-for="category in displayData" :key="category.id">
               <td>{{ category.id }}</td>
               <td class="avatar">
-                <img src="~assets/images/dogo-profil.png">
+                <img :src="category.attributes.icon">
               </td>
               <td>{{ category.attributes.title}}</td>
               <td class="Voir sa fiche">
