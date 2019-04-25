@@ -20,10 +20,22 @@
           <label>Filtrer par nom d'utilisateur :</label>
           <input class="form-control" v-model="filters.name.value">
         </div>
+        <div>
+          <label>Tous</label>
+          <input type="radio" value="all" v-model="filterTypeValue" checked>
+        </div>
+        <div>
+          <label>Utilisateurs</label>
+          <input type="radio" value="user" v-model="filterTypeValue">
+        </div>
+        <div>
+          <label for="admin">Administrateurs</label>
+          <input type="radio" id="admin" value="admin" v-model="filterTypeValue">
+        </div>
         <nuxt-link to="/admin/user/newUser" class="btn">Créer un nouvel utilisateur</nuxt-link>
       </div>
       <no-ssr>
-        <v-table :data="users" :filters="filters">
+        <v-table :data="filterDisplayData" :filters="filters" selectedClass="hide">
           <thead slot="head">
             <th>ID</th>
             <th>Photo</th>
@@ -48,7 +60,7 @@
               <td>{{ user.attributes.birthdate ? user.attributes.birthdate : "/"}}</td>
               <td>{{ user.attributes.admin ? user.attributes.admin : "/"}}</td>
               <td class="voir">
-                <div class="button__voir" @click="showInfo = true, selectedUser = user">voir</div>
+                <div class="button__voir" @click="showInfo = true, selectedUser = user">Voir</div>
               </td>
               <td class="modifier">
                 <div class="button__modifier" @click="showEdit = true, selectedUser = user">Modifier</div>
@@ -95,7 +107,8 @@ export default {
       },
       showPopup: false,
       showEdit: false,
-      showInfo: false
+      showInfo: false,
+      filterTypeValue: "all"
     };
   },
   mounted() {
@@ -110,6 +123,19 @@ export default {
           this.$auth.logout();
         }
       });
+  },
+  computed: {
+    filterDisplayData() {
+      return this.users.filter(user => {
+        if (this.filterTypeValue == "admin") {
+          return user.attributes.admin;
+        }
+        if (this.filterTypeValue == "user") {
+          return !user.attributes.admin;
+        }
+        return true;
+      });
+    }
   },
   methods: {
     logout: function() {
@@ -126,8 +152,8 @@ export default {
           " " +
           row.attributes.firstName.toLowerCase();
         return (
-          fullName.includes(filterValue) ||
-          fullNameReverse.includes(filterValue)
+          fullName.includes(filterValue.toLowerCase()) ||
+          fullNameReverse.includes(filterValue.toLowerCase())
         );
       }
       if (row.attributes.firstName) {
@@ -154,6 +180,10 @@ export default {
 *  {
   padding: 0;
   margin: 0;
+}
+
+.hide {
+  background-color: red;
 }
 
 .logout {
