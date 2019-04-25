@@ -28,7 +28,7 @@ jobs:
         - run:
             name: Rebuild Nuxts
             command: 'sudo npm run build'
-         - run:
+        - run:
             name: Restart server PM2
             command: 'pm2 restart backoffice-landing-page'
 
