@@ -24,13 +24,7 @@ jobs:
         - run:
             name: Deploy over SSH
             command: |
-              ssh $SSH_USER@$SSH_HOST 'cd backoffice-landing-page  && git pull origin master'
-        - run:
-            name: Rebuild Nuxts
-            command: 'sudo npm run build'
-        - run:
-            name: Restart server PM2
-            command: 'pm2 restart backoffice-landing-page'
+              ssh $SSH_USER@$SSH_HOST 'cd backoffice-landing-page  && git pull origin master && npm run build && pm2 restart backoffice-landing-page'
 
 workflows:
   version: 2
