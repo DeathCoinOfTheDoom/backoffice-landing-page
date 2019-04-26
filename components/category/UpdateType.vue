@@ -24,7 +24,7 @@ export default {
   methods: {
     updateType() {
       this.$axios
-        .$put("http://104.248.229.222/api/type/" + this.type.id, this.typeForm)
+        .$put("/api/type/" + this.type.id, this.typeForm)
         .then(response => {
           // handle success
           window.location.replace("/admin/category");

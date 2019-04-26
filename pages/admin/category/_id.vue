@@ -58,7 +58,7 @@ export default {
       .map(type => type.id)
       .map(id => {
         this.$axios
-          .$get("http://104.248.229.222/api/type/" + id)
+          .$get("/api/type/" + id)
           .then(response => this.types.push(response.data))
           .catch(error => {
             console.log(error);

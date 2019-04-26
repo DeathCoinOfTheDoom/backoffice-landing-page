@@ -73,11 +73,7 @@ export default {
       };
 
       this.$axios
-        .$put(
-          "http://104.248.229.222/api/user/" + this.user.id,
-          this.editUser,
-          headers
-        )
+        .$put("/api/user/" + this.user.id, this.editUser, headers)
         .then(response => {
           // handle success
           window.location.replace("/admin");

@@ -26,10 +26,7 @@ export default {
   methods: {
     changedCategory() {
       this.$axios
-        .$put(
-          "http://104.248.229.222/api/category/" + this.category.id,
-          this.editCategory
-        )
+        .$put("/api/category/" + this.category.id, this.editCategory)
         .then(response => {
           // handle success
           window.location.replace("/admin/category");

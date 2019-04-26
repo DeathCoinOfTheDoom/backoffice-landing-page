@@ -121,12 +121,10 @@ export default {
   },
   methods: {
     createUser: function() {
-      this.$axios
-        .$post("http://104.248.229.222/api/user", this.newUser)
-        .then(response => {
-          // handle success
-          window.location.replace("/admin/user");
-        });
+      this.$axios.$post("/api/user", this.newUser).then(response => {
+        // handle success
+        window.location.replace("/admin/user");
+      });
     }
   }
 };
