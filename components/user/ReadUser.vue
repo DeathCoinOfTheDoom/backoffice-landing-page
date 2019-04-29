@@ -50,7 +50,7 @@ export default {
       .map(file => file.id)
       .map(id => {
         this.$axios
-          .$get("http://104.248.229.222/api/type/" + id)
+          .$get("/api/type/" + id)
           .then(response => this.files.push(response.data.attributes.title))
           .catch(error => {
             console.log(error);
@@ -61,7 +61,7 @@ export default {
       .map(folder => folder.id)
       .map(id => {
         this.$axios
-          .$get("http://104.248.229.222/api/folder/" + id)
+          .$get("/api/folder/" + id)
           .then(response => {
             this.folders.push({
               title: response.data.attributes.title,

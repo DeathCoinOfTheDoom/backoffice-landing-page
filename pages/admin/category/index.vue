@@ -72,7 +72,7 @@ export default {
   },
   mounted() {
     this.$axios
-      .$get("http://104.248.229.222/api/category")
+      .$get("/api/category")
       .then(response => {
         // handle success
         this.categorys = response.data;

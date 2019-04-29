@@ -23,7 +23,7 @@ export default {
     },
     deleteUser(userId) {
       this.$axios
-        .$delete("http://104.248.229.222/api/user/" + this.userId)
+        .$delete("/api/user/" + this.userId)
         .then(response => {
           // handle success
           window.location.reload(true);

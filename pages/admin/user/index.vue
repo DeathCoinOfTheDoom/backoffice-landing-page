@@ -113,7 +113,7 @@ export default {
   },
   mounted() {
     this.$axios
-      .$get("http://104.248.229.222/api/user")
+      .$get("/api/user")
       .then(response => {
         // handle success
         this.users = response.data;
