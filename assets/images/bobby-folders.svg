@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="126" height="152" viewBox="0 0 126 152">
+    <defs>
+        <filter id="a" width="199.1%" height="149.7%" x="-49%" y="-24.7%" filterUnits="objectBoundingBox">
+            <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="7"/>
+            <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0.824404762 0 0 0 0 0.824404762 0 0 0 0 0.824404762 0 0 0 0.5 0"/>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+        <path id="c" d="M87.95 87.622a22.407 22.407 0 0 1-4.637.49c-3.553-.016-9.95-.792-10.759-5.886-.437-2.75 1.537-5.281 3.758-6.352 2.675-1.29 7.24-1.867 10.907-.606-1.19-3.988-.073-11.588-.073-12.517 0-.929-.018-1.147 0-1.137 4.566 2.8 6.51 6.795 8.985 12.246 1.011 2.226 1.472 4.786.753 7.226-1.126 3.824-5.137 5.732-8.933 6.536z"/>
+        <filter id="b" width="180.8%" height="175.5%" x="-40.4%" y="-30.2%" filterUnits="objectBoundingBox">
+            <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="3"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.824404762 0 0 0 0 0.824404762 0 0 0 0 0.824404762 0 0 0 0.5 0"/>
+        </filter>
+        <path id="e" d="M43.838 88.111a22.45 22.45 0 0 1-4.638-.488c-3.796-.805-7.808-2.713-8.933-6.537-.72-2.44-.258-5 .753-7.226 2.475-5.451 5.522-13.558 5.852-13.558.576 1.437 4.25 10.976 3.06 14.964 3.667-1.259 8.232-.682 10.907.608 2.22 1.071 4.194 3.602 3.757 6.352-.808 5.094-7.205 5.87-10.758 5.885z"/>
+        <filter id="d" width="180.8%" height="171.9%" x="-40.4%" y="-28.8%" filterUnits="objectBoundingBox">
+            <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="3"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.824404762 0 0 0 0 0.824404762 0 0 0 0 0.824404762 0 0 0 0.5 0"/>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd" transform="translate(0 7)">
+        <ellipse cx="63" cy="63.06" fill="#FBE4EC" rx="63" ry="63.06"/>
+        <g filter="url(#a)" transform="translate(36.247 3.455)">
+            <path fill="#FFF" d="M46.155 30.03V0s-10.568 3.625-12.76 12.382c0 0 1.232.43-9.284 0-7.787-.01-7.166 0-7.166 0C15.644 6.321 11.127 1.53 5.269 0 1.756 34.472 0 60.16 0 77.064c0 15.724 2.166 43.563 5.269 46.177 3.102 2.614 14.303 2.553 16.019 0 1.338-1.992-1.957-11.263 0-10.884 2.846.55 5.437-.631 7.065 0 1.848.716 1.008 9.533 2.603 10.025 4.707 2.066 12.186 3.726 16.797-1.133 2.121-2.235 4.612-34.44 4.603-42.237-.005-4.563-.253-9.105-.648-13.484-1.59-17.627-5.553-32.599-5.553-35.499z"/>
+            <path fill="#FFF" d="M41.425 30.522s20.133 2.209 21.275 3.664c1.141 1.456 3.1 20.66-21.275 21.676M47.753 108.268L44.651 62.54l-3.802-1.514V57.59h1.615"/>
+            <ellipse cx="21.288" cy="25.627" fill="#313131" rx="2.877" ry="4.319"/>
+            <ellipse cx="33.37" cy="25.627" fill="#313131" rx="2.877" ry="4.319"/>
+            <path fill="#313131" d="M44.11 34.366l15.622.003s-.945 10.955-8.608 9.024c-4.234-.766-7.243-4.639-7.013-9.027z"/>
+        </g>
+        <g fill-rule="nonzero">
+            <use fill="#000" filter="url(#b)" xlink:href="#c"/>
+            <use fill="#FBFBFB" xlink:href="#c"/>
+        </g>
+        <g stroke="#C6F7E2" stroke-linecap="round" stroke-width=".576">
+            <path fill="#C6F7E2" stroke-linejoin="round" d="M66.73 84.76l3.227-12.314 2.53-.437.714-1.19 4.479-.956-.639 1.063 14.63-2.572-9.204 12.012-15.654 4.67-.728-.438-2.028-17.982 18.15-4.287.162 1.496 1.228-.323-.582 3.96 6.912-1.498-21.92 5.045-1.6 13.557z"/>
+            <path d="M89.927 65.964l-1.708 2.842"/>
+        </g>
+        <path fill="#FBFBFB" fill-rule="nonzero" d="M87.95 87.622a22.407 22.407 0 0 1-4.637.49c-3.553-.016-9.95-.792-10.759-5.886-.437-2.75 1.537-5.281 3.758-6.352 2.675-1.29 7.24-1.867 10.907-.606-.264-.882 1.823-1.423 2.27-2.118 1.58-2.446 4.714-3.535 6.642.71 1.011 2.226 1.472 4.786.753 7.226-1.126 3.824-5.137 5.732-8.933 6.536z"/>
+        <g fill-rule="nonzero">
+            <use fill="#000" filter="url(#d)" xlink:href="#e"/>
+            <use fill="#FBFBFB" xlink:href="#e"/>
+        </g>
+    </g>
+</svg>

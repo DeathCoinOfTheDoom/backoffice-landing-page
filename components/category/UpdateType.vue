@@ -9,8 +9,6 @@
 </template>
 
 <script>
-import UpdateType from "~/components/category/UpdateType.vue";
-
 export default {
   props: ["type"],
   data() {
