@@ -3,11 +3,17 @@ module.exports = {
    ** Headers of the page
    */
   head: {
-    title: "crud",
+    title:
+      "Bob, votre compagnon personnel pour la création de dossiers locatifs sécurisés",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "Nuxt.js project" }
+      {
+        hid: "description",
+        name: "description",
+        content:
+          "Télécharger l’application Bob sur Iphone, Ipod Touch et Ipad, un compagnon personnel vous permettant de stocker et organiser vos documents locatifs en toutes sécurité, de créer des dossier personnalisé et de les envoyer à des propriétaire et le tout avec simplicité. Bob vous guide et vous accompagne afin de ne jamais oublié un seul document ! Plusieurs catégories sont à votre disposition pour disposer vos documents par thème et ainsi ne pas vous perdre lors de la constitution de votre dossiers locatif. Intuitif, simple et sécurisé Bob vous permettra de mettre en avant votre dossier pour vous différencier des autre candidat."
+      }
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
