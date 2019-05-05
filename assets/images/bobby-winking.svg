@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="127" height="152" viewBox="0 0 127 152">
+    <defs>
+        <circle id="a" cx="63.072" cy="63.072" r="63.072"/>
+        <filter id="b" width="202.3%" height="149.7%" x="-51.7%" y="-24.7%" filterUnits="objectBoundingBox">
+            <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="7"/>
+            <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0.824404762 0 0 0 0 0.824404762 0 0 0 0 0.824404762 0 0 0 0.5 0"/>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+        <path id="d" d="M58.1 84.19a22.453 22.453 0 0 1-4.644.489c-3.557-.016-9.961-.792-10.77-5.887-.438-2.75 1.538-5.282 3.761-6.353 2.678-1.29 7.248-1.867 10.92-.606-1.192-3.989-.074-11.59-.074-12.52 0-.928-.017-1.147 0-1.137 4.572 2.801 6.518 6.797 8.995 12.249 1.013 2.226 1.474 4.787.754 7.227-1.127 3.825-5.142 5.733-8.943 6.537z"/>
+        <filter id="c" width="180.7%" height="175.5%" x="-40.4%" y="-30.2%" filterUnits="objectBoundingBox">
+            <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="3"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.824404762 0 0 0 0 0.824404762 0 0 0 0 0.824404762 0 0 0 0.5 0"/>
+        </filter>
+        <path id="f" d="M14.321 81.447c-1.512.32-2.987.446-4.183.44-3.204-.014-8.973-.712-9.702-5.292-.394-2.474 1.386-4.75 3.389-5.713 2.412-1.159 6.529-1.678 9.836-.544-1.073-3.587-.066-10.42-.066-11.256 0-.836-.016-1.032 0-1.023 4.119 2.518 5.871 6.11 8.103 11.012.913 2.002 1.328 4.305.68 6.499-1.016 3.438-4.633 5.154-8.057 5.877z"/>
+        <filter id="e" width="176.2%" height="171.3%" x="-38.1%" y="-27.3%" filterUnits="objectBoundingBox">
+            <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2.5"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.824404762 0 0 0 0 0.824404762 0 0 0 0 0.824404762 0 0 0 0.5 0"/>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd" transform="translate(0 7)">
+        <use fill="#FFFBEA" xlink:href="#a"/>
+        <g filter="url(#b)" transform="translate(30.528 3.456)">
+            <path fill="#FFF" d="M52.543 30.035V0S41.963 3.625 39.77 12.385c0 0 1.233.43-9.294 0-7.797-.011-7.175 0-7.175 0C21.998 6.322 17.475 1.53 11.61 0 8.095 34.478 6.337 60.171 6.337 77.079c0 15.727 2.169 43.57 5.275 46.185 3.106 2.614 14.32 2.554 16.037 0 1.34-1.993-1.959-11.265 0-10.886 2.85.55 5.443-.632 7.073 0 1.85.716 1.01 9.535 2.606 10.027 4.713 2.066 12.2 3.727 16.817-1.134 2.123-2.235 4.617-34.445 4.608-42.245a145.455 145.455 0 0 0-.35-9.721 172.402 172.402 0 0 0-.3-3.765c-1.591-17.63-5.559-32.605-5.559-35.505z"/>
+            <path fill="#FFF" d="M47.808 30.528s20.156 2.209 21.3 3.665c1.142 1.456 3.104 20.662-21.3 21.679M54.144 108.288l-3.106-45.736-3.806-1.514V57.6h1.617"/>
+            <ellipse cx="39.744" cy="25.632" fill="#313131" rx="2.88" ry="4.32"/>
+            <path fill="#313131" d="M50.497 34.373l15.64.002s-.947 10.957-8.618 9.026c-4.24-.766-7.252-4.64-7.022-9.028z"/>
+            <path stroke="#F0B429" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".499" stroke-width=".576" d="M46.944 75.168l-3.105-10.761"/>
+            <g fill-rule="nonzero">
+                <use fill="#000" filter="url(#c)" xlink:href="#d"/>
+                <use fill="#FBFBFB" xlink:href="#d"/>
+            </g>
+            <g fill-rule="nonzero" transform="matrix(-1 0 0 1 23.073 0)">
+                <use fill="#000" filter="url(#e)" xlink:href="#f"/>
+                <use fill="#FBFBFB" xlink:href="#f"/>
+            </g>
+            <path fill="#313131" d="M27.938 25.68c.946 0 1.975.491 1.975.133s-1.029-1.045-1.975-1.045c-.947 0-2.018.638-2.018 1.045 0 .408 1.07-.134 2.018-.134z"/>
+        </g>
+        <path fill="#FFF3C4" d="M72.228 69.696c1.289 0 1.13-1.048 2.345-1.048 1.216 0 2.892.531 4.258.531 1.367 0 3.62-.734 4.326-1.95.706-1.215.576-8.446-2.156-8.446s-2.732.353-3.608 0c-.876-.353.003-2.628-1.361-3.838-1.364-1.21-3.342-1.047-3.804.48-.462 1.527.57 4.039 0 5.234-.569 1.195-.944.663-2.635 1.313-1.691.65-1.073 5.09 0 6.407 1.073 1.317 1.347 1.317 2.635 1.317z"/>
+        <text fill="#98A1AB" font-family="AppleColorEmoji, Apple Color Emoji" font-size="12.58" transform="rotate(-14 77.604 64.468)">
+            <tspan x="69.104" y="69.968">👍🏻</tspan>
+        </text>
+    </g>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="136" height="211" viewBox="0 0 136 211">
+    <defs>
+        <filter id="a" width="201.4%" height="149.3%" x="-51.7%" y="-24.7%" filterUnits="objectBoundingBox">
+            <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="10"/>
+            <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0.824404762 0 0 0 0 0.824404762 0 0 0 0 0.824404762 0 0 0 0.5 0"/>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+        <path id="c" d="M80.693 116.93a31.185 31.185 0 0 1-6.449.68c-4.94-.022-13.834-1.1-14.959-8.176-.608-3.821 2.137-7.337 5.225-8.824 3.72-1.791 10.067-2.594 15.165-.842-1.654-5.54-.101-16.097-.101-17.388 0-1.29-.024-1.594 0-1.58 6.35 3.89 9.052 9.44 12.493 17.012 1.407 3.092 2.048 6.649 1.047 10.038-1.565 5.313-7.142 7.963-12.42 9.08z"/>
+        <filter id="b" width="175.6%" height="170.6%" x="-37.8%" y="-29.9%" filterUnits="objectBoundingBox">
+            <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="4"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.824404762 0 0 0 0 0.824404762 0 0 0 0 0.824404762 0 0 0 0.5 0"/>
+        </filter>
+        <path id="e" d="M19.89 113.12c-2.1.445-4.149.62-5.809.612-4.45-.02-12.462-.988-13.476-7.35-.547-3.436 1.925-6.597 4.707-7.934 3.351-1.61 9.069-2.332 13.662-.757-1.49-4.98-.092-14.473-.092-15.633 0-1.16-.022-1.433 0-1.42 5.72 3.497 8.155 8.486 11.255 15.294 1.267 2.78 1.844 5.978.943 9.026-1.41 4.776-6.434 7.158-11.19 8.162z"/>
+        <filter id="d" width="174.2%" height="169.5%" x="-37.1%" y="-28.7%" filterUnits="objectBoundingBox">
+            <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="3.5"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.824404762 0 0 0 0 0.824404762 0 0 0 0 0.824404762 0 0 0 0.5 0"/>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g filter="url(#a)" transform="translate(20 16)">
+            <path fill="#FFF" d="M72.977 41.715V0S58.283 5.035 55.235 17.2c0 0 1.712.599-12.91 0-10.828-.014-9.964 0-9.964 0C30.553 8.78 24.271 2.127 16.126 0 11.242 47.887 8.8 83.571 8.8 107.054c0 21.843 3.012 60.515 7.326 64.146 4.314 3.631 19.889 3.547 22.274 0 1.861-2.768-2.72-15.646 0-15.12 3.958.765 7.56-.877 9.824 0 2.57.995 1.402 13.243 3.62 13.927 6.544 2.87 16.944 5.176 23.356-1.575 2.949-3.105 6.412-47.84 6.4-58.673a202.02 202.02 0 0 0-.487-13.502c-.12-1.758-.26-3.503-.415-5.23-2.21-24.486-7.721-45.284-7.721-49.312z"/>
+            <path fill="#FFF" d="M66.4 42.4s27.995 3.068 29.582 5.09c1.588 2.022 4.312 28.698-29.582 30.11M75.2 150.4l-4.314-63.522-5.286-2.102V80h2.245"/>
+            <ellipse cx="55.2" cy="35.6" fill="#313131" rx="4" ry="6"/>
+            <path fill="#313131" d="M70.135 47.74l21.721.003s-1.315 15.218-11.97 12.536c-5.886-1.063-10.07-6.444-9.75-12.54z"/>
+            <path stroke="#F0B429" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".499" stroke-width=".8" d="M65.2 104.4l-4.313-14.946"/>
+            <g fill-rule="nonzero">
+                <use fill="#000" filter="url(#b)" xlink:href="#c"/>
+                <use fill="#FBFBFB" xlink:href="#c"/>
+            </g>
+            <g fill-rule="nonzero" transform="matrix(-1 0 0 1 32.046 0)">
+                <use fill="#000" filter="url(#d)" xlink:href="#e"/>
+                <use fill="#FBFBFB" xlink:href="#e"/>
+            </g>
+            <path fill="#313131" d="M38.802 35.665c1.315 0 2.744.684 2.744.187 0-.497-1.429-1.452-2.744-1.452-1.315 0-2.802.886-2.802 1.452s1.487-.187 2.802-.187z"/>
+        </g>
+        <path fill="#FFF3C4" d="M77.917 108c1.79 0 1.568-1.456 3.257-1.456s4.016.738 5.914.738c1.898 0 5.027-1.02 6.007-2.708.981-1.688.801-11.73-2.993-11.73-3.795 0-3.795.49-5.012 0-1.217-.491.005-3.65-1.89-5.332-1.895-1.681-4.641-1.454-5.283.667-.642 2.12.79 5.61 0 7.27-.79 1.66-1.31.92-3.66 1.824-2.349.903-1.49 7.07 0 8.898 1.49 1.829 1.87 1.829 3.66 1.829z"/>
+        <text fill="#98A1AB" font-family="AppleColorEmoji, Apple Color Emoji" font-size="17.472" transform="rotate(-14 137.494 7.44)">
+            <tspan x="51.339" y="88.383">👍🏻</tspan>
+        </text>
+    </g>
+</svg>
