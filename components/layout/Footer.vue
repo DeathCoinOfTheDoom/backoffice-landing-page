@@ -85,8 +85,7 @@ footer {
 }
 
 .legal__item {
-  flex-shrink: 0;
-  flex-grow: 1;
+  flex: 0 0 100%;
 }
 
 .legal .section__title {
