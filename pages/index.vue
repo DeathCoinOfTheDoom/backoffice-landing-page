@@ -4,33 +4,39 @@
       <img src="~assets/images/paper-plane.svg" alt>
     </div>
     <section class="intro">
-      <img class="intro__logo" src="~assets/images/logo-bob.svg" alt>
-      <h1 class="intro__title">Bob, le guide locatif simple et intuitif</h1>
-      <p
-        class="intro__text"
-      >L'application Bob est un compagnon personnel vous permettant de stocker et organiser vos documents locatifs en toutes sécurité. Créer vos dossier locatifs et démarquez vous !</p>
-      <img class="img-proto" src="~assets/images/prototype-app.png" alt>
+      <div>
+        <img class="intro__logo" src="~assets/images/logo-bob.svg" alt>
+        <h1 class="intro__title">Bob, le guide locatif simple et intuitif</h1>
+        <p
+          class="intro__text"
+        >L'application Bob est un compagnon personnel vous permettant de stocker et organiser vos documents locatifs en toutes sécurité. Créer vos dossier locatifs et démarquez vous !</p>
+        <img class="img__download-app" src="~assets/images/dl-app-store.svg" alt>
+      </div>
+      <div>
+        <img class="img__proto-mobile" src="~assets/images/prototype-app.png" alt>
+        <img class="img__proto-desktop" src="~assets/images/proto-and-bobby.png" alt>
+      </div>
     </section>
     <section class="who">
       <h2 class="section__title">Bob, Who ?</h2>
-      <div>
+      <div class="who__container-item">
         <div class="who__item">
           <img src="~assets/images/bobby-folders.svg" alt>
-          <h3 class="who__item-title">Sécurisé</h3>
+          <h3 class="section__subtitle">Sécurisé</h3>
           <p
             class="section__text"
           >La sécurité de vos documents et leur confidentialité est notre priorité</p>
         </div>
         <div class="who__item">
           <img src="~assets/images/bobby-messy.svg" alt>
-          <h3 class="who__item-title">Intuitif</h3>
+          <h3 class="section__subtitle">Intuitif</h3>
           <p
             class="section__text"
           >Une interface simple et intuitive pour ne se concentrer que sur l'essentiel</p>
         </div>
         <div class="who__item">
           <img src="~assets/images/bobby-winking.svg" alt>
-          <h3 class="who__item-title">Guide</h3>
+          <h3 class="section__subtitle">Guide</h3>
           <p
             class="section__text"
           >Un guide complet pour vous accompagner et ne plus oublier un seul document</p>
@@ -39,22 +45,52 @@
     </section>
     <section class="explain">
       <div class="explain__container-image">
-        <div>
-          <img class="explain__image" src="~assets/images/montmartre.jpg" alt>
+        <div class="explain__image">
+          <img src="~assets/images/montmartre.jpg" alt>
         </div>
-        <div>
-          <img class="explain__image second" src="~assets/images/toit-paris.jpg" alt>
+        <div class="explain__image second">
+          <img src="~assets/images/toit-paris.jpg" alt>
         </div>
       </div>
-      <h2 class="section__title">Pour une location, un bon dossier peut faire la différence</h2>
-      <p
-        class="section__text"
-      >L’application Bob est disponible sur IOS (Iphone et Ipad ) Il sera votre compagnon personnel vous permettant de stocker et organiser vos documents locatifs en toutes sécurité, de créer des dossier personnalisé et de les envoyer à des propriétaire et le tout avec simplicité. Bob est aussi un guide qui accompagne dans votre constitution de dossier locatif afin de ne plus jamais oublié un seul document.</p>
-      <p
-        class="section__text"
-      >Plusieurs catégories sont à votre disposition pour disposer vos documents par thème et ainsi ne pas vous perdre dans ce flots administratif. Avec une interface intuitive, Bob vous permettra de mettre en avant votre dossier locatif pour vous démarquer des autre candidat et d'ainsi obtenir la location de vos rêves.</p>
+      <div class="explain__container-text">
+        <h2 class="section__title">Pour une location, un bon dossier peut faire la différence</h2>
+        <p
+          class="section__text"
+        >L’application Bob est disponible sur IOS (Iphone et Ipad ) Il sera votre compagnon personnel vous permettant de stocker et organiser vos documents locatifs en toutes sécurité, de créer des dossier personnalisé et de les envoyer à des propriétaire et le tout avec simplicité. Bob est aussi un guide qui accompagne dans votre constitution de dossier locatif afin de ne plus jamais oublié un seul document.</p>
+        <p
+          class="section__text"
+        >Plusieurs catégories sont à votre disposition pour disposer vos documents par thème et ainsi ne pas vous perdre dans ce flots administratif. Avec une interface intuitive, Bob vous permettra de mettre en avant votre dossier locatif pour vous démarquer des autre candidat et d'ainsi obtenir la location de vos rêves.</p>
+      </div>
     </section>
-    <section>slider</section>
+    <section class="bobbers">
+      <h2 class="section__title">Les Bobbers ?</h2>
+      <p
+        class="section__text"
+      >Bob est avant tout une application humaine, créée pour aider autrui dans des problèmes du quotidien que tous peuvent rencontrer. L'équipe de création est à l'écoute et réactive, votre avis nous importe beaucoup car si Bob est votre guide, vous êtes le nôtre.</p>
+      <ul class="bobbers__listing">
+        <li>
+          <div class="bobbers__circle bobbers__circle__charpentier"></div>
+          <p class="section__subtitle">Bob Charpentier</p>
+        </li>
+        <li>
+          <div class="bobbers__circle bobbers__circle__plombier"></div>
+          <p class="section__subtitle">Bob Pomblier</p>
+        </li>
+        <li>
+          <div class="bobbers__circle bobbers__circle__peintre"></div>
+          <p class="section__subtitle">Bob Peintre</p>
+        </li>
+        <li>
+          <div class="bobbers__circle bobbers__circle__electricien"></div>
+          <p class="section__subtitle">Bob Electricien</p>
+        </li>
+        <li>
+          <div class="bobbers__circle bobbers__circle__architecte"></div>
+          <p class="section__subtitle">Bob Architecte</p>
+        </li>
+      </ul>
+      <div>slider</div>
+    </section>
     <section></section>
     <Footer/>
   </div>
@@ -78,26 +114,35 @@ export default {
   border-radius: 50%;
   right: 10px;
   top: 10px;
-  background-color: #1f2933;
+  background-color: $dark-blue;
   z-index: 10;
 }
 
-.img-proto {
-  position: absolute;
-  right: 0;
-  bottom: -115px;
-  width: 130px;
-}
-
 .intro {
-  background-color: #1f2933;
+  background-color: $dark-blue;
   height: 100vh;
   padding: 25px;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
+  @include flexbox();
+  @include flex-wrap(wrap);
+  @include align-content(center);
+  @include justify-content(center);
   position: relative;
+
+  @media #{$tablet} {
+    @include align-items(center);
+    height: auto;
+    padding: 100px 25px 20px 25px;
+  }
+
+  & > div {
+    width: 60%;
+    padding-right: 8%;
+    box-sizing: border-box;
+
+    &:last-child {
+      width: 40%;
+    }
+  }
 
   &__logo {
     padding-bottom: 50px;
@@ -116,6 +161,10 @@ export default {
     text-align: center;
     padding-bottom: 30px;
     font-weight: bold;
+
+    @media #{$tablet} {
+      text-align: left;
+    }
   }
 
   &__text {
@@ -123,20 +172,67 @@ export default {
     color: $white;
     text-align: center;
     font-weight: normal;
+
+    @media #{$tablet} {
+      text-align: left;
+    }
+  }
+
+  .img {
+    &__proto-mobile {
+      position: absolute;
+      right: 0;
+      bottom: -115px;
+      width: 130px;
+
+      @media #{$tablet} {
+        display: none;
+      }
+    }
+
+    &__proto-desktop {
+      display: none;
+      @media #{$tablet} {
+        display: inherit;
+        max-width: 475px;
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    &__download-app {
+      display: none;
+
+      @media #{$tablet} {
+        display: inherit;
+        max-width: 130px;
+        width: 100%;
+        height: auto;
+        padding-top: 25px;
+      }
+    }
   }
 }
 
 .section {
   &__title {
     font-size: 20px;
-    color: #1f2933;
+    color: $dark-blue;
     text-align: center;
     font-weight: bold;
   }
 
+  &__subtitle {
+    font-size: 18px;
+    color: $dark-blue;
+    text-align: center;
+    font-weight: 600;
+    padding-top: 10px;
+  }
+
   &__text {
     font-size: 16px;
-    color: #7b8794;
+    color: $dark-grey;
     text-align: center;
     font-weight: 500;
   }
@@ -145,44 +241,77 @@ export default {
 .who {
   padding-top: 70px;
   padding-bottom: 40px;
-  border-bottom: solid 1px #cbd2d9;
+  border-bottom: solid 1px $light-grey;
 
-  &__item {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    flex-direction: column;
-    padding: 35px 60px 0px 60px;
+  @media #{$tablet} {
+    padding-bottom: 60px;
   }
 
-  &__item-title {
-    font-size: 18px;
-    color: #1f2933;
-    text-align: center;
-    font-weight: 600;
-    padding-top: 10px;
+  @media #{$desktop} {
+    padding-bottom: 80px;
+  }
+
+  &__container-item {
+    @media #{$tablet} {
+      @include flexbox();
+    }
+  }
+
+  &__item {
+    @include flexbox();
+    @include justify-content(center);
+    @include flex-wrap(wrap);
+    @include flex-direction(column);
+    padding: 35px 60px 0px 60px;
+
+    @media #{$tablet} {
+      padding: 50px 60px 0px 60px;
+    }
   }
 }
 
 .explain {
   padding: 40px 0;
-  border-bottom: solid 1px #cbd2d9;
+  border-bottom: solid 1px $light-grey;
+
+  @media #{$tablet} {
+    @include flexbox();
+    @include align-items(center);
+  }
 
   &__container-image {
-    display: flex;
-    justify-content: flex-end;
+    @include flexbox();
+    @include justify-content(flex-end);
     position: relative;
     padding-right: 20px;
     margin-bottom: 95px;
+
+    @media #{$tablet} {
+      width: 50%;
+      order: 2;
+    }
   }
 
   &__image {
-    width: 280px;
-    height: auto;
+    position: relative;
+    height: 100%;
+
+    img {
+      width: 280px;
+      height: auto;
+    }
+
     &.second {
       position: absolute;
       left: 1%;
       bottom: -100px;
+    }
+  }
+
+  &__container-text {
+    @media #{$tablet} {
+      width: 50%;
+      order: 1;
     }
   }
 }
@@ -191,6 +320,15 @@ export default {
   .section {
     &__title {
       padding: 25px 25px 0px 25px;
+
+      @media #{$tablet} {
+        text-align: left;
+        padding: 25px 25px 20px 25px;
+      }
+
+      @media #{$desktop} {
+        padding: 25px 25px 35px 25px;
+      }
     }
 
     &__text {
@@ -199,5 +337,62 @@ export default {
     }
   }
 }
-</style>
 
+.bobbers {
+  padding: 25px 20px;
+
+  @media #{$tablet} {
+    padding: 25px 20px 80px;
+  }
+
+  .section__text {
+    padding: 10px 20px 0;
+
+    @media #{$tablet} {
+      padding: 20px;
+    }
+  }
+
+  &__listing {
+    display: none;
+
+    @media #{$tablet} {
+      list-style: none;
+      @include flexbox();
+      @include justify-content(space-between);
+      padding-top: 20px;
+    }
+  }
+
+  &__circle {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+
+    @media #{$desktop} {
+      width: 155px;
+      height: 155px;
+    }
+
+    &__charpentier {
+      background-color: rgba(251, 228, 228, 0.8);
+    }
+
+    &__plombier {
+      background-color: #fffbea;
+    }
+
+    &__peintre {
+      background-color: rgba(227, 248, 255, 0.9);
+    }
+
+    &__electricien {
+      background-color: rgba(251, 228, 236, 0.8);
+    }
+
+    &__architecte {
+      background-color: #effcf6;
+    }
+  }
+}
+</style>
