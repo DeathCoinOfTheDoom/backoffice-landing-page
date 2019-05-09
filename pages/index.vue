@@ -1,8 +1,10 @@
 <template>
   <div class="container">
+    <div class="contact-sticky">
+      <img src="~assets/images/paper-plane.svg" alt>
+    </div>
     <section class="intro">
-      <img src="#" alt>
-      <h1 class="intro__title">Bob, le guide locatif simple et intuitif</h1>
+      <img class="intro__logo" src="~assets/images/logo-bob.svg" alt>
       <h1 class="intro__title">Bob, le guide locatif simple et intuitif</h1>
       <p
         class="intro__text"
@@ -59,7 +61,7 @@
 </template>
 
 <script>
-import Footer from "~/components/layout/Footer.vue";
+import Footer from "~/layouts/Footer.vue";
 
 export default {
   components: {
@@ -69,10 +71,15 @@ export default {
 };
 </script>
 
-<style>
-*  {
-  padding: 0;
-  margin: 0;
+<style lang="scss">
+.contact-sticky {
+  position: fixed;
+  padding: 12px;
+  border-radius: 50%;
+  right: 10px;
+  top: 10px;
+  background-color: #1f2933;
+  z-index: 10;
 }
 
 .img-proto {
@@ -91,6 +98,14 @@ export default {
   align-content: center;
   justify-content: center;
   position: relative;
+}
+
+.intro__logo {
+  padding-bottom: 50px;
+
+  @media #{$tablet} {
+    // background-color: pink;
+  }
 }
 
 .intro__title {

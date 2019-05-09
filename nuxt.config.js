@@ -50,7 +50,15 @@ module.exports = {
   /*
    ** Modules
    */
-  modules: ["@nuxtjs/axios", "@nuxtjs/auth"],
+  modules: ["@nuxtjs/axios", "@nuxtjs/auth", "@nuxtjs/style-resources"],
+  styleResources: {
+    scss: ["@/assets/scss/styles.scss"]
+  },
+
+  /*
+   ** Style
+   */
+  css: ["@/assets/scss/styles.scss"],
 
   auth: {
     // Options
