@@ -1,37 +1,39 @@
 <template>
   <footer>
-    <div class="contact">
-      <h3 class="section__title">Contact</h3>
-      <form action>
-        <input class="contact__email" type="email" placeholder="E-mail">
-        <textarea class="contact__textarea" rows="5" cols="33" placeholder="Message"></textarea>
-        <input class="contact__send-btn" type="submit" value="Envoyer">
-      </form>
-      <div class="contact__line-bottom"></div>
-    </div>
-    <span class="line-vertical"></span>
-    <div class="legal">
-      <h3 class="legal__item section__title">Legal</h3>
-      <div class="legal__container-text">
-        <a class="legal__item legal__link" href="#">Mentions légales</a>
-        <a class="legal__item legal__link" href="#">Politiques de confidentialités</a>
-        <div class="legal__item legal__social-network">
-          <a href="#">
-            <img src="~assets/images/facebook.svg">
-          </a>
-          <a href="#">
-            <img src="~assets/images/instagram.svg">
-          </a>
-          <a href="#">
-            <img src="~assets/images/twitter.svg">
-          </a>
+    <div class="max-width">
+      <div class="contact">
+        <h3 class="section__title">Contact</h3>
+        <form action>
+          <input class="contact__email" type="email" placeholder="E-mail">
+          <textarea class="contact__textarea" rows="5" cols="33" placeholder="Message"></textarea>
+          <input class="contact__send-btn" type="submit" value="Envoyer">
+        </form>
+        <div class="contact__line-bottom"></div>
+      </div>
+      <span class="line-vertical"></span>
+      <div class="legal">
+        <h3 class="legal__item section__title">Legal</h3>
+        <div class="legal__container-text">
+          <a class="legal__item legal__link" href="#">Mentions légales</a>
+          <a class="legal__item legal__link" href="#">Politiques de confidentialités</a>
+          <div class="legal__item legal__social-network">
+            <a href="#">
+              <img src="~assets/images/facebook.svg">
+            </a>
+            <a href="#">
+              <img src="~assets/images/instagram.svg">
+            </a>
+            <a href="#">
+              <img src="~assets/images/twitter.svg">
+            </a>
+          </div>
+        </div>
+        <div class="legal__container-image">
+          <img class="legal__image" src="~assets/images/bobby-winking-footer.svg" alt>
         </div>
       </div>
-      <div class="legal__container-image">
-        <img class="legal__image" src="~assets/images/bobby-winking-footer.svg" alt>
-      </div>
+      <p class="copyright">© Bob 2019</p>
     </div>
-    <p class="copyright">© Bob 2019</p>
   </footer>
 </template>
 
@@ -43,9 +45,11 @@ footer {
   background-color: $light_blue;
   padding: 30px 20px 10px;
 
-  @media #{$tablet} {
-    @include flexbox();
-    @include flex-wrap(wrap);
+  .max-width {
+    @media #{$tablet} {
+      @include flexbox();
+      @include flex-wrap(wrap);
+    }
   }
 }
 
@@ -141,6 +145,11 @@ footer {
 
     @media #{$tablet} {
       text-align: left;
+      padding-left: 4%;
+    }
+
+    @media #{$desktop}  {
+      padding-left: 45px;
     }
   }
 
@@ -151,6 +160,12 @@ footer {
     @media #{$tablet} {
       @include align-content(flex-start);
       width: 60%;
+      padding-left: 4%;
+      box-sizing: border-box;
+    }
+
+    @media #{$desktop}  {
+      padding-left: 45px;
     }
   }
 
@@ -206,6 +221,10 @@ footer {
   @media #{$tablet} {
     width: 100%;
     padding-top: 30px;
+  }
+
+  @media #{$desktop} {
+    padding-top: 50px;
   }
 }
 </style>

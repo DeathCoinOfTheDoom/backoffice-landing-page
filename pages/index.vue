@@ -4,92 +4,102 @@
       <img src="~assets/images/paper-plane.svg" alt>
     </div>
     <section class="intro">
-      <div>
-        <img class="intro__logo" src="~assets/images/logo-bob.svg" alt>
-        <h1 class="intro__title">Bob, le guide locatif simple et intuitif</h1>
-        <p
-          class="intro__text"
-        >L'application Bob est un compagnon personnel vous permettant de stocker et organiser vos documents locatifs en toutes sécurité. Créer vos dossier locatifs et démarquez vous !</p>
-        <img class="img__download-app" src="~assets/images/dl-app-store.svg" alt>
-      </div>
-      <div>
-        <img class="img__proto-mobile" src="~assets/images/prototype-app.png" alt>
-        <img class="img__proto-desktop" src="~assets/images/proto-and-bobby.png" alt>
+      <div class="max-width">
+        <div class="intro__container-text">
+          <img class="intro__logo" src="~assets/images/logo-bob.svg" alt>
+          <h1 class="intro__title">Bob, le guide locatif simple et intuitif</h1>
+          <p
+            class="intro__text"
+          >L'application Bob est un compagnon personnel vous permettant de stocker et organiser vos documents locatifs en toutes sécurité. Créer vos dossier locatifs et démarquez vous !</p>
+          <img class="img__download-app" src="~assets/images/dl-app-store.svg" alt>
+        </div>
+        <div class="intro__container-image">
+          <img class="img__proto-mobile" src="~assets/images/prototype-app.png" alt>
+          <img class="img__proto-desktop" src="~assets/images/proto-and-bobby.png" alt>
+        </div>
       </div>
     </section>
     <section class="who">
-      <h2 class="section__title">Bob, Who ?</h2>
-      <div class="who__container-item">
-        <div class="who__item">
-          <img src="~assets/images/bobby-folders.svg" alt>
-          <h3 class="section__subtitle">Sécurisé</h3>
-          <p
-            class="section__text"
-          >La sécurité de vos documents et leur confidentialité est notre priorité</p>
-        </div>
-        <div class="who__item">
-          <img src="~assets/images/bobby-messy.svg" alt>
-          <h3 class="section__subtitle">Intuitif</h3>
-          <p
-            class="section__text"
-          >Une interface simple et intuitive pour ne se concentrer que sur l'essentiel</p>
-        </div>
-        <div class="who__item">
-          <img src="~assets/images/bobby-winking.svg" alt>
-          <h3 class="section__subtitle">Guide</h3>
-          <p
-            class="section__text"
-          >Un guide complet pour vous accompagner et ne plus oublier un seul document</p>
+      <div class="max-width">
+        <h2 class="section__title">Bob, Who ?</h2>
+        <div class="who__container-item">
+          <div class="who__item">
+            <img src="~assets/images/bobby-folders.svg" alt>
+            <h3 class="section__subtitle">Sécurisé</h3>
+            <p
+              class="section__text"
+            >La sécurité de vos documents et leur confidentialité est notre priorité</p>
+          </div>
+          <div class="who__item">
+            <img src="~assets/images/bobby-messy.svg" alt>
+            <h3 class="section__subtitle">Intuitif</h3>
+            <p
+              class="section__text"
+            >Une interface simple et intuitive pour ne se concentrer que sur l'essentiel</p>
+          </div>
+          <div class="who__item">
+            <img src="~assets/images/bobby-winking.svg" alt>
+            <h3 class="section__subtitle">Guide</h3>
+            <p
+              class="section__text"
+            >Un guide complet pour vous accompagner et ne plus oublier un seul document</p>
+          </div>
         </div>
       </div>
     </section>
     <section class="explain">
-      <div class="explain__container-image">
-        <div class="explain__image">
-          <img src="~assets/images/montmartre.jpg" alt>
+      <div class="max-width">
+        <div class="explain__container-image">
+          <div class="explain__image">
+            <img class="image-mobile" src="~assets/images/montmartre.jpg" alt>
+            <img class="image-desktop" src="~assets/images/montmartre-desktop.jpg" alt>
+          </div>
+          <div class="explain__image second">
+            <img class="image-mobile" src="~assets/images/toit-paris.jpg" alt>
+            <img class="image-desktop" src="~assets/images/toit-paris-desktop.jpg" alt>
+          </div>
         </div>
-        <div class="explain__image second">
-          <img src="~assets/images/toit-paris.jpg" alt>
+        <div class="explain__container-text">
+          <h2 class="section__title">Pour une location, un bon dossier peut faire la différence</h2>
+          <p
+            class="section__text"
+          >L’application Bob est disponible sur IOS (Iphone et Ipad ) Il sera votre compagnon personnel vous permettant de stocker et organiser vos documents locatifs en toutes sécurité, de créer des dossier personnalisé et de les envoyer à des propriétaire et le tout avec simplicité. Bob est aussi un guide qui accompagne dans votre constitution de dossier locatif afin de ne plus jamais oublié un seul document.</p>
+          <p
+            class="section__text"
+          >Plusieurs catégories sont à votre disposition pour disposer vos documents par thème et ainsi ne pas vous perdre dans ce flots administratif. Avec une interface intuitive, Bob vous permettra de mettre en avant votre dossier locatif pour vous démarquer des autre candidat et d'ainsi obtenir la location de vos rêves.</p>
         </div>
-      </div>
-      <div class="explain__container-text">
-        <h2 class="section__title">Pour une location, un bon dossier peut faire la différence</h2>
-        <p
-          class="section__text"
-        >L’application Bob est disponible sur IOS (Iphone et Ipad ) Il sera votre compagnon personnel vous permettant de stocker et organiser vos documents locatifs en toutes sécurité, de créer des dossier personnalisé et de les envoyer à des propriétaire et le tout avec simplicité. Bob est aussi un guide qui accompagne dans votre constitution de dossier locatif afin de ne plus jamais oublié un seul document.</p>
-        <p
-          class="section__text"
-        >Plusieurs catégories sont à votre disposition pour disposer vos documents par thème et ainsi ne pas vous perdre dans ce flots administratif. Avec une interface intuitive, Bob vous permettra de mettre en avant votre dossier locatif pour vous démarquer des autre candidat et d'ainsi obtenir la location de vos rêves.</p>
       </div>
     </section>
     <section class="bobbers">
-      <h2 class="section__title">Les Bobbers ?</h2>
-      <p
-        class="section__text"
-      >Bob est avant tout une application humaine, créée pour aider autrui dans des problèmes du quotidien que tous peuvent rencontrer. L'équipe de création est à l'écoute et réactive, votre avis nous importe beaucoup car si Bob est votre guide, vous êtes le nôtre.</p>
-      <ul class="bobbers__listing">
-        <li>
-          <div class="bobbers__circle bobbers__circle__charpentier"></div>
-          <p class="section__subtitle">Bob Charpentier</p>
-        </li>
-        <li>
-          <div class="bobbers__circle bobbers__circle__plombier"></div>
-          <p class="section__subtitle">Bob Pomblier</p>
-        </li>
-        <li>
-          <div class="bobbers__circle bobbers__circle__peintre"></div>
-          <p class="section__subtitle">Bob Peintre</p>
-        </li>
-        <li>
-          <div class="bobbers__circle bobbers__circle__electricien"></div>
-          <p class="section__subtitle">Bob Electricien</p>
-        </li>
-        <li>
-          <div class="bobbers__circle bobbers__circle__architecte"></div>
-          <p class="section__subtitle">Bob Architecte</p>
-        </li>
-      </ul>
-      <div>slider</div>
+      <div class="max-width">
+        <h2 class="section__title">Les Bobbers ?</h2>
+        <p
+          class="section__text"
+        >Bob est avant tout une application humaine, créée pour aider autrui dans des problèmes du quotidien que tous peuvent rencontrer. L'équipe de création est à l'écoute et réactive, votre avis nous importe beaucoup car si Bob est votre guide, vous êtes le nôtre.</p>
+        <ul class="bobbers__listing">
+          <li>
+            <div class="bobbers__circle bobbers__circle__charpentier"></div>
+            <p class="section__subtitle">Bob Charpentier</p>
+          </li>
+          <li>
+            <div class="bobbers__circle bobbers__circle__plombier"></div>
+            <p class="section__subtitle">Bob Pomblier</p>
+          </li>
+          <li>
+            <div class="bobbers__circle bobbers__circle__peintre"></div>
+            <p class="section__subtitle">Bob Peintre</p>
+          </li>
+          <li>
+            <div class="bobbers__circle bobbers__circle__electricien"></div>
+            <p class="section__subtitle">Bob Electricien</p>
+          </li>
+          <li>
+            <div class="bobbers__circle bobbers__circle__architecte"></div>
+            <p class="section__subtitle">Bob Architecte</p>
+          </li>
+        </ul>
+        <div>slider</div>
+      </div>
     </section>
     <section></section>
     <Footer/>
@@ -108,6 +118,10 @@ export default {
 </script>
 
 <style lang="scss">
+.max-width {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 .contact-sticky {
   position: fixed;
   padding: 12px;
@@ -122,24 +136,34 @@ export default {
   background-color: $dark-blue;
   height: 100vh;
   padding: 25px;
-  @include flexbox();
-  @include flex-wrap(wrap);
-  @include align-content(center);
-  @include justify-content(center);
   position: relative;
 
   @media #{$tablet} {
-    @include align-items(center);
     height: auto;
     padding: 100px 25px 20px 25px;
   }
 
-  & > div {
-    width: 60%;
-    padding-right: 8%;
-    box-sizing: border-box;
+  .max-width {
+    @include flexbox();
+    @include flex-wrap(wrap);
+    @include align-content(center);
+    @include justify-content(center);
 
-    &:last-child {
+    @media #{$tablet} {
+      @include align-items(center);
+    }
+  }
+
+  &__container-text {
+    @media #{$tablet} {
+      width: 60%;
+      padding-right: 8%;
+      box-sizing: border-box;
+    }
+  }
+
+  &__container-image {
+    @media #{$tablet} {
       width: 40%;
     }
   }
@@ -274,9 +298,15 @@ export default {
   padding: 40px 0;
   border-bottom: solid 1px $light-grey;
 
-  @media #{$tablet} {
-    @include flexbox();
-    @include align-items(center);
+  @media #{$desktop} {
+    padding: 80px 0 200px;
+  }
+
+  .max-width {
+    @media #{$tablet} {
+      @include flexbox();
+      @include align-items(center);
+    }
   }
 
   &__container-image {
@@ -290,21 +320,60 @@ export default {
       width: 50%;
       order: 2;
     }
+
+    @media #{$desktop} {
+      width: 60%;
+    }
   }
 
   &__image {
     position: relative;
     height: 100%;
 
-    img {
+    .image-mobile {
       width: 280px;
       height: auto;
+
+      @media #{$mini-mobile}  {
+        width: 320px;
+      }
+
+      @media #{$desktop} {
+        display: none;
+      }
+    }
+
+    .image-desktop {
+      display: none;
+
+      @media #{$desktop} {
+        display: inherit;
+        max-width: 505px;
+        width: 100%;
+        height: auto;
+      }
     }
 
     &.second {
       position: absolute;
       left: 1%;
       bottom: -100px;
+
+      @media #{$mini-mobile} {
+        left: 90px;
+      }
+      @media screen and (min-width: 600px) {
+        left: 200px;
+      }
+
+      @media #{$tablet} {
+        left: 0px;
+      }
+
+      @media #{$desktop} {
+        left: 50px;
+        bottom: -210px;
+      }
     }
   }
 
@@ -312,6 +381,10 @@ export default {
     @media #{$tablet} {
       width: 50%;
       order: 1;
+    }
+
+    @media #{$desktop} {
+      width: 40%;
     }
   }
 }
@@ -343,6 +416,10 @@ export default {
 
   @media #{$tablet} {
     padding: 25px 20px 80px;
+  }
+
+  @media #{$desktop} {
+    padding: 50px 20px 100px;
   }
 
   .section__text {

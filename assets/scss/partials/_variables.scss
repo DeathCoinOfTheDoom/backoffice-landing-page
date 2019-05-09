@@ -21,7 +21,7 @@ $blue: #40c3f7;
 $dark-blue: #1f2933;
 
 /**** RESPONSIVE ****/
-$mini-mobile: "screen and (max-width: 520px)";
-$mobile: "screen and (max-width: 767px)";
+$mini-mobile: "screen and (min-width: 520px)";
+// $mobile: "screen and (min-width: 767px)";
 $tablet: "screen and (min-width: 768px)";
 $desktop: "(min-width: 1024px)";
