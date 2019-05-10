@@ -15,7 +15,7 @@ module.exports = {
           "Télécharger l’application Bob sur Iphone, Ipod Touch et Ipad, un compagnon personnel vous permettant de stocker et organiser vos documents locatifs en toutes sécurité, de créer des dossier personnalisé et de les envoyer à des propriétaire et le tout avec simplicité. Bob vous guide et vous accompagne afin de ne jamais oublié un seul document ! Plusieurs catégories sont à votre disposition pour disposer vos documents par thème et ainsi ne pas vous perdre lors de la constitution de votre dossiers locatif. Intuitif, simple et sécurisé Bob vous permettra de mettre en avant votre dossier pour vous différencier des autre candidat."
       }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }]
   },
   /*
    ** Customize the progress bar color
@@ -50,7 +50,15 @@ module.exports = {
   /*
    ** Modules
    */
-  modules: ["@nuxtjs/axios", "@nuxtjs/auth"],
+  modules: ["@nuxtjs/axios", "@nuxtjs/auth", "@nuxtjs/style-resources"],
+  styleResources: {
+    scss: ["@/assets/scss/styles.scss"]
+  },
+
+  /*
+   ** Style
+   */
+  css: ["@/assets/scss/styles.scss"],
 
   auth: {
     // Options
