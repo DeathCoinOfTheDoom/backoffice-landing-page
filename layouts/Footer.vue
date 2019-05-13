@@ -107,6 +107,7 @@ footer {
   &__textarea {
     margin-top: 10px;
     padding-top: 10px;
+    resize: none;
   }
 
   &__send-btn {
