@@ -64,6 +64,16 @@ footer {
     }
   }
 
+  form {
+    @include flexbox();
+    @include flex-wrap(wrap);
+    @include justify-content(center);
+
+    @media #{$tablet} {
+      @include justify-content(flex-start);
+    }
+  }
+
   &__email {
     margin-top: 20px;
     height: 50px;
@@ -78,6 +88,15 @@ footer {
     border: 1px solid $light-grey;
     padding-left: 15px;
     outline: none;
+    flex-basis: 100%;
+
+    @media #{$mini-mobile} {
+      max-width: 400px;
+    }
+
+    @media #{$tablet}  {
+      max-width: 330px;
+    }
 
     &::placeholder {
       color: $light-grey;
@@ -101,6 +120,7 @@ footer {
     font-size: 18px;
     font-weight: bold;
     margin-top: 10px;
+    flex-basis: 100%;
   }
 
   &__line-bottom {
@@ -156,8 +176,10 @@ footer {
   &__container-text {
     @include flexbox();
     @include flex-wrap(wrap);
+    flex: 0 0 100%;
 
     @media #{$tablet} {
+      flex: 0 0 auto;
       @include align-content(flex-start);
       width: 60%;
       padding-left: 4%;
