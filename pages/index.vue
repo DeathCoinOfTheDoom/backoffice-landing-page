@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <div class="contact-sticky">
+    <a href="mailto:bob@contact.com" class="contact-sticky">
       <img src="~assets/images/paper-plane.svg" alt>
-    </div>
+    </a>
     <section class="intro">
       <div class="max-width">
         <div class="intro__container-text">
@@ -11,7 +11,9 @@
           <p
             class="intro__text"
           >L'application Bob est un compagnon personnel vous permettant de stocker et organiser vos documents locatifs en toutes sécurité. Créer vos dossier locatifs et démarquez vous !</p>
-          <img class="img__download-app" src="~assets/images/dl-app-store.svg" alt>
+          <a href="#" class="link__download-app">
+            <img class="img__download-app" src="~assets/images/dl-app-store.svg" alt>
+          </a>
         </div>
         <div class="intro__container-image">
           <img class="img__proto-mobile" src="~assets/images/prototype-app.png" alt>
@@ -98,20 +100,23 @@
             <p class="section__subtitle">Bob Architecte</p>
           </li>
         </ul>
-        <div>slider</div>
+        <div class="bobbers__slider">
+          <SliderMobile/>
+        </div>
       </div>
     </section>
-    <section></section>
     <Footer/>
   </div>
 </template>
 
 <script>
 import Footer from "~/layouts/Footer.vue";
+import SliderMobile from "~/components/landing/SliderMobile.vue";
 
 export default {
   components: {
-    Footer
+    Footer,
+    SliderMobile
   },
   auth: false
 };
@@ -140,7 +145,24 @@ export default {
 
   @media #{$tablet} {
     height: auto;
-    padding: 100px 25px 20px 25px;
+    padding: 100px 25px 60px 25px;
+  }
+
+  &:after {
+    display: none;
+
+    @media #{$desktop} {
+      display: inherit;
+      content: "";
+      position: absolute;
+      bottom: -255px;
+      left: 0;
+      right: 0;
+      background-image: url("~assets/images/wave.svg");
+      background-position: center;
+      background-size: cover;
+      height: 280px;
+    }
   }
 
   .max-width {
@@ -199,6 +221,16 @@ export default {
 
     @media #{$tablet} {
       text-align: left;
+    }
+  }
+
+  .link {
+    &__download-app {
+      display: none;
+
+      @media #{$tablet} {
+        display: inherit;
+      }
     }
   }
 
@@ -272,7 +304,8 @@ export default {
   }
 
   @media #{$desktop} {
-    padding-bottom: 80px;
+    padding-bottom: 70px;
+    padding-top: 290px;
   }
 
   &__container-item {
@@ -423,10 +456,16 @@ export default {
   }
 
   .section__text {
-    padding: 10px 20px 0;
+    padding: 10px 20px 35px;
 
     @media #{$tablet} {
       padding: 20px;
+    }
+  }
+
+  &__slider {
+    @media #{$tablet} {
+      display: none;
     }
   }
 
@@ -445,6 +484,7 @@ export default {
     width: 125px;
     height: 125px;
     border-radius: 50%;
+    margin: 0 auto;
 
     @media #{$desktop} {
       width: 155px;
