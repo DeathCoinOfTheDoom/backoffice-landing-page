@@ -1,23 +1,39 @@
 <template>
   <div class="container">
     <a href="mailto:bob@contact.com" class="contact-sticky">
-      <img src="~assets/images/paper-plane.svg" alt>
+      <img src="~assets/images/paper-plane.svg" alt="icone avion en papier">
     </a>
     <section class="intro">
       <div class="max-width">
         <div class="intro__container-text">
-          <img class="intro__logo" src="~assets/images/logo-bob.svg" alt>
+          <img
+            class="intro__logo"
+            src="~assets/images/logo-bob.svg"
+            alt="Logo où il est écrit Bob avec la tête du compagnon Bobby dans la lettre O"
+          >
           <h1 class="intro__title">Bob, le guide locatif simple et intuitif</h1>
           <p
             class="intro__text"
           >L'application Bob est un compagnon personnel vous permettant de stocker et organiser vos documents locatifs en toutes sécurité. Créer vos dossier locatifs et démarquez vous !</p>
           <a href="#" class="link__download-app">
-            <img class="img__download-app" src="~assets/images/dl-app-store.svg" alt>
+            <img
+              class="img__download-app"
+              src="~assets/images/dl-app-store.svg"
+              alt="logo de téléchargement pour Apple store"
+            >
           </a>
         </div>
         <div class="intro__container-image">
-          <img class="img__proto-mobile" src="~assets/images/prototype-app.png" alt>
-          <img class="img__proto-desktop" src="~assets/images/proto-and-bobby.png" alt>
+          <img
+            class="img__proto-mobile"
+            src="~assets/images/prototype-app.png"
+            alt="Aperçu du rendu de l'application mobile sur un iphone"
+          >
+          <img
+            class="img__proto-desktop"
+            src="~assets/images/proto-and-bobby.png"
+            alt="Bobby, un chien blanc en dessin, il se cache derrière l'iPhone et il montre l'application Bob"
+          >
         </div>
       </div>
     </section>
@@ -26,21 +42,27 @@
         <h2 class="section__title">Bob, Who ?</h2>
         <div class="who__container-item">
           <div class="who__item">
-            <img src="~assets/images/bobby-folders.svg" alt>
+            <img
+              src="~assets/images/bobby-folders.svg"
+              alt="Bobby tiens un dossier vert dans la main"
+            >
             <h3 class="section__subtitle">Sécurisé</h3>
             <p
               class="section__text"
             >La sécurité de vos documents et leur confidentialité est notre priorité</p>
           </div>
           <div class="who__item">
-            <img src="~assets/images/bobby-messy.svg" alt>
+            <img
+              src="~assets/images/bobby-messy.svg"
+              alt="notre mascotte Bobby a ses documents éparpillé partout"
+            >
             <h3 class="section__subtitle">Intuitif</h3>
             <p
               class="section__text"
             >Une interface simple et intuitive pour ne se concentrer que sur l'essentiel</p>
           </div>
           <div class="who__item">
-            <img src="~assets/images/bobby-winking.svg" alt>
+            <img src="~assets/images/bobby-winking.svg" alt="Bobby fait un clin d'oeil">
             <h3 class="section__subtitle">Guide</h3>
             <p
               class="section__text"
@@ -53,12 +75,24 @@
       <div class="max-width">
         <div class="explain__container-image">
           <div class="explain__image">
-            <img class="image-mobile" src="~assets/images/montmartre.jpg" alt>
-            <img class="image-desktop" src="~assets/images/montmartre-desktop.jpg" alt>
+            <img
+              class="image-mobile"
+              src="~assets/images/montmartre.jpg"
+              alt="Montmartre, 18 arrondissement de Paris"
+            >
+            <img
+              class="image-desktop"
+              src="~assets/images/montmartre-desktop.jpg"
+              alt="Basilique du Sacré-coeur dans le quartier de Montmartre, à Paris"
+            >
           </div>
           <div class="explain__image second">
-            <img class="image-mobile" src="~assets/images/toit-paris.jpg" alt>
-            <img class="image-desktop" src="~assets/images/toit-paris-desktop.jpg" alt>
+            <img class="image-mobile" src="~assets/images/toit-paris.jpg" alt="toits parisiens">
+            <img
+              class="image-desktop"
+              src="~assets/images/toit-paris-desktop.jpg"
+              alt="Vu des toits de Paris, des immeubles Haussmannien"
+            >
           </div>
         </div>
         <div class="explain__container-text">

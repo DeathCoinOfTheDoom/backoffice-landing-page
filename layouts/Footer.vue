@@ -4,9 +4,30 @@
       <div class="contact">
         <h3 class="section__title">Contact</h3>
         <form action>
-          <input class="contact__email" type="email" placeholder="E-mail">
-          <textarea class="contact__textarea" rows="5" cols="33" placeholder="Message"></textarea>
-          <input class="contact__send-btn" type="submit" value="Envoyer">
+          <input
+            id="email"
+            name="email"
+            class="contact__email"
+            type="email"
+            placeholder="E-mail"
+            alt="champs du formulaire pour entrer l'adresse e-mail"
+            required
+          >
+          <textarea
+            class="contact__textarea"
+            id="message"
+            name="message"
+            rows="5"
+            cols="33"
+            alt="zone de texte pour écrire le message à envoyer"
+            placeholder="Message"
+          ></textarea>
+          <input
+            class="contact__send-btn"
+            type="submit"
+            value="Envoyer"
+            alt="bouton pour envoyer le formulaire"
+          >
         </form>
         <div class="contact__line-bottom"></div>
       </div>
@@ -18,18 +39,22 @@
           <a class="legal__item legal__link" href="#">Politiques de confidentialités</a>
           <div class="legal__item legal__social-network">
             <a href="#">
-              <img src="~assets/images/facebook.svg">
+              <img src="~assets/images/facebook.svg" alt="icone FaceBook">
             </a>
             <a href="#">
-              <img src="~assets/images/instagram.svg">
+              <img src="~assets/images/instagram.svg" alt="icone Instagram">
             </a>
             <a href="#">
-              <img src="~assets/images/twitter.svg">
+              <img src="~assets/images/twitter.svg" alt="icone Twitter">
             </a>
           </div>
         </div>
         <div class="legal__container-image">
-          <img class="legal__image" src="~assets/images/bobby-winking-footer.svg" alt>
+          <img
+            class="legal__image"
+            src="~assets/images/bobby-winking-footer.svg"
+            alt="image de Bobby faisant un clin d'oeil et un pouce levé"
+          >
         </div>
       </div>
       <p class="copyright">© Bob 2019</p>
