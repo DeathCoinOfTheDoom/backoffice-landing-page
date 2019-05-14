@@ -42,27 +42,33 @@
         <h2 class="section__title">Bob, Who ?</h2>
         <div class="who__container-item">
           <div class="who__item">
-            <img
-              src="~assets/images/bobby-folders.svg"
-              alt="Bobby tiens un dossier vert dans la main"
-            >
+            <div class="who__item-image">
+              <img
+                src="~assets/images/bobby-folders.svg"
+                alt="Bobby tiens un dossier vert dans la main"
+              >
+            </div>
             <h3 class="section__subtitle">Sécurisé</h3>
             <p
               class="section__text"
             >La sécurité de vos documents et leur confidentialité est notre priorité</p>
           </div>
           <div class="who__item">
-            <img
-              src="~assets/images/bobby-messy.svg"
-              alt="notre mascotte Bobby a ses documents éparpillé partout"
-            >
+            <div class="who__item-image">
+              <img
+                src="~assets/images/bobby-messy.svg"
+                alt="notre mascotte Bobby a ses documents éparpillé partout"
+              >
+            </div>
             <h3 class="section__subtitle">Intuitif</h3>
             <p
               class="section__text"
             >Une interface simple et intuitive pour ne se concentrer que sur l'essentiel</p>
           </div>
           <div class="who__item">
-            <img src="~assets/images/bobby-winking.svg" alt="Bobby fait un clin d'oeil">
+            <div class="who__item-image">
+              <img src="~assets/images/bobby-winking.svg" alt="Bobby fait un clin d'oeil">
+            </div>
             <h3 class="section__subtitle">Guide</h3>
             <p
               class="section__text"
@@ -236,11 +242,12 @@ export default {
   }
 
   &__title {
+    font-family: $poppins-bold;
+    font-weight: bold;
     font-size: 22px;
     color: $white;
     text-align: center;
     padding-bottom: 30px;
-    font-weight: bold;
 
     @media #{$tablet} {
       text-align: left;
@@ -248,10 +255,11 @@ export default {
   }
 
   &__text {
+    font-family: $poppins-regular;
+    font-weight: normal;
     font-size: 18px;
     color: $white;
     text-align: center;
-    font-weight: normal;
 
     @media #{$tablet} {
       text-align: left;
@@ -306,21 +314,24 @@ export default {
 
 .section {
   &__title {
+    font-family: $poppins-bold;
+    font-weight: bold;
     font-size: 20px;
     color: $dark-blue;
     text-align: center;
-    font-weight: bold;
   }
 
   &__subtitle {
+    font-family: $poppins-semibold;
     font-size: 18px;
     color: $dark-blue;
     text-align: center;
     font-weight: 600;
-    padding-top: 10px;
+    padding: 10px 0 4px;
   }
 
   &__text {
+    font-family: $poppins-medium;
     font-size: 16px;
     color: $dark-grey;
     text-align: center;
@@ -345,6 +356,7 @@ export default {
   &__container-item {
     @media #{$tablet} {
       @include flexbox();
+      @include align-items(flex-start);
     }
   }
 
@@ -358,6 +370,13 @@ export default {
     @media #{$tablet} {
       padding: 50px 60px 0px 60px;
     }
+  }
+
+  &__item-image {
+    height: 170px;
+    @include flexbox();
+    @include align-items(center);
+    @include justify-content(center);
   }
 }
 
