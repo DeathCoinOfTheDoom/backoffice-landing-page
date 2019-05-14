@@ -45,7 +45,8 @@ module.exports = {
    */
   plugins: [
     { src: "~/plugins/smart-table", ssr: false },
-    { src: "~plugins/vee-validate", ssr: true }
+    { src: "~plugins/vee-validate", ssr: true },
+    { src: "~plugins/vue-carousel", ssr: false }
   ],
   /*
    ** Modules
