@@ -106,6 +106,8 @@ footer {
 
   &__email,
   &__textarea {
+    font-family: $poppins-regular;
+    font-weight: normal;
     width: 100%;
     max-width: 330px;
     border-radius: 10px;
@@ -124,6 +126,8 @@ footer {
     }
 
     &::placeholder {
+      font-family: $poppins-regular;
+      font-weight: normal;
       color: $light-grey;
       font-size: 16px;
     }
@@ -136,6 +140,8 @@ footer {
   }
 
   &__send-btn {
+    font-family: $poppins-bold;
+    font-weight: bold;
     height: 50px;
     width: 100%;
     max-width: 330px;
@@ -144,7 +150,6 @@ footer {
     border: none;
     color: $white;
     font-size: 18px;
-    font-weight: bold;
     margin-top: 10px;
     flex-basis: 100%;
   }
@@ -222,10 +227,11 @@ footer {
   }
 
   &__link {
+    font-family: $poppins-medium;
+    font-weight: 500;
     display: inline-block;
     font-size: 16px;
     color: $white;
-    font-weight: bold;
     text-decoration: none;
     text-align: center;
     padding-bottom: 15px;
@@ -261,9 +267,10 @@ footer {
 }
 
 .copyright {
+  font-family: $poppins-regular;
+  font-weight: normal;
   font-size: 16px;
   color: $white;
-  font-weight: normal;
   text-align: center;
 
   @media #{$tablet} {
