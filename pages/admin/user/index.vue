@@ -23,18 +23,6 @@
       <div class="table">
         <div class="table__option">
           <div class="option--item">
-            <!-- <div>
-              <label>Tous</label>
-              <input type="radio" value="all" v-model="filterTypeValue" checked>
-            </div>
-            <div>
-              <label>Utilisateurs</label>
-              <input type="radio" value="user" v-model="filterTypeValue">
-            </div>
-            <div>
-              <label for="admin">Administrateurs</label>
-              <input type="radio" id="admin" value="admin" v-model="filterTypeValue">
-            </div>-->
             <select v-model="filterTypeValue">
               <option value="all" selected>Tous</option>
               <option value="user">Utilisateurs</option>
@@ -227,6 +215,7 @@ export default {
 
 .button--action {
   width: 330px;
+  height: 50px;
   font-size: 18px;
   font-weight: bold;
   border-radius: 10px;

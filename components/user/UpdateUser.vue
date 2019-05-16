@@ -1,17 +1,17 @@
 <template>
-  <div class="background_update-user">
-    <div class="container-_update-user">
+  <div class="modal__background">
+    <div class="modal update">
       <form>
-        <div class="label">
-          <label for="prenom">Prénom</label>
+        <div class="update__field">
+          <label for="prenom">Prénom :</label>
           <input type="text" id="prenom" name="prenom" v-model="editUser.firstName">
         </div>
-        <div class="label">
-          <label for="nom">Nom</label>
+        <div class="update__field">
+          <label for="nom">Nom :</label>
           <input type="text" id="nom" name="nom" v-model="editUser.lastName">
         </div>
-        <div class="label">
-          <label for="telephone">Numéro de téléphone</label>
+        <div class="update__field">
+          <label for="telephone">Numéro de téléphone :</label>
           <input
             type="text"
             id="telephone"
@@ -20,31 +20,33 @@
             v-model="editUser.phone_number"
           >
         </div>
-        <div class="label">
-          <label for="email">Email</label>
+        <div class="update__field">
+          <label for="email">Email :</label>
           <input type="email" id="email" name="email" v-model="editUser.email">
         </div>
-        <div class="label">
-          <label for="birthdate">Date de naissance</label>
+        <div class="update__field">
+          <label for="birthdate">Date de naissance :</label>
           <input type="date" id="birthdate" name="birthdate" v-model="editUser.birthdate">
         </div>
-        <div class="label">
-          <label for="adminAccount">Administrateur</label>
+        <div class="update__field">
+          <label for="adminAccount">Administrateur :</label>
           <input type="checkbox" id="adminAccount" name="adminAccount" v-model="editUser.admin">
         </div>
         <div v-if="editUser.admin">
-          <div class="label">
-            <label for="password">Modifier le mot de passe</label>
+          <div class="update__field">
+            <label for="password">Modifier le mot de passe :</label>
             <input type="password" v-model="editUser.password">
           </div>
-          <div class="label">
-            <label for="password_confirmation">Confirmer le mot de passe</label>
+          <div class="update__field">
+            <label for="password_confirmation">Confirmer le mot de passe :</label>
             <input type="password" v-model="editUser.password_confirmation">
           </div>
         </div>
       </form>
-      <button type="submit" form value @click="changedUser">Valider</button>
-      <button @click="cancelUpdate">Annuler</button>
+      <div class="container__buttons">
+        <button class="button--action" type="submit" form value @click="changedUser">Valider</button>
+        <button class="button--cancel" @click="cancelUpdate">Annuler</button>
+      </div>
     </div>
   </div>
 </template>
@@ -88,21 +90,34 @@ export default {
   }
 };
 </script>
-<style>
-.background_update-user {
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
+<style lang="scss">
+.update {
+  &__field {
+    @include flexbox();
+    @include align-items(center);
+  }
 
-.container-_update-user {
-  background: white;
-  padding: 40px;
+  label {
+    font-weight: bold;
+  }
+
+  input {
+    width: 200px;
+    height: 38px;
+    font-size: 16px;
+    color: $light-grey;
+    border-radius: 10px;
+    border: 1px solid $very-light-blue;
+    padding: 10px;
+    margin: 3px 0 3px 10px;
+    background-color: transparent;
+
+    &:focus {
+      outline: none;
+      color: $black;
+      border: 1px solid $blue;
+      transition: all 0.5s;
+    }
+  }
 }
 </style>
