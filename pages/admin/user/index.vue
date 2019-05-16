@@ -258,6 +258,7 @@ aside {
     cursor: pointer;
     text-decoration: none;
     color: $white;
+    height: 65px;
 
     &.active {
       background-color: $gun-metal;
@@ -384,101 +385,101 @@ aside {
   &__inner {
     width: 100%;
     padding-top: 20px;
+  }
 
-    th {
-      font-size: 20px;
-      font-weight: bold;
-      color: $black;
-      text-align: left;
-      padding: 10px;
-      white-space: nowrap;
+  th {
+    font-size: 20px;
+    font-weight: bold;
+    color: $black;
+    text-align: left;
+    padding: 10px;
+    white-space: nowrap;
+  }
+
+  tr {
+    text-align: left;
+
+    &:nth-child(odd) {
+      background-color: $pale-grey;
     }
 
-    tr {
-      text-align: left;
-
-      &:nth-child(odd) {
-        background-color: $pale-grey;
-      }
-
-      &:nth-child(1n + 1) {
-        .avatar {
-          &__circle {
-            background-color: $yellow;
-          }
-        }
-      }
-
-      &:nth-child(2n + 1) {
-        .avatar {
-          &__circle {
-            background-color: $light-salmon;
-          }
-        }
-      }
-
-      &:nth-child(3n + 1) {
-        .avatar {
-          &__circle {
-            background-color: $pinky;
-          }
-        }
-      }
-
-      &:nth-child(4n + 1) {
-        .avatar {
-          &__circle {
-            background-color: $sky;
-          }
-        }
-      }
-
-      &:nth-child(5n + 1) {
-        .avatar {
-          &__circle {
-            background-color: $pale-aqua;
-          }
+    &:nth-child(1n + 1) {
+      .avatar {
+        &__circle {
+          background-color: $yellow;
         }
       }
     }
 
-    td {
-      font-family: $poppins-medium;
-      font-weight: 500;
-      font-size: 16px;
-      letter-spacing: 0.2px;
-      padding: 5px 10px;
-      white-space: nowrap;
-    }
-
-    .id {
-      &__text {
-        text-align: center;
+    &:nth-child(2n + 1) {
+      .avatar {
+        &__circle {
+          background-color: $light-salmon;
+        }
       }
     }
 
-    .avatar {
-      &__circle {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        position: relative;
-        overflow: hidden;
-      }
-      &__image {
-        width: 20px;
-        height: 40px;
-        position: absolute;
-        bottom: -5px;
-        left: 50%;
-        transform: translateX(-50%);
+    &:nth-child(3n + 1) {
+      .avatar {
+        &__circle {
+          background-color: $pinky;
+        }
       }
     }
 
-    .admin {
-      &__text {
-        text-align: center;
+    &:nth-child(4n + 1) {
+      .avatar {
+        &__circle {
+          background-color: $sky;
+        }
       }
+    }
+
+    &:nth-child(5n + 1) {
+      .avatar {
+        &__circle {
+          background-color: $pale-aqua;
+        }
+      }
+    }
+  }
+
+  td {
+    font-family: $poppins-medium;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.2px;
+    padding: 5px 10px;
+    white-space: nowrap;
+  }
+
+  .id {
+    &__text {
+      text-align: center;
+    }
+  }
+
+  .avatar {
+    &__circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      position: relative;
+      overflow: hidden;
+    }
+    &__image {
+      width: 20px;
+      height: 40px;
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  .admin {
+    &__text {
+      text-align: center;
     }
   }
 }

@@ -1,57 +1,65 @@
 <template>
-  <section class="container">
+  <section class="body">
     <aside>
       <img class="logo-backoffice" src="~assets/images/logo-bob.svg" alt>
       <nuxt-link to="/admin/user/" class="tab">
         <span>
-          <img src="~assets/images/dogo-user.svg" alt>
+          <img class="picto__tab-user" src="~assets/images/dogo-user.svg" alt>
         </span>Utilisateurs
       </nuxt-link>
       <nuxt-link to="/admin/category/" class="tab active">
         <span>
-          <img src="~assets/images/listing.svg" alt>
+          <img class="picto__tab-category" src="~assets/images/listing.svg" alt>
         </span>
         <p>Catégories</p>
       </nuxt-link>
-      <div class="logout btn" @click="logout">Déconnexion</div>
+      <div class="logout" @click="logout">
+        <span>
+          <img class="picto__logout" src="~assets/images/logout.svg" alt>
+        </span>Déconnexion
+      </div>
     </aside>
-    <div class="logout btn" @click="logout">Déconnexion</div>
-    <div class="table-category">
-      <div class="tab-category"></div>
-      <no-ssr>
-        <v-table :data="categorys">
-          <thead slot="head">
-            <th>ID</th>
-            <th>Photo</th>
-            <th>Catégories</th>
-            <th colspan="3">Action</th>
-          </thead>
-          <tbody slot="body" slot-scope="{displayData}">
-            <tr v-for="category in displayData" :key="category.id">
-              <td>{{ category.id }}</td>
-              <td class="avatar">
-                <img :src="category.attributes.icon">
-              </td>
-              <td>{{ category.attributes.title}}</td>
-              <td class="Voir sa fiche">
-                <nuxt-link v-bind:to="`/admin/category/${category.id}`" class="button__voir">Voir</nuxt-link>
-              </td>
-              <td class="modifier">
-                <div
-                  class="button__modifier"
-                  @click="showEdit = true, selectedCategory = category"
-                >Modifier la catégorie</div>
-              </td>
-            </tr>
-          </tbody>
-        </v-table>
-      </no-ssr>
-      <UpdateCategory
-        v-if="showEdit"
-        v-on:closedEdit="closeEdit"
-        v-bind:category="selectedCategory"
-      />
-      <ReadCategory v-if="showInfo" v-on:closedInfo="closeInfo" v-bind:category="selectedCategory"/>
+    <div class="main">
+      <div class="table category">
+        <no-ssr>
+          <v-table :data="categorys">
+            <thead slot="head">
+              <th>ID</th>
+              <th>Photo</th>
+              <th>Catégories</th>
+              <th colspan="3">Action</th>
+            </thead>
+            <tbody slot="body" slot-scope="{displayData}">
+              <tr v-for="category in displayData" :key="category.id">
+                <td class="id__text">{{ category.id }}</td>
+                <td class="avatar">
+                  <img class="avatar__category" :src="category.attributes.icon">
+                </td>
+                <td>{{ category.attributes.title}}</td>
+                <td class="Voir sa fiche">
+                  <nuxt-link v-bind:to="`/admin/category/${category.id}`" class="button__voir">Voir</nuxt-link>
+                </td>
+                <td class="modifier">
+                  <div
+                    class="button__modifier"
+                    @click="showEdit = true, selectedCategory = category"
+                  >Modifier la catégorie</div>
+                </td>
+              </tr>
+            </tbody>
+          </v-table>
+        </no-ssr>
+        <UpdateCategory
+          v-if="showEdit"
+          v-on:closedEdit="closeEdit"
+          v-bind:category="selectedCategory"
+        />
+        <ReadCategory
+          v-if="showInfo"
+          v-on:closedInfo="closeInfo"
+          v-bind:category="selectedCategory"
+        />
+      </div>
     </div>
   </section>
 </template>
@@ -101,7 +109,25 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+.table {
+  &.category {
+    @include flexbox();
+    @include justify-content(center);
+
+    table {
+      width: 800px;
+      padding-top: 50px;
+    }
+  }
+}
+.avatar {
+  &__category {
+    width: 50px;
+    color: pink;
+  }
+}
+
 /* *  {
   padding: 0;
   margin: 0;
