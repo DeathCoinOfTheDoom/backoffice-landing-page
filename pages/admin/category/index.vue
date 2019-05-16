@@ -1,17 +1,19 @@
 <template>
   <section class="container">
     <aside>
+      <img class="logo-backoffice" src="~assets/images/logo-bob.svg" alt>
       <nuxt-link to="/admin/user/" class="tab">
         <span>
-          <img src="~assets/images/user.png" alt>
+          <img src="~assets/images/dogo-user.svg" alt>
         </span>Utilisateurs
       </nuxt-link>
       <nuxt-link to="/admin/category/" class="tab active">
         <span>
-          <img src="~assets/images/format-list-bulleted-type.png" alt>
+          <img src="~assets/images/listing.svg" alt>
         </span>
         <p>Catégories</p>
       </nuxt-link>
+      <div class="logout btn" @click="logout">Déconnexion</div>
     </aside>
     <div class="logout btn" @click="logout">Déconnexion</div>
     <div class="table-category">
@@ -100,7 +102,7 @@ export default {
 </script>
 
 <style>
-*  {
+/* *  {
   padding: 0;
   margin: 0;
 }
@@ -121,13 +123,6 @@ export default {
   border-radius: 8px;
   text-decoration: none;
   color: black;
-}
-
-aside {
-  width: 15%;
-  max-width: 250px;
-  height: 100vh;
-  background: #bbbbbb;
 }
 
 aside .tab {
@@ -231,7 +226,6 @@ thead {
   padding: 0 5px;
 }
 
-/*---POP-UP---*/
 .background_confirm-delete {
   background: rgba(0, 0, 0, 0.7);
   display: flex;
@@ -269,7 +263,6 @@ button {
 .cancel:hover {
   border-bottom: 1px solid red;
 }
-/*__fin popup__*/
 
 .container {
   min-height: 100vh;
@@ -283,7 +276,7 @@ button {
 
 .title {
   font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
   display: block;
   font-weight: 300;
   font-size: 100px;
@@ -301,6 +294,6 @@ button {
 
 .links {
   padding-top: 15px;
-}
+} */
 </style>
 

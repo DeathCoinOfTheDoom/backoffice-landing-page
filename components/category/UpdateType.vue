@@ -38,7 +38,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .background_read-category {
   background: rgba(0, 0, 0, 0.7);
   display: flex;
