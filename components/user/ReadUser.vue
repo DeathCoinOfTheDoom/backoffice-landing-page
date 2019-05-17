@@ -3,31 +3,31 @@
     <div class="modal read">
       <div class="user__card">
         <div class="user__informations">
-          <p>
+          <p class="modal__text">
             <span class="text-bold">Nom :</span>
             {{this.user.attributes.firstName}}
           </p>
-          <p>
+          <p class="modal__text">
             <span class="text-bold">Prénom :</span>
             {{this.user.attributes.lastName}}
           </p>
-          <p>
+          <p class="modal__text">
             <span class="text-bold">N° de téléphone :</span>
             {{this.user.attributes.phone_number}}
           </p>
-          <p>
+          <p class="modal__text">
             <span class="text-bold">Email :</span>
             {{this.user.attributes.email}}
           </p>
-          <p>
+          <p class="modal__text">
             <span class="text-bold">Date de naissance :</span>
             {{this.user.attributes.birthdate}}
           </p>
-          <p>
+          <p class="modal__text">
             <span class="text-bold">Administrateur :</span>
             {{this.user.attributes.admin ? this.user.attributes.admin : "/"}}
           </p>
-          <p>
+          <p class="modal__text">
             <span class="text-bold">Membre depuis :</span>
             {{this.user.attributes.created_at}}
           </p>
@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="line"></div>
-      <p>
+      <p class="modal__text">
         <span class="text-bold">Nombre de fichier(s) :</span>
         {{this.user.relationships.files.data.length}}
       </p>
@@ -45,7 +45,7 @@
         <li v-for="file in files" :key="file.id">{{file}}</li>
       </ul>
       <div class="line"></div>
-      <p>
+      <p class="modal__text">
         <span class="text-bold">Nombre de dossier(s) :</span>
         {{this.user.relationships.folders.data.length}}
       </p>
@@ -121,28 +121,6 @@ export default {
   }
 }
 .modal {
-  width: 840px;
-  background: $white;
-  padding: 40px;
-  border-radius: 4px;
-
-  &__background {
-    background: rgba(0, 0, 0, 0.7);
-    @include flexbox();
-    @include justify-content(center);
-    @include align-items(center);
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-  }
-
-  p {
-    text-align: left;
-    padding: 8px;
-  }
-
   .user {
     &__card {
       @include flexbox();
@@ -171,27 +149,9 @@ export default {
   }
 }
 
-.text-bold {
-  font-family: $poppins-bold;
-  font-weight: bold;
-  font-size: 16px;
-}
-
 .line {
   background: $light-grey;
   height: 2px;
   margin: 13px 5px;
-}
-
-.button--cancel {
-  display: block;
-  width: 330px;
-  height: 50px;
-  font-size: 18px;
-  font-weight: bold;
-  border: 2px solid $pale-sky;
-  border-radius: 8px;
-  color: $dark-sky;
-  background-color: transparent;
 }
 </style>

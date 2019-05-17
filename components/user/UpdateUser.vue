@@ -2,17 +2,24 @@
   <div class="modal__background">
     <div class="modal update">
       <form>
-        <div class="update__field">
+        <div class="container__field">
           <label for="prenom">Prénom :</label>
-          <input type="text" id="prenom" name="prenom" v-model="editUser.firstName">
+          <input
+            class="input-modal"
+            type="text"
+            id="prenom"
+            name="prenom"
+            v-model="editUser.firstName"
+          >
         </div>
-        <div class="update__field">
+        <div class="container__field">
           <label for="nom">Nom :</label>
-          <input type="text" id="nom" name="nom" v-model="editUser.lastName">
+          <input class="input-modal" type="text" id="nom" name="nom" v-model="editUser.lastName">
         </div>
-        <div class="update__field">
+        <div class="container__field">
           <label for="telephone">Numéro de téléphone :</label>
           <input
+            class="input-modal"
             type="text"
             id="telephone"
             name="Telephone"
@@ -20,26 +27,38 @@
             v-model="editUser.phone_number"
           >
         </div>
-        <div class="update__field">
+        <div class="container__field">
           <label for="email">Email :</label>
-          <input type="email" id="email" name="email" v-model="editUser.email">
+          <input class="input-modal" type="email" id="email" name="email" v-model="editUser.email">
         </div>
-        <div class="update__field">
+        <div class="container__field">
           <label for="birthdate">Date de naissance :</label>
-          <input type="date" id="birthdate" name="birthdate" v-model="editUser.birthdate">
+          <input
+            class="input-modal"
+            type="date"
+            id="birthdate"
+            name="birthdate"
+            v-model="editUser.birthdate"
+          >
         </div>
-        <div class="update__field">
+        <div class="container__field">
           <label for="adminAccount">Administrateur :</label>
-          <input type="checkbox" id="adminAccount" name="adminAccount" v-model="editUser.admin">
+          <input
+            class="input-modal"
+            type="checkbox"
+            id="adminAccount"
+            name="adminAccount"
+            v-model="editUser.admin"
+          >
         </div>
         <div v-if="editUser.admin">
-          <div class="update__field">
+          <div class="container__field">
             <label for="password">Modifier le mot de passe :</label>
-            <input type="password" v-model="editUser.password">
+            <input class="input-modal" type="password" v-model="editUser.password">
           </div>
-          <div class="update__field">
+          <div class="container__field">
             <label for="password_confirmation">Confirmer le mot de passe :</label>
-            <input type="password" v-model="editUser.password_confirmation">
+            <input class="input-modal" type="password" v-model="editUser.password_confirmation">
           </div>
         </div>
       </form>
@@ -91,33 +110,22 @@ export default {
 };
 </script>
 <style lang="scss">
-.update {
-  &__field {
-    @include flexbox();
-    @include align-items(center);
-  }
+.input-modal {
+  width: 200px;
+  height: 38px;
+  font-size: 16px;
+  color: $light-grey;
+  border-radius: 10px;
+  border: 1px solid $very-light-blue;
+  padding: 10px;
+  margin: 3px 0 3px 10px;
+  background-color: transparent;
 
-  label {
-    font-weight: bold;
-  }
-
-  input {
-    width: 200px;
-    height: 38px;
-    font-size: 16px;
-    color: $light-grey;
-    border-radius: 10px;
-    border: 1px solid $very-light-blue;
-    padding: 10px;
-    margin: 3px 0 3px 10px;
-    background-color: transparent;
-
-    &:focus {
-      outline: none;
-      color: $black;
-      border: 1px solid $blue;
-      transition: all 0.5s;
-    }
+  &:focus {
+    outline: none;
+    color: $black;
+    border: 1px solid $blue;
+    transition: all 0.5s;
   }
 }
 </style>
