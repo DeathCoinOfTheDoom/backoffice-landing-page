@@ -1,20 +1,54 @@
 <template>
-  <div class="background_read-user">
-    <div class="container-_read-user">
-      <p>Nom : {{this.user.attributes.firstName}}</p>
-      <p>Prénom : {{this.user.attributes.lastName}}</p>
-      <p>N° de téléphone : {{this.user.attributes.phone_number}}</p>
-      <p>Email : {{this.user.attributes.email}}</p>
-      <p>Date de naissance : {{this.user.attributes.birthdate}}</p>
-      <p>Administrateur : {{this.user.attributes.admin ? this.user.attributes.admin : "/"}}</p>
-      <p>Membre depuis : {{this.user.attributes.created_at}}</p>
+  <div class="modal__background">
+    <div class="modal read">
+      <div class="user__card">
+        <div class="user__informations">
+          <p>
+            <span class="text-bold">Nom :</span>
+            {{this.user.attributes.firstName}}
+          </p>
+          <p>
+            <span class="text-bold">Prénom :</span>
+            {{this.user.attributes.lastName}}
+          </p>
+          <p>
+            <span class="text-bold">N° de téléphone :</span>
+            {{this.user.attributes.phone_number}}
+          </p>
+          <p>
+            <span class="text-bold">Email :</span>
+            {{this.user.attributes.email}}
+          </p>
+          <p>
+            <span class="text-bold">Date de naissance :</span>
+            {{this.user.attributes.birthdate}}
+          </p>
+          <p>
+            <span class="text-bold">Administrateur :</span>
+            {{this.user.attributes.admin ? this.user.attributes.admin : "/"}}
+          </p>
+          <p>
+            <span class="text-bold">Membre depuis :</span>
+            {{this.user.attributes.created_at}}
+          </p>
+        </div>
+        <div class="user__image">
+          <img src="~assets/images/dogo-profil.png" alt>
+        </div>
+      </div>
       <div class="line"></div>
-      <p>Nombre de fichier(s) :{{this.user.relationships.files.data.length}}</p>
+      <p>
+        <span class="text-bold">Nombre de fichier(s) :</span>
+        {{this.user.relationships.files.data.length}}
+      </p>
       <ul>
         <li v-for="file in files" :key="file.id">{{file}}</li>
       </ul>
       <div class="line"></div>
-      <p>Nombre de dossier(s) :{{this.user.relationships.folders.data.length}}</p>
+      <p>
+        <span class="text-bold">Nombre de dossier(s) :</span>
+        {{this.user.relationships.folders.data.length}}
+      </p>
       <div v-if="folders != ''">
         <table>
           <thead>
@@ -31,7 +65,7 @@
           </tbody>
         </table>
       </div>
-      <button @click="hideInfo">Fermer</button>
+      <button class="button--cancel" @click="hideInfo">Fermer</button>
     </div>
   </div>
 </template>
@@ -80,31 +114,84 @@ export default {
   }
 };
 </script>
-<style scoped>
-.background_read-user {
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+<style lang="scss">
+.read {
+  .button--cancel {
+    margin: 20px auto 0;
+  }
+}
+.modal {
+  width: 840px;
+  background: $white;
+  padding: 40px;
+  border-radius: 4px;
+
+  &__background {
+    background: rgba(0, 0, 0, 0.7);
+    @include flexbox();
+    @include justify-content(center);
+    @include align-items(center);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  p {
+    text-align: left;
+    padding: 8px;
+  }
+
+  .user {
+    &__card {
+      @include flexbox();
+      @include flex-wrap(wrap);
+      @include align-items(center);
+    }
+
+    &__informations {
+      width: 50%;
+    }
+
+    &__image {
+      width: 50%;
+
+      img {
+        display: block;
+        width: 130px;
+        height: 130px;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .button--action {
+    box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.16);
+  }
 }
 
-.container-_read-user {
-  background: white;
-  padding: 40px;
+.text-bold {
+  font-family: $poppins-bold;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 .line {
-  background: #bebebe;
+  background: $light-grey;
   height: 2px;
-  margin: 5px;
+  margin: 13px 5px;
 }
 
-table {
-  width: 100%;
+.button--cancel {
+  display: block;
+  width: 330px;
+  height: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  border: 2px solid $pale-sky;
+  border-radius: 8px;
+  color: $dark-sky;
+  background-color: transparent;
 }
 </style>
