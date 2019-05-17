@@ -1,32 +1,36 @@
 <template>
-  <div>
-    <div v-if="category" class="background_read-category">
-      <div class="container-_read-category">
-        <img :src="this.category.attributes.icon">
-        <p>Description: {{this.category.attributes.description}}</p>
-        <p>Description détaillé: {{this.category.attributes.extended_description}}</p>
-        <p class="text">Les types dans la catégorie {{this.category.attributes.title}} :</p>
-        <no-ssr>
-          <v-table :data="types">
-            <thead slot="head">
-              <th>Types</th>
-              <th colspan="1">Action</th>
-            </thead>
-            <tbody slot="body" slot-scope="{displayData}">
-              <tr v-for="type in displayData" :key="type.id">
-                <td>{{ type.attributes.title }}</td>
-                <td class="modifier">
-                  <div
-                    class="button__modifier"
-                    @click="selectedType = type, editType = true"
-                  >Modifier</div>
-                </td>
-              </tr>
-            </tbody>
-          </v-table>
-        </no-ssr>
-        <nuxt-link to="/admin/category">Retour</nuxt-link>
-      </div>
+  <div class="edit-page">
+    <div v-if="category" class="modal__page">
+      <p class="modal__title">Information de la catégorie : {{this.category.attributes.title}}</p>
+      <img class="type__image" :src="this.category.attributes.icon">
+      <p class="modal__text">
+        <span class="text-bold">Description :</span>
+        {{this.category.attributes.description}}
+      </p>
+      <p class="modal__text">
+        <span class="text-bold">Description détaillé :</span>
+        {{this.category.attributes.extended_description}}
+      </p>
+      <p class="modal__title">Les types dans la catégorie {{this.category.attributes.title}} :</p>
+      <no-ssr>
+        <v-table class="table" :data="types">
+          <thead slot="head">
+            <th>Types</th>
+            <th colspan="1">Action</th>
+          </thead>
+          <tbody slot="body" slot-scope="{displayData}">
+            <tr v-for="type in displayData" :key="type.id">
+              <td>{{ type.attributes.title }}</td>
+              <td class="modifier">
+                <div @click="selectedType = type, editType = true">
+                  <img class="button--table" src="~assets/images/edit.svg" alt>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </v-table>
+      </no-ssr>
+      <nuxt-link class="button--cancel" to="/admin/category">Retour</nuxt-link>
       <UpdateType v-if="editType" v-on:closedEdit="closeEdit" v-bind:type="selectedType"/>
     </div>
 
@@ -76,46 +80,44 @@ export default {
 };
 </script>
 
-<style scoped>
-.background_read-category {
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+<style lang="scss">
+.edit-page {
+  .modal {
+    &__title {
+      padding-top: 40px;
+      text-align: left;
+
+      &:first-child {
+        padding-top: 0;
+      }
+    }
+  }
+
+  th {
+    &:last-child {
+      text-align: center;
+    }
+  }
+
+  tr {
+    height: 50px;
+  }
+
+  td {
+    &:first-child {
+      text-align: left;
+    }
+  }
 }
 
-p {
-  text-align: left;
-}
-
-img {
-  width: 150px;
-}
-
-.text {
-  padding: 20px 0px 10px;
-}
-
-.container-_read-category {
-  background: white;
-  padding: 40px;
-}
-
-.button__modifier {
-  border-radius: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #f66f2c;
-  border: 1px solid #d95514;
-  color: #772c07;
-  text-decoration: none;
-  cursor: pointer;
+.type {
+  &__image {
+    display: block;
+    margin: 0 auto;
+    width: 130px;
+    height: auto;
+    padding-bottom: 20px;
+  }
 }
 </style>
 

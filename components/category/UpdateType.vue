@@ -1,9 +1,14 @@
 <template>
-  <div class="background_read-category">
-    <div class="container-_read-category">
-      <input type="text" v-model="typeForm.title">
-      <button @click="cancelUpdate">Annuler</button>
-      <button @click="updateType">Valider</button>
+  <div class="modal__background">
+    <div class="modal update-type">
+      <div class="field">
+        <label for="type">Modifier le nom du type :</label>
+        <input class="input-modal" id="type" name="type" type="text" v-model="typeForm.title">
+      </div>
+      <div class="container__buttons">
+        <button class="button--action" type="submit" @click="updateType">Valider</button>
+        <button class="button--cancel" type="submit" @click="cancelUpdate">Annuler</button>
+      </div>
     </div>
   </div>
 </template>
@@ -37,34 +42,13 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.background_read-category {
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-
-p {
-  text-align: left;
-}
-
-img {
-  width: 150px;
-}
-
-.text {
-  padding: 20px 0px 10px;
-}
-
-.container-_read-category {
-  background: white;
-  padding: 40px;
+<style lang="scss">
+.update-type {
+  .field {
+    @include flexbox();
+    @include justify-content(center);
+    @include align-items(center);
+  }
 }
 </style>
+

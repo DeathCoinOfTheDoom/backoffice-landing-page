@@ -69,19 +69,21 @@
                 <td>{{ user.attributes.birthdate ? user.attributes.birthdate : "/"}}</td>
                 <td class="admin__text">{{ user.attributes.admin ? user.attributes.admin : "/"}}</td>
                 <td class="voir">
-                  <div class="button__voir" @click="showInfo = true, selectedUser = user">Voir</div>
+                  <div @click="showInfo = true, selectedUser = user">
+                    <img class="button--table" src="~assets/images/view.svg" alt>
+                  </div>
                 </td>
                 <td class="modifier">
-                  <div
-                    class="button__modifier"
-                    @click="showEdit = true, selectedUser = user"
-                  >Modifier</div>
+                  <div @click="showEdit = true, selectedUser = user">
+                    <img class="button--table" src="~assets/images/edit.svg" alt>
+                  </div>
                 </td>
                 <td class="supprimer">
                   <div
-                    class="button__supprimer"
                     @click="showPopup = true, userId = user.id, userFirstName = user.attributes.firstName, userLastName = user.attributes.lastName"
-                  >Supprimer</div>
+                  >
+                    <img class="button--table" src="~assets/images/garbage.svg" alt>
+                  </div>
                 </td>
               </tr>
             </tbody>
@@ -199,31 +201,6 @@ export default {
   @include flex-direction(row);
   text-align: center;
   background-color: $white;
-}
-
-.hide {
-  background-color: red;
-}
-
-.btn {
-  padding: 5px 10px;
-  border: 1px solid grey;
-  border-radius: 8px;
-  text-decoration: none;
-  color: black;
-}
-
-.button--action {
-  width: 330px;
-  height: 50px;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 10px;
-  background-color: $blue;
-  color: $white;
-  text-decoration: none;
-  padding: 15px 0;
-  margin: 15px;
 }
 
 aside {
@@ -376,15 +353,6 @@ aside {
     padding-top: 20px;
   }
 
-  th {
-    font-size: 20px;
-    font-weight: bold;
-    color: $black;
-    text-align: left;
-    padding: 10px;
-    white-space: nowrap;
-  }
-
   tr {
     text-align: left;
 
@@ -450,6 +418,8 @@ aside {
 
   .avatar {
     &__circle {
+      display: block;
+      margin: 0 auto;
       width: 50px;
       height: 50px;
       border-radius: 50%;

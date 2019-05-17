@@ -6,3 +6,318 @@ body {
   font-family: $poppins-medium;
   font-weight: 500;
 }
+
+.input-modal {
+  width: 200px;
+  height: 38px;
+  font-size: 16px;
+  color: $light-grey;
+  border-radius: 10px;
+  border: 1px solid $very-light-blue;
+  padding: 10px;
+  margin: 3px 0 3px 10px;
+  background-color: transparent;
+
+  &:focus {
+    outline: none;
+    color: $black;
+    border: 1px solid $blue;
+    transition: all 0.5s;
+  }
+}
+
+.text-bold {
+  font-family: $poppins-bold;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.button--action {
+  width: 330px;
+  height: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+  background-color: $blue;
+  color: $white;
+  text-decoration: none;
+  padding: 15px 0;
+  margin: 15px;
+}
+
+.container {
+  &__field {
+    @include flexbox();
+    @include align-items(center);
+
+    label {
+      font-weight: bold;
+    }
+  }
+
+  &__buttons {
+    @include flexbox();
+    @include flex-wrap(wrap);
+    @include justify-content(center);
+
+    .button--action,
+    .button--cancel {
+      margin: 20px 20px 0;
+      cursor: pointer;
+    }
+  }
+}
+
+.modal {
+  width: 840px;
+  background: $white;
+  padding: 40px;
+  border-radius: 4px;
+
+  &__title {
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+
+  &__text {
+    text-align: left;
+    padding: 8px;
+  }
+
+  &__background {
+    background: rgba(0, 0, 0, 0.7);
+    @include flexbox();
+    @include justify-content(center);
+    @include align-items(center);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  &__page {
+    width: 840px;
+    padding: 40px;
+    margin: 40px 0;
+    border-radius: 4px;
+    background-color: $white;
+  }
+}
+
+.edit-page {
+  @include flexbox();
+  @include justify-content(center);
+  @include align-items(center);
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+
+  .button--cancel {
+    line-height: 44px;
+    text-align: center;
+    text-decoration: none;
+    margin: 20px auto 0;
+  }
+}
+
+.table {
+  max-width: 1440px;
+  width: 100%;
+
+  &__option {
+    @include flexbox();
+    @include flex-wrap(wrap);
+    @include justify-content(space-between);
+  }
+
+  .option--item {
+    @include flexbox();
+    @include align-items(center);
+
+    &:last-child {
+      width: 100%;
+    }
+
+    select {
+      width: 150px;
+      height: 40px;
+      font-family: $poppins-regular;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 1px solid $light-grey;
+      background-color: transparent;
+      margin-left: 15px;
+      outline: none;
+    }
+  }
+
+  .filter-name {
+    padding-left: 15px;
+
+    .underline-animation {
+      position: relative;
+    }
+
+    label {
+      padding-right: 10px;
+    }
+
+    .form-control {
+      font-family: $poppins-regular;
+      font-weight: normal;
+      font-size: 16px;
+      color: $black;
+      border: none;
+      border-bottom: 1px solid $light-grey;
+      background-color: transparent;
+      outline: none;
+      padding-left: 5px;
+      margin: 0 5px;
+    }
+
+    span {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 100%;
+      height: 1px;
+      opacity: 0;
+      background-color: $dark-grey;
+      transform-origin: center;
+      transform: translate(-50%, 0) scaleX(0);
+      transition: all 0.3s ease;
+    }
+
+    input:focus ~ span {
+      transform: translate(-50%, 0) scaleX(1);
+      opacity: 1;
+    }
+  }
+
+  &__inner {
+    width: 100%;
+    padding-top: 20px;
+  }
+
+  th {
+    font-size: 20px;
+    font-weight: bold;
+    color: $black;
+    text-align: left;
+    padding: 10px;
+    white-space: nowrap;
+  }
+
+  tr {
+    text-align: left;
+
+    &:nth-child(odd) {
+      background-color: $pale-grey;
+    }
+
+    &:nth-child(1n + 1) {
+      .avatar {
+        &__circle {
+          background-color: $yellow;
+        }
+      }
+    }
+
+    &:nth-child(2n + 1) {
+      .avatar {
+        &__circle {
+          background-color: $light-salmon;
+        }
+      }
+    }
+
+    &:nth-child(3n + 1) {
+      .avatar {
+        &__circle {
+          background-color: $pinky;
+        }
+      }
+    }
+
+    &:nth-child(4n + 1) {
+      .avatar {
+        &__circle {
+          background-color: $sky;
+        }
+      }
+    }
+
+    &:nth-child(5n + 1) {
+      .avatar {
+        &__circle {
+          background-color: $pale-aqua;
+        }
+      }
+    }
+  }
+
+  td {
+    font-family: $poppins-medium;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.2px;
+    padding: 5px 10px;
+    white-space: nowrap;
+  }
+
+  .id {
+    &__text {
+      text-align: center;
+    }
+  }
+
+  .avatar {
+    &__circle {
+      display: block;
+      margin: 0 auto;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      position: relative;
+      overflow: hidden;
+    }
+    &__image {
+      width: 20px;
+      height: 40px;
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  .admin {
+    &__text {
+      text-align: center;
+    }
+  }
+}
+
+.button--table {
+  display: block;
+  margin: 0 auto;
+  max-width: 30px;
+  max-height: 18px;
+  width: 100%;
+  height: auto;
+}
+
+.button--cancel {
+  display: block;
+  width: 330px;
+  height: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  border: 2px solid $pale-sky;
+  border-radius: 8px;
+  color: $dark-sky;
+  background-color: transparent;
+}

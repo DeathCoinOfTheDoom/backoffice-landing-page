@@ -1,17 +1,25 @@
 <template>
   <section class="container">
-    <form action method id class="container-form_login">
-      <div class="label">
-        <label for="email">Adresse mail</label>
-        <input type="email" id="email" name="email" value>
+    <img class="logo-backoffice" src="~assets/images/logo-bob.svg" alt>
+    <form action method id class="container__form-login">
+      <div class="field">
+        <label for="email" class="text-bold">Adresse e-mail :</label>
+        <input
+          class="input-modal"
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Adresse e-mail"
+          value
+        >
       </div>
-      <div class="label">
-        <label for="password">Mot de passe</label>
-        <input type="password" id="password" name="password" value>
+      <div class="field">
+        <label for="password" class="text-bold">Mot de passe :</label>
+        <input class="input-modal" type="password" id="password" name="password" value>
       </div>
       <div>{{this.errorMessage}}</div>
+      <button class="button--action" type="submit" form value @click="login">Se connecter</button>
     </form>
-    <button type="submit" form value @click="login">Se connecter</button>
   </section>
 </template>
 
@@ -39,7 +47,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss">
 .container {
   min-height: 100vh;
   display: flex;
@@ -47,19 +55,17 @@ export default {
   align-items: center;
   text-align: center;
   flex-direction: column;
-}
 
-.container-form_login {
-  width: 400px;
-}
+  &__form-login {
+    width: 400px;
+    padding-top: 40px;
 
-.container-form_login .label label {
-  width: 50%;
-  text-align: left;
-}
-
-button {
-  margin-top: 40px;
+    label {
+      display: inline-block;
+      width: 130px;
+      text-align: left;
+    }
+  }
 }
 </style>
 

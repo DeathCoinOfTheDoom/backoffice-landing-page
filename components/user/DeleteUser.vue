@@ -52,16 +52,5 @@ export default {
     text-align: center;
   }
 }
-.container {
-  &__buttons {
-    @include flexbox();
-    @include flex-wrap(wrap);
-
-    .button--action,
-    .button--cancel {
-      margin: 40px 20px 0;
-    }
-  }
-}
 </style>
 

@@ -37,13 +37,14 @@
                 </td>
                 <td>{{ category.attributes.title}}</td>
                 <td class="Voir sa fiche">
-                  <nuxt-link v-bind:to="`/admin/category/${category.id}`" class="button__voir">Voir</nuxt-link>
+                  <nuxt-link v-bind:to="`/admin/category/${category.id}`">
+                    <img class="button--table" src="~assets/images/view.svg" alt>
+                  </nuxt-link>
                 </td>
                 <td class="modifier">
-                  <div
-                    class="button__modifier"
-                    @click="showEdit = true, selectedCategory = category"
-                  >Modifier la catégorie</div>
+                  <div @click="showEdit = true, selectedCategory = category">
+                    <img class="button--table" src="~assets/images/edit.svg" alt>
+                  </div>
                 </td>
               </tr>
             </tbody>

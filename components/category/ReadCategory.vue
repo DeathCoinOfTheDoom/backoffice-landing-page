@@ -1,6 +1,6 @@
 <template>
-  <div class="background_read-category">
-    <div class="container-_read-category">
+  <div class="modal__background">
+    <div class="modal">
       <img :src="this.category.attributes.icon">
       <p>Description: {{this.category.attributes.description}}</p>
       <p>Description détaillé: {{this.category.attributes.extended_description}}</p>
@@ -24,7 +24,7 @@
           </tbody>
         </v-table>
       </no-ssr>
-      <button @click="hideInfo">Fermer</button>
+      <button class="button--cancel" @click="hideInfo">Fermer</button>
     </div>
   </div>
 </template>
