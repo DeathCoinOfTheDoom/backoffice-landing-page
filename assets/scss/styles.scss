@@ -106,6 +106,19 @@ body {
     border-radius: 4px;
     background-color: $white;
   }
+
+  ul {
+    padding-left: 25px;
+
+    li {
+      text-align: left;
+      padding: 5px 0;
+    }
+  }
+
+  table {
+    width: 100%;
+  }
 }
 
 .edit-page {
@@ -136,6 +149,10 @@ body {
   .option--item {
     @include flexbox();
     @include align-items(center);
+
+    &:first-child {
+      padding-left: 15px;
+    }
 
     &:last-child {
       width: 100%;
@@ -217,46 +234,6 @@ body {
     &:nth-child(odd) {
       background-color: $pale-grey;
     }
-
-    &:nth-child(1n + 1) {
-      .avatar {
-        &__circle {
-          background-color: $yellow;
-        }
-      }
-    }
-
-    &:nth-child(2n + 1) {
-      .avatar {
-        &__circle {
-          background-color: $light-salmon;
-        }
-      }
-    }
-
-    &:nth-child(3n + 1) {
-      .avatar {
-        &__circle {
-          background-color: $pinky;
-        }
-      }
-    }
-
-    &:nth-child(4n + 1) {
-      .avatar {
-        &__circle {
-          background-color: $sky;
-        }
-      }
-    }
-
-    &:nth-child(5n + 1) {
-      .avatar {
-        &__circle {
-          background-color: $pale-aqua;
-        }
-      }
-    }
   }
 
   td {
@@ -273,32 +250,6 @@ body {
       text-align: center;
     }
   }
-
-  .avatar {
-    &__circle {
-      display: block;
-      margin: 0 auto;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      position: relative;
-      overflow: hidden;
-    }
-    &__image {
-      width: 20px;
-      height: 40px;
-      position: absolute;
-      bottom: -5px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  }
-
-  .admin {
-    &__text {
-      text-align: center;
-    }
-  }
 }
 
 .button--table {
@@ -308,6 +259,7 @@ body {
   max-height: 18px;
   width: 100%;
   height: auto;
+  cursor: pointer;
 }
 
 .button--cancel {

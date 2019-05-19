@@ -110,22 +110,22 @@ export default {
 };
 </script>
 <style lang="scss">
-.input-modal {
-  width: 200px;
-  height: 38px;
-  font-size: 16px;
-  color: $light-grey;
-  border-radius: 10px;
-  border: 1px solid $very-light-blue;
-  padding: 10px;
-  margin: 3px 0 3px 10px;
-  background-color: transparent;
+// .input-modal {
+//   width: 200px;
+//   height: 38px;
+//   font-size: 16px;
+//   color: $light-grey;
+//   border-radius: 10px;
+//   border: 1px solid $very-light-blue;
+//   padding: 10px;
+//   margin: 3px 0 3px 10px;
+//   background-color: transparent;
 
-  &:focus {
-    outline: none;
-    color: $black;
-    border: 1px solid $blue;
-    transition: all 0.5s;
-  }
-}
+//   &:focus {
+//     outline: none;
+//     color: $black;
+//     border: 1px solid $blue;
+//     transition: all 0.5s;
+//   }
+// }
 </style>

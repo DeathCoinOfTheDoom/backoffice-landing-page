@@ -160,19 +160,6 @@ export default {
 </script>
 
 <style lang="scss">
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-}
-
-.container-form_edit {
-  width: 700px;
-}
-
 .modal {
   &__title {
     font-size: 20px;
@@ -187,7 +174,7 @@ export default {
   }
 }
 
-#adminAccount {
+#fadminAccount {
   margin-right: 7px;
 }
 </style>
