@@ -23,6 +23,7 @@
       <div class="table">
         <div class="table__option">
           <div class="option--item">
+            <label>Trier par :</label>
             <select v-model="filterTypeValue">
               <option value="all" selected>Tous</option>
               <option value="user">Utilisateurs</option>
@@ -31,9 +32,9 @@
           </div>
           <nuxt-link to="/admin/user/newUser" class="button--action">Créer un nouvel utilisateur</nuxt-link>
           <div class="filter-name option--item">
-            <label>Filtrer par nom d'utilisateur :</label>
+            <label for="filterName">Filtrer par nom d'utilisateur :</label>
             <div class="underline-animation">
-              <input class="form-control" v-model="filters.name.value">
+              <input id="filterName" class="form-control" v-model="filters.name.value">
               <span></span>
             </div>
           </div>
@@ -68,22 +69,16 @@
                 <td>{{ user.attributes.email ? user.attributes.email : "/" }}</td>
                 <td>{{ user.attributes.birthdate ? user.attributes.birthdate : "/"}}</td>
                 <td class="admin__text">{{ user.attributes.admin ? user.attributes.admin : "/"}}</td>
-                <td class="voir">
-                  <div @click="showInfo = true, selectedUser = user">
-                    <img class="button--table" src="~assets/images/view.svg" alt>
-                  </div>
+                <td @click="showInfo = true, selectedUser = user">
+                  <img class="button--table" src="~assets/images/view.svg" alt>
                 </td>
-                <td class="modifier">
-                  <div @click="showEdit = true, selectedUser = user">
-                    <img class="button--table" src="~assets/images/edit.svg" alt>
-                  </div>
+                <td @click="showEdit = true, selectedUser = user">
+                  <img class="button--table" src="~assets/images/edit.svg" alt>
                 </td>
-                <td class="supprimer">
-                  <div
-                    @click="showPopup = true, userId = user.id, userFirstName = user.attributes.firstName, userLastName = user.attributes.lastName"
-                  >
-                    <img class="button--table" src="~assets/images/garbage.svg" alt>
-                  </div>
+                <td
+                  @click="showPopup = true, userId = user.id, userFirstName = user.attributes.firstName, userLastName = user.attributes.lastName"
+                >
+                  <img class="button--table" src="~assets/images/garbage.svg" alt>
                 </td>
               </tr>
             </tbody>
@@ -441,142 +436,6 @@ aside {
       text-align: center;
     }
   }
-}
-
-.table-user {
-  // width: 85%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.tab-user {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1300px;
-  width: 80%;
-  padding-bottom: 10px;
-}
-
-// .filter-name {
-//   max-width: 1300px;
-//   width: 80%;
-//   display: flex;
-//   justify-content: flex-start;
-//   padding-bottom: 10px;
-// }
-
-// .avatar {
-//   width: 50px;
-//   height: 50px;
-//   border-radius: 50%;
-//   overflow: hidden;
-// }
-
-// .avatar img {
-//   width: 100%;
-//   height: auto;
-// }
-
-.modifier,
-.supprimer {
-  cursor: pointer;
-}
-
-.button__supprimer {
-  border-radius: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #f05858;
-  border: 1px solid #ec4949;
-  color: #7f1b1b;
-}
-
-.button__modifier {
-  border-radius: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #f66f2c;
-  border: 1px solid #d95514;
-  color: #772c07;
-  text-decoration: none;
-}
-
-.button__voir {
-  border-radius: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #24b015;
-  border: 1px solid rgb(23, 133, 11);
-  color: rgb(5, 32, 2);
-  text-decoration: none;
-  padding: 0 5px;
-}
-
-/*---POP-UP---*/
-.background_confirm-delete {
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-
-.container-confirm_delete {
-  background: white;
-  padding: 40px;
-}
-
-button {
-  margin-top: 40px;
-  cursor: pointer;
-  outline: none;
-}
-
-.cancel {
-  border: none;
-  color: red;
-  opacity: 0.8;
-  font-weight: bold;
-  padding: 0 1px;
-  padding-bottom: 3px;
-  border-bottom: 1px solid white;
-  transition: 0.5s ease-in-out;
-}
-
-.cancel:hover {
-  border-bottom: 1px solid red;
-}
-/*__fin popup__*/
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
 }
 </style>
 

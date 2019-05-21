@@ -5,23 +5,23 @@
         <div class="user__informations">
           <p class="modal__text">
             <span class="text-bold">Nom :</span>
-            {{this.user.attributes.firstName}}
+            {{this.user.attributes.firstName ? this.user.attributes.firstName : "/"}}
           </p>
           <p class="modal__text">
             <span class="text-bold">Prénom :</span>
-            {{this.user.attributes.lastName}}
+            {{this.user.attributes.lastName ? this.user.attributes.lastName : "/"}}
           </p>
           <p class="modal__text">
             <span class="text-bold">N° de téléphone :</span>
-            {{this.user.attributes.phone_number}}
+            {{this.user.attributes.phone_number ? this.user.attributes.phone_number : "/"}}
           </p>
           <p class="modal__text">
             <span class="text-bold">Email :</span>
-            {{this.user.attributes.email}}
+            {{this.user.attributes.email ? this.user.attributes.email : "/"}}
           </p>
           <p class="modal__text">
             <span class="text-bold">Date de naissance :</span>
-            {{this.user.attributes.birthdate}}
+            {{this.user.attributes.birthdate ? this.user.attributes.birthdate : "/"}}
           </p>
           <p class="modal__text">
             <span class="text-bold">Administrateur :</span>
@@ -50,12 +50,10 @@
         {{this.user.relationships.folders.data.length}}
       </p>
       <div v-if="folders != ''">
-        <table>
+        <table class="user-folders">
           <thead>
-            <tr>
-              <th>Nom du dossier</th>
-              <th>Nombre de fichiers dans le dossier</th>
-            </tr>
+            <th>Nom du dossier</th>
+            <th>Nombre de fichiers dans le dossier</th>
           </thead>
           <tbody>
             <tr v-for="folder in folders" :key="folder.id">
@@ -153,5 +151,11 @@ export default {
   background: $light-grey;
   height: 2px;
   margin: 13px 5px;
+}
+
+.user-folders {
+  tr {
+    height: 50px;
+  }
 }
 </style>
