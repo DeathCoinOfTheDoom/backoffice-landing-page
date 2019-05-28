@@ -228,7 +228,7 @@ footer {
 
   &__link {
     font-family: $poppins-medium;
-    font-weight: 500;
+    font-weight: 600;
     display: inline-block;
     font-size: 16px;
     color: $white;
