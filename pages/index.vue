@@ -123,7 +123,7 @@
             <div class="bobbers__circle bobbers__circle__charpentier">
               <img src="~assets/images/mona.png">
             </div>
-            <p class="section__subtitle">Bobette Charpentière</p>
+            <p class="section__subtitle">Bobette Electricienne</p>
           </li>
           <li>
             <div class="bobbers__circle bobbers__circle__plombier">
@@ -135,13 +135,13 @@
             <div class="bobbers__circle bobbers__circle__peintre">
               <img src="~assets/images/gerome.png">
             </div>
-            <p class="section__subtitle">Bob Peintre</p>
+            <p class="section__subtitle">Bob Charpentier</p>
           </li>
           <li>
             <div class="bobbers__circle bobbers__circle__electricien">
               <img src="~assets/images/kaouthar.png">
             </div>
-            <p class="section__subtitle">Bob Electricienne</p>
+            <p class="section__subtitle">Bobette Peintre</p>
           </li>
           <li>
             <div class="bobbers__circle bobbers__circle__architecte">
