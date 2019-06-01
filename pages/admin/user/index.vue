@@ -44,6 +44,9 @@
             class="table__inner"
             :data="filterDisplayData"
             :filters="filters"
+            :currentPage.sync="currentPage"
+            :pageSize="8"
+            @totalPagesChanged="totalPages = $event"
             selectedClass="hide"
           >
             <thead slot="head">
@@ -83,6 +86,7 @@
               </tr>
             </tbody>
           </v-table>
+          <smart-pagination :currentPage.sync="currentPage" :totalPages="totalPages"/>
         </no-ssr>
         <DeleteUser
           v-if="showDelete"
@@ -120,7 +124,9 @@ export default {
       showDelete: false,
       showEdit: false,
       showInfo: false,
-      filterTypeValue: "all" //la data peut prendre 3 valeurs: "all" pour afficher tous les comptes utilisateurs et administrateurs, "admin" compte administrateur, "user" pour les utilisateurs lambda
+      filterTypeValue: "all", //la data peut prendre 3 valeurs: "all" pour afficher tous les comptes utilisateurs et administrateurs, "admin" compte administrateur, "user" pour les utilisateurs lambda
+      currentPage: 1, //Commence à la premiere page de la pagination
+      totalPages: 0 //Initialisation le nombre de pages de la pagination à 0
     };
   },
   mounted() {
@@ -277,39 +283,10 @@ aside {
   border-radius: 4px;
   box-shadow: 2px 2px 14px 3px rgba(31, 41, 51, 0.11);
   margin: 0 25px;
-  margin-left: 16%;
 }
 
 .table {
-  max-width: 1440px;
-  width: 100%;
-
-  &__option {
-    @include flexbox();
-    @include flex-wrap(wrap);
-    @include justify-content(space-between);
-  }
-
-  .option--item {
-    @include flexbox();
-    @include align-items(center);
-
-    &:last-child {
-      width: 100%;
-    }
-
-    select {
-      width: 150px;
-      height: 40px;
-      font-family: $poppins-regular;
-      font-size: 16px;
-      border-radius: 10px;
-      border: 1px solid $light-grey;
-      background-color: transparent;
-      margin-left: 15px;
-      outline: none;
-    }
-  }
+  position: relative;
 
   .filter-name {
     padding-left: 15px;
@@ -354,18 +331,7 @@ aside {
     }
   }
 
-  &__inner {
-    width: 100%;
-    padding-top: 20px;
-  }
-
   tr {
-    text-align: left;
-
-    &:nth-child(odd) {
-      background-color: $pale-grey;
-    }
-
     &:nth-child(1n + 1) {
       .avatar {
         &__circle {
@@ -406,7 +372,6 @@ aside {
       }
     }
   }
-
   td {
     font-family: $poppins-medium;
     font-weight: 500;
@@ -446,6 +411,36 @@ aside {
     &__text {
       text-align: center;
     }
+  }
+}
+
+.pagination {
+  @include flexbox();
+  @include justify-content(center);
+  @include align-items(center);
+  list-style: none;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+
+  .page-item {
+    padding: 0 5px;
+
+    &.active {
+      .page-link {
+        color: $blue;
+      }
+    }
+
+    .page-link {
+      text-decoration: none;
+      color: $dark-blue;
+    }
+  }
+
+  .disabled svg {
+    color: $dark-blue;
   }
 }
 </style>
