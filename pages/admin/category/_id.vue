@@ -54,10 +54,12 @@ export default {
     };
   },
   async mounted() {
+    //on récupère la catégorie correspondant à l'ID de l'url
     await this.$axios
       .$get(`/api/category/${this.$nuxt.$route.params.id}`)
       .then(response => (this.category = response.data));
 
+    //on récupère les types de fichiers/documents de la catégorie
     this.category.relationships.type.data
       .map(type => type.id)
       .map(id => {

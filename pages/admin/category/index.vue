@@ -83,12 +83,11 @@ export default {
     };
   },
   mounted() {
+    //Récupération des catégories depuis l'API
     this.$axios
       .$get("/api/category")
       .then(response => {
-        // handle success
         this.categorys = response.data;
-        console.log(this.categorys);
       })
       .catch(error => {
         console.log(error);
@@ -98,14 +97,13 @@ export default {
     logout: function() {
       this.$auth.logout();
     },
+    //fermer la pop-up de la modification d'une catégorie
     closeEdit: function() {
       this.showEdit = false;
     },
+    //fermer la pop-up de la fiche informative d'une catégorie
     closeInfo: function() {
       this.showInfo = false;
-    },
-    closeType: function() {
-      this.showType = false;
     }
   }
 };

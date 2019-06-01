@@ -76,7 +76,7 @@
                   <img class="button--table" src="~assets/images/edit.svg" alt>
                 </td>
                 <td
-                  @click="showPopup = true, userId = user.id, userFirstName = user.attributes.firstName, userLastName = user.attributes.lastName"
+                  @click="showDelete = true, userId = user.id, userFirstName = user.attributes.firstName, userLastName = user.attributes.lastName"
                 >
                   <img class="button--table" src="~assets/images/garbage.svg" alt>
                 </td>
@@ -85,8 +85,8 @@
           </v-table>
         </no-ssr>
         <DeleteUser
-          v-if="showPopup"
-          v-on:closed="closePopup"
+          v-if="showDelete"
+          v-on:closed="closeDelete"
           v-bind:userId="userId"
           v-bind:userFirstName="userFirstName"
           v-bind:userLastName="userLastName"
@@ -113,36 +113,41 @@ export default {
     return {
       users: [],
       filters: {
+        //Documentation pour les filtres personnalisé
+        // https://tochoromero.github.io/vuejs-smart-table/filtering/#custom-filters
         name: { value: "", custom: this.nameFilter }
       },
-      showPopup: false,
+      showDelete: false,
       showEdit: false,
       showInfo: false,
-      filterTypeValue: "all"
+      filterTypeValue: "all" //la data peut prendre 3 valeurs: "all" pour afficher tous les comptes utilisateurs et administrateurs, "admin" compte administrateur, "user" pour les utilisateurs lambda
     };
   },
   mounted() {
+    //On récupère les utilisateurs depuis l'API
     this.$axios
       .$get("/api/user")
       .then(response => {
-        // handle success
         this.users = response.data;
       })
       .catch(error => {
         if (error.response.status == 403 || error.response.status == 401) {
-          this.$auth.logout();
+          this.logout();
         }
       });
   },
   computed: {
     filterDisplayData() {
       return this.users.filter(user => {
+        //affiche les comptes admin
         if (this.filterTypeValue == "admin") {
           return user.attributes.admin;
         }
+        //affiche les comptes utilisateurs
         if (this.filterTypeValue == "user") {
           return !user.attributes.admin;
         }
+        //affiche les comptes admin et utilisateurs
         return true;
       });
     }
@@ -152,6 +157,8 @@ export default {
       this.$auth.logout();
     },
     nameFilter: function(filterValue, row) {
+      //Vérifie si la barre de recherche est rempli, pour transformer les lettres majuscule
+      //en miniscule pour pas que ça soit sensible à la casse
       if (row.attributes.firstName && row.attributes.lastName) {
         var fullName =
           row.attributes.firstName.toLowerCase() +
@@ -173,8 +180,8 @@ export default {
         return row.attributes.lastName.toLowerCase().includes(filterValue);
       }
     },
-    closePopup: function() {
-      this.showPopup = false;
+    closeDelete: function() {
+      this.showDelete = false;
     },
     closeEdit: function() {
       this.showEdit = false;
@@ -204,6 +211,8 @@ aside {
   height: 100vh;
   background: $dark-blue;
   position: relative;
+  top: 0;
+  bottom: 0;
 
   .logo-backoffice {
     width: 115px;
@@ -220,6 +229,7 @@ aside {
     text-decoration: none;
     color: $white;
     height: 65px;
+    cursor: pointer;
 
     &.active {
       background-color: $gun-metal;
@@ -267,6 +277,7 @@ aside {
   border-radius: 4px;
   box-shadow: 2px 2px 14px 3px rgba(31, 41, 51, 0.11);
   margin: 0 25px;
+  margin-left: 16%;
 }
 
 .table {

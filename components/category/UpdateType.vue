@@ -18,6 +18,7 @@ export default {
   props: ["type"],
   data() {
     return {
+      //Initiliase les données du formulaire
       typeForm: {
         title: this.type.attributes.title,
         category: this.type.relationships.category.data.id
@@ -26,10 +27,11 @@ export default {
   },
   methods: {
     updateType() {
+      //Modifie le nouvel intitulé pour un type
       this.$axios
         .$put("/api/type/" + this.type.id, this.typeForm)
         .then(response => {
-          // handle success
+          //Retour au tableau de bord des catégories pour afficher les changements
           window.location.replace("/admin/category");
         })
         .catch(error => {

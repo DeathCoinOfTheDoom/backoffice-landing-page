@@ -78,6 +78,7 @@ export default {
     };
   },
   mounted() {
+    //On récupère les ID des fichiers/documents d'un utilisateur afin d'obtenir le titre des types de fichiers/documents dans l'API
     this.user.relationships.files.data
       .map(file => file.id)
       .map(id => {
@@ -89,6 +90,8 @@ export default {
           });
       });
 
+    //On récupère l'ID des dossiers d'un utilisateur afin de connaitre les noms de ses dossiers
+    //et le nombre de fichier dans chaque dossier existant
     this.user.relationships.folders.data
       .map(folder => folder.id)
       .map(id => {
