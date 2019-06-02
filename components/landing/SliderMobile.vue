@@ -8,33 +8,23 @@
     :autoplayTimeout="5000"
   >
     <slide>
-      <div class="bobbers__circle bobbers__circle__charpentier">
-        <img src="~assets/images/mona.png">
-      </div>
-      <p class="section__subtitle">Bobette Electricienne</p>
+      <div class="bobbers__circle bobbers__circle__charpentier"></div>
+      <p class="section__subtitle">Bob Electricien</p>
     </slide>
     <slide>
-      <div class="bobbers__circle bobbers__circle__plombier">
-        <img src="~assets/images/jessica.png">
-      </div>
-      <p class="section__subtitle">Bobette Pomblière</p>
+      <div class="bobbers__circle bobbers__circle__plombier"></div>
+      <p class="section__subtitle">Bob Pomblier</p>
     </slide>
     <slide>
-      <div class="bobbers__circle bobbers__circle__peintre">
-        <img src="~assets/images/gerome.png">
-      </div>
+      <div class="bobbers__circle bobbers__circle__peintre"></div>
       <p class="section__subtitle">Bob Charpentier</p>
     </slide>
     <slide>
-      <div class="bobbers__circle bobbers__circle__electricien">
-        <img src="~assets/images/kaouthar.png">
-      </div>
-      <p class="section__subtitle">Bobette Peintre</p>
+      <div class="bobbers__circle bobbers__circle__electricien"></div>
+      <p class="section__subtitle">Bob Peintre</p>
     </slide>
     <slide>
-      <div class="bobbers__circle bobbers__circle__architecte">
-        <img src="~assets/images/axel.png">
-      </div>
+      <div class="bobbers__circle bobbers__circle__architecte"></div>
       <p class="section__subtitle">Bob Architecte</p>
     </slide>
   </carousel>
