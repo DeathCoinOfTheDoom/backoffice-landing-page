@@ -121,7 +121,7 @@
         <ul class="bobbers__listing">
           <li>
             <div class="bobbers__circle bobbers__circle__charpentier"></div>
-            <p class="section__subtitle">Bob Charpentier</p>
+            <p class="section__subtitle">Bob Electricien</p>
           </li>
           <li>
             <div class="bobbers__circle bobbers__circle__plombier"></div>
@@ -129,11 +129,11 @@
           </li>
           <li>
             <div class="bobbers__circle bobbers__circle__peintre"></div>
-            <p class="section__subtitle">Bob Peintre</p>
+            <p class="section__subtitle">Bob Charpentier</p>
           </li>
           <li>
             <div class="bobbers__circle bobbers__circle__electricien"></div>
-            <p class="section__subtitle">Bob Electricien</p>
+            <p class="section__subtitle">Bob Peintre</p>
           </li>
           <li>
             <div class="bobbers__circle bobbers__circle__architecte"></div>
@@ -538,6 +538,10 @@ export default {
     height: 125px;
     border-radius: 50%;
     margin: 0 auto;
+    @include flexbox();
+    @include justify-content(center);
+    @include align-items(flex-end);
+    overflow: hidden;
 
     @media #{$desktop} {
       width: 155px;

@@ -40,6 +40,7 @@ export default {
     };
   },
   mounted() {
+    //On récupère les informations trouvés pour une catégorie et les types de fichiers/documents qui se trouvent dans la catégorie
     this.category.relationships.type.data
       .map(type => type.id)
       .map(id => {

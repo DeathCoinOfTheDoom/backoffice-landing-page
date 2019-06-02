@@ -9,7 +9,7 @@
   >
     <slide>
       <div class="bobbers__circle bobbers__circle__charpentier"></div>
-      <p class="section__subtitle">Bob Charpentier</p>
+      <p class="section__subtitle">Bob Electricien</p>
     </slide>
     <slide>
       <div class="bobbers__circle bobbers__circle__plombier"></div>
@@ -17,11 +17,11 @@
     </slide>
     <slide>
       <div class="bobbers__circle bobbers__circle__peintre"></div>
-      <p class="section__subtitle">Bob Peintre</p>
+      <p class="section__subtitle">Bob Charpentier</p>
     </slide>
     <slide>
       <div class="bobbers__circle bobbers__circle__electricien"></div>
-      <p class="section__subtitle">Bob Electricien</p>
+      <p class="section__subtitle">Bob Peintre</p>
     </slide>
     <slide>
       <div class="bobbers__circle bobbers__circle__architecte"></div>

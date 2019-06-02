@@ -75,6 +75,7 @@ export default {
   props: ["user"],
   data() {
     return {
+      //Initialise les données du formulaire de l'utilisateur sélectionné
       editUser: {
         phone_number: this.user.attributes.phone_number,
         lastName: this.user.attributes.lastName,
@@ -89,6 +90,7 @@ export default {
   },
   methods: {
     changedUser() {
+      //Spécifique à l'API
       const headers = {
         "Content-Type": "application/x-www-form-urlencoded"
       };
@@ -96,7 +98,7 @@ export default {
       this.$axios
         .$put("/api/user/" + this.user.id, this.editUser, headers)
         .then(response => {
-          // handle success
+          //Retour au tableau de bord des utilisateurs
           window.location.replace("/admin");
         })
         .catch(error => {
@@ -104,28 +106,9 @@ export default {
         });
     },
     cancelUpdate() {
+      //ferme la popup
       this.$emit("closedEdit");
     }
   }
 };
 </script>
-<style lang="scss">
-// .input-modal {
-//   width: 200px;
-//   height: 38px;
-//   font-size: 16px;
-//   color: $light-grey;
-//   border-radius: 10px;
-//   border: 1px solid $very-light-blue;
-//   padding: 10px;
-//   margin: 3px 0 3px 10px;
-//   background-color: transparent;
-
-//   &:focus {
-//     outline: none;
-//     color: $black;
-//     border: 1px solid $blue;
-//     transition: all 0.5s;
-//   }
-// }
-</style>

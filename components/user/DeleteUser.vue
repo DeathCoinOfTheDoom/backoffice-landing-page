@@ -29,17 +29,13 @@ export default {
       this.$emit("closed");
     },
     deleteUser(userId) {
-      this.$axios
-        .$delete("/api/user/" + this.userId)
-        .then(response => {
-          // handle success
-          window.location.reload(true);
-        })
-        .catch(error => {
-          //console.log(error);
-        });
+      //Supprime de l'API l'utilisateur sélectionné
+      this.$axios.$delete("/api/user/" + this.userId).then(response => {
+        //Recharge la page pour actualiser les utilisateurs existant
+        window.location.reload(true);
+      });
 
-      // ensuite ferme la popup
+      // Ensuite ferme la popup
       this.$emit("closed");
     }
   }

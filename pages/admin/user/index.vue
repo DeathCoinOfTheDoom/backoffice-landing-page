@@ -44,6 +44,9 @@
             class="table__inner"
             :data="filterDisplayData"
             :filters="filters"
+            :currentPage.sync="currentPage"
+            :pageSize="8"
+            @totalPagesChanged="totalPages = $event"
             selectedClass="hide"
           >
             <thead slot="head">
@@ -76,17 +79,18 @@
                   <img class="button--table" src="~assets/images/edit.svg" alt>
                 </td>
                 <td
-                  @click="showPopup = true, userId = user.id, userFirstName = user.attributes.firstName, userLastName = user.attributes.lastName"
+                  @click="showDelete = true, userId = user.id, userFirstName = user.attributes.firstName, userLastName = user.attributes.lastName"
                 >
                   <img class="button--table" src="~assets/images/garbage.svg" alt>
                 </td>
               </tr>
             </tbody>
           </v-table>
+          <smart-pagination :currentPage.sync="currentPage" :totalPages="totalPages"/>
         </no-ssr>
         <DeleteUser
-          v-if="showPopup"
-          v-on:closed="closePopup"
+          v-if="showDelete"
+          v-on:closed="closeDelete"
           v-bind:userId="userId"
           v-bind:userFirstName="userFirstName"
           v-bind:userLastName="userLastName"
@@ -113,36 +117,43 @@ export default {
     return {
       users: [],
       filters: {
+        //Documentation pour les filtres personnalisé
+        // https://tochoromero.github.io/vuejs-smart-table/filtering/#custom-filters
         name: { value: "", custom: this.nameFilter }
       },
-      showPopup: false,
+      showDelete: false,
       showEdit: false,
       showInfo: false,
-      filterTypeValue: "all"
+      filterTypeValue: "all", //la data peut prendre 3 valeurs: "all" pour afficher tous les comptes utilisateurs et administrateurs, "admin" compte administrateur, "user" pour les utilisateurs lambda
+      currentPage: 1, //Commence à la premiere page de la pagination
+      totalPages: 0 //Initialisation le nombre de pages de la pagination à 0
     };
   },
   mounted() {
+    //On récupère les utilisateurs depuis l'API
     this.$axios
       .$get("/api/user")
       .then(response => {
-        // handle success
         this.users = response.data;
       })
       .catch(error => {
         if (error.response.status == 403 || error.response.status == 401) {
-          this.$auth.logout();
+          this.logout();
         }
       });
   },
   computed: {
     filterDisplayData() {
       return this.users.filter(user => {
+        //affiche les comptes admin
         if (this.filterTypeValue == "admin") {
           return user.attributes.admin;
         }
+        //affiche les comptes utilisateurs
         if (this.filterTypeValue == "user") {
           return !user.attributes.admin;
         }
+        //affiche les comptes admin et utilisateurs
         return true;
       });
     }
@@ -152,6 +163,8 @@ export default {
       this.$auth.logout();
     },
     nameFilter: function(filterValue, row) {
+      //Vérifie si la barre de recherche est rempli, pour transformer les lettres majuscule
+      //en miniscule pour pas que ça soit sensible à la casse
       if (row.attributes.firstName && row.attributes.lastName) {
         var fullName =
           row.attributes.firstName.toLowerCase() +
@@ -173,8 +186,8 @@ export default {
         return row.attributes.lastName.toLowerCase().includes(filterValue);
       }
     },
-    closePopup: function() {
-      this.showPopup = false;
+    closeDelete: function() {
+      this.showDelete = false;
     },
     closeEdit: function() {
       this.showEdit = false;
@@ -204,6 +217,8 @@ aside {
   height: 100vh;
   background: $dark-blue;
   position: relative;
+  top: 0;
+  bottom: 0;
 
   .logo-backoffice {
     width: 115px;
@@ -220,6 +235,7 @@ aside {
     text-decoration: none;
     color: $white;
     height: 65px;
+    cursor: pointer;
 
     &.active {
       background-color: $gun-metal;
@@ -270,35 +286,7 @@ aside {
 }
 
 .table {
-  max-width: 1440px;
-  width: 100%;
-
-  &__option {
-    @include flexbox();
-    @include flex-wrap(wrap);
-    @include justify-content(space-between);
-  }
-
-  .option--item {
-    @include flexbox();
-    @include align-items(center);
-
-    &:last-child {
-      width: 100%;
-    }
-
-    select {
-      width: 150px;
-      height: 40px;
-      font-family: $poppins-regular;
-      font-size: 16px;
-      border-radius: 10px;
-      border: 1px solid $light-grey;
-      background-color: transparent;
-      margin-left: 15px;
-      outline: none;
-    }
-  }
+  position: relative;
 
   .filter-name {
     padding-left: 15px;
@@ -343,18 +331,7 @@ aside {
     }
   }
 
-  &__inner {
-    width: 100%;
-    padding-top: 20px;
-  }
-
   tr {
-    text-align: left;
-
-    &:nth-child(odd) {
-      background-color: $pale-grey;
-    }
-
     &:nth-child(1n + 1) {
       .avatar {
         &__circle {
@@ -395,7 +372,6 @@ aside {
       }
     }
   }
-
   td {
     font-family: $poppins-medium;
     font-weight: 500;
@@ -435,6 +411,36 @@ aside {
     &__text {
       text-align: center;
     }
+  }
+}
+
+.pagination {
+  @include flexbox();
+  @include justify-content(center);
+  @include align-items(center);
+  list-style: none;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+
+  .page-item {
+    padding: 0 5px;
+
+    &.active {
+      .page-link {
+        color: $blue;
+      }
+    }
+
+    .page-link {
+      text-decoration: none;
+      color: $dark-blue;
+    }
+  }
+
+  .disabled svg {
+    color: $dark-blue;
   }
 }
 </style>

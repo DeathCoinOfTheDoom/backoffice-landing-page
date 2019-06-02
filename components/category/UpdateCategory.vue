@@ -26,17 +26,19 @@ export default {
   props: ["category"],
   data() {
     return {
+      //Initiliase les données du formulaire
       editCategory: {
         title: this.category.attributes.title
       }
     };
   },
   methods: {
+    //Modifie le titre de la catégorie
     changedCategory() {
       this.$axios
         .$put("/api/category/" + this.category.id, this.editCategory)
         .then(response => {
-          // handle success
+          //Retour au tableau de bord des catégories pour afficher les changements
           window.location.replace("/admin/category");
         })
         .catch(error => {

@@ -110,6 +110,7 @@ import { VeeValidate } from "vee-validate";
 export default {
   data() {
     return {
+      //initialisation des données du formulaire pour créer un nouvel utilisateur
       newUser: {
         phone_number: "",
         lastName: "",
@@ -117,13 +118,14 @@ export default {
         email: "",
         birthdate: "",
         admin: false,
-        password: undefined,
+        password: undefined, //undefined pour ne rien envoyer à la création d'un user normal
         password_confirmation: undefined
       }
     };
   },
   watch: {
     admin(newValue, oldValue) {
+      //Vérifie si la case est coché pour créer un compte admin
       if (this.admin == false) {
         this.newUser.password = undefined;
         this.newUser.password_confirmation = undefined;
@@ -132,9 +134,12 @@ export default {
   },
   computed: {
     hasError() {
+      //Vérifie si les champs obligatoire sont rempli
       return this.errors.all().length > 0;
     },
     submitable() {
+      //Vérifie si le mot de passe est entré et si les deux mots de passe sont identiques
+      //pour ne pas envoyer un mauvais mot de passe à l'API
       if (this.newUser.admin && !this.errors.first("password_confirmation")) {
         return (
           this.newUser.password != undefined &&
@@ -142,6 +147,7 @@ export default {
           !this.hasError
         );
       }
+      //Vérifie si le téléphone est rempli pour envoyer le formulaire avec les champs requis
       return this.newUser.phone_number != "" && !this.hasError;
     },
     admin() {
@@ -150,8 +156,8 @@ export default {
   },
   methods: {
     createUser: function() {
+      //Créer le nouvel utilisateur à l'API
       this.$axios.$post("/api/user", this.newUser).then(response => {
-        // handle success
         window.location.replace("/admin/user");
       });
     }
