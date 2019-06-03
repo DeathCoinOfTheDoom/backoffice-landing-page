@@ -33,7 +33,9 @@ export default {
     };
   },
   methods: {
-    //Modifie le titre de la catégorie
+    /**
+     * Modifie le titre de la catégorie
+     */
     changedCategory() {
       this.$axios
         .$put("/api/category/" + this.category.id, this.editCategory)

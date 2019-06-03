@@ -168,6 +168,9 @@ export default {
     Footer,
     SliderMobile
   },
+  /**
+   * Rendre la page accessible sans authentification
+   */
   auth: false
 };
 </script>

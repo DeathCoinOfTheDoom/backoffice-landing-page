@@ -28,8 +28,11 @@ export default {
     cancelButton: function() {
       this.$emit("closed");
     },
+    /**
+     * Supprime de l'API l'utilisateur sélectionné
+     * @param {number} userId - user ID to delete
+     */
     deleteUser(userId) {
-      //Supprime de l'API l'utilisateur sélectionné
       this.$axios.$delete("/api/user/" + this.userId).then(response => {
         //Recharge la page pour actualiser les utilisateurs existant
         window.location.reload(true);

@@ -26,8 +26,10 @@ export default {
     };
   },
   methods: {
+    /**
+     * Modifie le nouvel intitulé pour un type de document/fichier
+     */
     updateType() {
-      //Modifie le nouvel intitulé pour un type
       this.$axios
         .$put("/api/type/" + this.type.id, this.typeForm)
         .then(response => {
