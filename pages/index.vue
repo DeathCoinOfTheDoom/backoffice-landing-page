@@ -120,23 +120,33 @@
         >Bob est avant tout une application humaine, créée pour aider autrui dans des problèmes du quotidien que tous peuvent rencontrer. L'équipe de création est à l'écoute et réactive, votre avis nous importe beaucoup car si Bob est votre guide, vous êtes le nôtre.</p>
         <ul class="bobbers__listing">
           <li>
-            <div class="bobbers__circle bobbers__circle__charpentier"></div>
-            <p class="section__subtitle">Bob Electricien</p>
+            <div class="bobbers__circle bobbers__circle__electricien">
+              <img src="~assets/images/mona.png">
+            </div>
+            <p class="section__subtitle">Bobette Electricienne</p>
           </li>
           <li>
-            <div class="bobbers__circle bobbers__circle__plombier"></div>
-            <p class="section__subtitle">Bob Pomblier</p>
+            <div class="bobbers__circle bobbers__circle__plombier">
+              <img src="~assets/images/jessica.png">
+            </div>
+            <p class="section__subtitle">Bobette Pomblière</p>
           </li>
           <li>
-            <div class="bobbers__circle bobbers__circle__peintre"></div>
+            <div class="bobbers__circle bobbers__circle__charpentier">
+              <img src="~assets/images/gerome.png">
+            </div>
             <p class="section__subtitle">Bob Charpentier</p>
           </li>
           <li>
-            <div class="bobbers__circle bobbers__circle__electricien"></div>
-            <p class="section__subtitle">Bob Peintre</p>
+            <div class="bobbers__circle bobbers__circle__peintre">
+              <img src="~assets/images/kaouthar.png">
+            </div>
+            <p class="section__subtitle">Bobette Peintre</p>
           </li>
           <li>
-            <div class="bobbers__circle bobbers__circle__architecte"></div>
+            <div class="bobbers__circle bobbers__circle__architecte">
+              <img src="~assets/images/axel.png">
+            </div>
             <p class="section__subtitle">Bob Architecte</p>
           </li>
         </ul>
@@ -531,6 +541,10 @@ export default {
       @include justify-content(space-between);
       padding-top: 20px;
     }
+
+    li {
+      width: 20%;
+    }
   }
 
   &__circle {
@@ -548,24 +562,68 @@ export default {
       height: 155px;
     }
 
-    &__charpentier {
+    img {
+      height: auto;
+    }
+
+    &__electricien {
       background-color: rgba(251, 228, 228, 0.8);
+
+      img {
+        width: 115px;
+
+        @media #{$desktop} {
+          width: 140px;
+        }
+      }
     }
 
     &__plombier {
       background-color: #fffbea;
+
+      img {
+        width: 135px;
+
+        @media #{$desktop} {
+          width: 165px;
+        }
+      }
+    }
+
+    &__charpentier {
+      background-color: rgba(227, 248, 255, 0.9);
+
+      img {
+        width: 130px;
+
+        @media #{$desktop} {
+          width: 160px;
+        }
+      }
     }
 
     &__peintre {
-      background-color: rgba(227, 248, 255, 0.9);
-    }
-
-    &__electricien {
       background-color: rgba(251, 228, 236, 0.8);
+
+      img {
+        width: 135px;
+
+        @media #{$desktop} {
+          width: 170px;
+        }
+      }
     }
 
     &__architecte {
       background-color: #effcf6;
+
+      img {
+        width: 130px;
+
+        @media #{$desktop} {
+          width: 160px;
+        }
+      }
     }
   }
 }
