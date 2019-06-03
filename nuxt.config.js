@@ -83,8 +83,6 @@ module.exports = {
             propertyName: "data.attributes"
           }
         }
-        // tokenRequired: true,
-        // tokenType: 'bearer',
       }
     },
     resetOnError: true
@@ -98,7 +96,7 @@ module.exports = {
   },
 
   /*
-   ** Router
+   ** Axios
    */
   axios: {
     baseURL: "http://104.248.229.222",
