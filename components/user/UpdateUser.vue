@@ -99,7 +99,7 @@ export default {
         .$put("/api/user/" + this.user.id, this.editUser, headers)
         .then(response => {
           //Retour au tableau de bord des utilisateurs
-          window.location.replace("/admin");
+          window.location.replace("/admin/user");
         })
         .catch(error => {
           console.log(error);

@@ -124,6 +124,11 @@ export default {
     };
   },
   watch: {
+    /**
+     * Nettoie le champs 'password' et 'password_confimation' si ce n'est plus un compte admin
+     * @param {boolean} newValue - new value of property admin
+     * @param {boolean} oldValue - old value of property admin
+     */
     admin(newValue, oldValue) {
       //Vérifie si la case est coché pour créer un compte admin
       if (this.admin == false) {
@@ -133,10 +138,17 @@ export default {
     }
   },
   computed: {
+    /**
+     * Vérifie s'il n'y a pas des erreurs dans les champs
+     * @returns {boolean} return true if has error and return false if hasn't error
+     */
     hasError() {
-      //Vérifie si les champs obligatoire sont rempli
       return this.errors.all().length > 0;
     },
+    /**
+     * Vérifie que le formulaire est valide
+     * @returns {boolean} if return true the form is submitable and if return false the form can't send to API
+     */
     submitable() {
       //Vérifie si le mot de passe est entré et si les deux mots de passe sont identiques
       //pour ne pas envoyer un mauvais mot de passe à l'API
@@ -150,16 +162,26 @@ export default {
       //Vérifie si le téléphone est rempli pour envoyer le formulaire avec les champs requis
       return this.newUser.phone_number != "" && !this.hasError;
     },
+    /**
+     * Crée la propriété admin pour pouvoir surveiller les changements dans le watch ci-dessus
+     */
     admin() {
       return this.newUser.admin;
     }
   },
   methods: {
+    /**
+     * Créer le nouvel utilisateur à l'API
+     */
     createUser: function() {
-      //Créer le nouvel utilisateur à l'API
-      this.$axios.$post("/api/user", this.newUser).then(response => {
-        window.location.replace("/admin/user");
-      });
+      this.$axios
+        .$post("/api/user", this.newUser)
+        .then(response => {
+          window.location.replace("/admin/user");
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   }
 };

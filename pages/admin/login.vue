@@ -31,6 +31,9 @@ export default {
     };
   },
   methods: {
+    /**
+     * Connecte un utilisateur admin
+     */
     login: function() {
       this.$auth
         .loginWith("local", {

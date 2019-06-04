@@ -97,11 +97,15 @@ export default {
     logout: function() {
       this.$auth.logout();
     },
-    //fermer la pop-up de la modification d'une catégorie
+    /**
+     * fermer la pop-up de la modification d'une catégorie
+     */
     closeEdit: function() {
       this.showEdit = false;
     },
-    //fermer la pop-up de la fiche informative d'une catégorie
+    /**
+     * fermer la pop-up de la fiche informative d'une catégorie
+     */
     closeInfo: function() {
       this.showInfo = false;
     }

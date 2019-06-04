@@ -1,6 +1,6 @@
 module.exports = {
-  /*
-   ** Headers of the page
+  /**
+   * Headers of the page
    */
   head: {
     title:
@@ -17,16 +17,16 @@ module.exports = {
     ],
     link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }]
   },
-  /*
-   ** Customize the progress bar color
+  /**
+   * Customize the progress bar color
    */
   loading: { color: "#3B8070" },
-  /*
-   ** Build configuration
+  /**
+   * Build configuration
    */
   build: {
-    /*
-     ** Run ESLint on save
+    /**
+     * Run ESLint on save
      */
     extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
@@ -40,27 +40,32 @@ module.exports = {
     },
     vendor: ["axios"]
   },
-  /*
-   ** Plugins
+
+  /**
+   * Plugins
    */
   plugins: [
-    { src: "~/plugins/smart-table", ssr: false },
+    { src: "~plugins/smart-table", ssr: false },
     { src: "~plugins/vee-validate", ssr: true },
     { src: "~plugins/vue-carousel", ssr: false }
   ],
-  /*
-   ** Modules
+
+  /**
+   * Modules
    */
   modules: ["@nuxtjs/axios", "@nuxtjs/auth", "@nuxtjs/style-resources"],
   styleResources: {
     scss: ["@/assets/scss/styles.scss"]
   },
 
-  /*
-   ** Style
+  /**
+   * Style
    */
   css: ["@/assets/scss/styles.scss"],
 
+  /**
+   * Auth Module - Nuxt.js
+   */
   auth: {
     // Options
     redirect: {
@@ -88,15 +93,15 @@ module.exports = {
     resetOnError: true
   },
 
-  /*
-   ** Router
+  /**
+   * Router
    */
   router: {
     middleware: ["auth"]
   },
 
   /*
-   ** Axios
+   ** Axios Module - Nuxt.js
    */
   axios: {
     baseURL: "http://104.248.229.222",

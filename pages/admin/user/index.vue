@@ -126,7 +126,7 @@ export default {
       showInfo: false,
       filterTypeValue: "all", //la data peut prendre 3 valeurs: "all" pour afficher tous les comptes utilisateurs et administrateurs, "admin" compte administrateur, "user" pour les utilisateurs lambda
       currentPage: 1, //Commence à la premiere page de la pagination
-      totalPages: 0 //Initialisation le nombre de pages de la pagination à 0
+      totalPages: 1 //Initialisation le nombre de pages de la pagination à 0
     };
   },
   mounted() {
@@ -143,6 +143,10 @@ export default {
       });
   },
   computed: {
+    /**
+     * Filtre les données des comptes utilisateurs par leur type ("user", "admin", "all")
+     * @returns {Array} an array that contains a result of filter
+     */
     filterDisplayData() {
       return this.users.filter(user => {
         //affiche les comptes admin
@@ -159,9 +163,19 @@ export default {
     }
   },
   methods: {
+    /**
+     * Déconnecte le compte admin
+     */
     logout: function() {
       this.$auth.logout();
     },
+    /**
+     * Filtre les données des utilisateurs
+     *
+     * @param {string} filterValue - value enter in the searchbar
+     * @param {Object} row - user data in the table
+     * @returns {boolean} return true if filterValue match with row and return false if filterValue didn't match with row
+     */
     nameFilter: function(filterValue, row) {
       //Vérifie si la barre de recherche est rempli, pour transformer les lettres majuscule
       //en miniscule pour pas que ça soit sensible à la casse
@@ -186,12 +200,21 @@ export default {
         return row.attributes.lastName.toLowerCase().includes(filterValue);
       }
     },
+    /**
+     * Ferme la pop up de suppression d'un utilisateur
+     */
     closeDelete: function() {
       this.showDelete = false;
     },
+    /**
+     * Ferme la pop up de modification d'un utilisateur
+     */
     closeEdit: function() {
       this.showEdit = false;
     },
+    /**
+     * Ferme la pop up les informations d'un utilisateur
+     */
     closeInfo: function() {
       this.showInfo = false;
     }
