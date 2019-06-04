@@ -126,7 +126,7 @@ export default {
       showInfo: false,
       filterTypeValue: "all", //la data peut prendre 3 valeurs: "all" pour afficher tous les comptes utilisateurs et administrateurs, "admin" compte administrateur, "user" pour les utilisateurs lambda
       currentPage: 1, //Commence à la premiere page de la pagination
-      totalPages: 0 //Initialisation le nombre de pages de la pagination à 0
+      totalPages: 1 //Initialisation le nombre de pages de la pagination à 0
     };
   },
   mounted() {

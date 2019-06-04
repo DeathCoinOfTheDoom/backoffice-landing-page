@@ -73,6 +73,7 @@ body {
   width: 840px;
   background: $white;
   padding: 40px;
+  margin: 20 0px;
   border-radius: 4px;
 
   &__title {
@@ -92,11 +93,12 @@ body {
     @include flexbox();
     @include justify-content(center);
     @include align-items(center);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
+    overflow-y: scroll;
   }
 
   &__page {

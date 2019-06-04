@@ -170,11 +170,18 @@ export default {
     }
   },
   methods: {
+    /**
+     * Créer le nouvel utilisateur à l'API
+     */
     createUser: function() {
-      //Créer le nouvel utilisateur à l'API
-      this.$axios.$post("/api/user", this.newUser).then(response => {
-        window.location.replace("/admin/user");
-      });
+      this.$axios
+        .$post("/api/user", this.newUser)
+        .then(response => {
+          window.location.replace("/admin/user");
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   }
 };
