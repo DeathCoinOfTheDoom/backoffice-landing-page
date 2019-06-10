@@ -1,6 +1,6 @@
 <template>
-  <section class="edit-page">
-    <div class="modal__page">
+  <div class="modal__background">
+    <div class="modal edit">
       <p class="modal__title">Création d'un nouvel utilisateur</p>
       <form>
         <div class="container__field">
@@ -15,6 +15,7 @@
             id="telephone"
             name="phone_number"
             placeholder="+33..."
+            value
             v-model="newUser.phone_number"
           >
         </div>
@@ -97,16 +98,14 @@
         </div>
         <div class="container__buttons">
           <button class="button--action" v-bind:disabled="!submitable" @click="createUser">Valider</button>
-          <nuxt-link class="button--cancel" to="/admin/user">Annuler</nuxt-link>
+          <button class="button--cancel" @click="cancelNew">Annuler</button>
         </div>
       </form>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
-import { VeeValidate } from "vee-validate";
-
 export default {
   data() {
     return {
@@ -182,6 +181,9 @@ export default {
         .catch(error => {
           console.log(error);
         });
+    },
+    cancelNew() {
+      this.$emit("closedNew");
     }
   }
 };
@@ -202,7 +204,7 @@ export default {
   }
 }
 
-#fadminAccount {
+#adminAccount {
   margin-right: 7px;
 }
 </style>

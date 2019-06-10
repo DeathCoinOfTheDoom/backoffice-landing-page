@@ -30,7 +30,7 @@
               <option value="admin">Administrateurs</option>
             </select>
           </div>
-          <nuxt-link to="/admin/user/newUser" class="button--action">Créer un nouvel utilisateur</nuxt-link>
+          <button class="button--action" @click="showNew = true">Créer un nouvel utilisateur</button>
           <div class="filter-name option--item">
             <label for="filterName">Filtrer par nom d'utilisateur :</label>
             <div class="underline-animation">
@@ -97,6 +97,7 @@
         />
         <UpdateUser v-if="showEdit" v-on:closedEdit="closeEdit" v-bind:user="selectedUser"/>
         <ReadUser v-if="showInfo" v-on:closedInfo="closeInfo" v-bind:user="selectedUser"/>
+        <NewUser v-if="showNew" v-on:closedNew="closeNew"/>
       </div>
     </div>
   </section>
@@ -106,12 +107,14 @@
 import DeleteUser from "~/components/user/DeleteUser.vue";
 import UpdateUser from "~/components/user/UpdateUser.vue";
 import ReadUser from "~/components/user/ReadUser.vue";
+import NewUser from "~/components/user/NewUser.vue";
 
 export default {
   components: {
     DeleteUser,
     UpdateUser,
-    ReadUser
+    ReadUser,
+    NewUser
   },
   data() {
     return {
@@ -124,6 +127,7 @@ export default {
       showDelete: false,
       showEdit: false,
       showInfo: false,
+      showNew: false,
       filterTypeValue: "all", //la data peut prendre 3 valeurs: "all" pour afficher tous les comptes utilisateurs et administrateurs, "admin" compte administrateur, "user" pour les utilisateurs lambda
       currentPage: 1, //Commence à la premiere page de la pagination
       totalPages: 1 //Initialisation le nombre de pages de la pagination à 0
@@ -217,6 +221,12 @@ export default {
      */
     closeInfo: function() {
       this.showInfo = false;
+    },
+    /**
+     * Ferme la pop up de création d'un utilisateur
+     */
+    closeNew: function() {
+      this.showNew = false;
     }
   }
 };
